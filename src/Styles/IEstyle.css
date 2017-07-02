@@ -1,0 +1,602 @@
+
+
+BODY {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; 
+	margin:0; 
+	color: #000000;
+	background-color: #ffffff;
+	padding-top: 50px;
+}
+
+div#commDiv
+{
+	margin: 0px 20px 0px 20px;
+	display: none;
+}
+
+
+A {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #337AB7;
+	font-weight: bold;
+	text-decoration : None;
+}
+A:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #337AB7;
+	text-decoration : None;
+}
+A:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #337AB7;
+	text-decoration : None;
+}
+A:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #337AB7;
+	cursor : Hand;
+	text-decoration : None;
+}
+
+INPUT.textbox {
+	border: 1px Solid Black;
+}
+
+
+TD { 
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;  
+	font-size : 14px; 
+	text-decoration: None;
+}
+
+PrintTD { 
+	font-family: Courier New, Verdana, Geneva, Helvetica, Arial, sans-serif;  
+	font-size : 2px; 
+	text-decoration: None;
+}
+
+.mainTitle {
+	font face: Arial; 
+	color: Blue; 
+	font-size: 20pt;
+}
+
+.subTitle { 
+	font face: Arial; 
+	color: #5E0B0E; 
+	font-size: 14pt; 
+}
+
+.showallTitle { 
+	font face: Courier New; 
+	color: Black; 
+	font-size: 14pt; 
+}
+
+.legend {
+	font face: Arial; 
+	color: #002B4E; 
+	font-size: 8pt;
+	
+}
+
+.shaded0 {
+	background-color: #99CDFF;
+	color: #000000;
+}
+
+.shaded1 {
+	background-color: #E3E4EA;
+	color: #000000;
+}
+
+.shaded2 {
+	background-color: #FFFFE1;
+	color: #000000;
+}
+
+.shaded3 {
+	background-color: #99CDFF;
+	color: #000000;
+}
+.shaded4 {
+	background-color: #DCDCDC;
+	color: #000000;
+}
+.shaded5 {
+	background-color: #FFFF00;
+	color: #000000;
+}
+.shaded6 {
+	background-color: #D2CECE;
+	color: #000000;
+}
+
+
+.Table {
+	border : 1px Solid #006699; 
+	border-color: 1ps Solid #006699;
+}
+
+.TableHeader {
+	background-color: #669ACC;
+	font face: Arial;
+	color: #006599;
+}
+
+.pagingNav {
+	font face: Arial; 
+	font-size:8pt;
+}
+
+/* TEXT */
+.blacktext{color:#000000;}
+.smallblacktext{color:#000000; font-size:10pt;}
+A.blacktext:hover{ color: #000000; text-decoration: underline;}
+A.blacktext:visited{ color: #000000;}
+A.blacktext:active{ color: #000000;}
+A.blacktext:link{ color: #000000; }
+
+A.TblHd:link{ color: #006599;}
+A.TblHd:active{ color: #006599;}
+A.TblHd:hover{ color: white; text-decoration: underline; }
+A.TblHd:visited{ color: #006599;}
+
+.greentext{font-size: 13px; color:#3F8640; font-weight: bold;}
+.smallgreentext{font-size: 10pt; color:#3F8640;}
+.smallgreentextCR{font-size: 9pt; color:#3F8640;}
+A.greentext:link {color:#3F8640;}
+A.greentext:active {color: #3F8640;}
+A.greentext:visited {color: #3F8640}
+A.greentext:hover{ color: #3F8640; text-decoration: underline; }
+
+
+.darkgreentext{color:#006600;}
+A.darkgreentext:link {color:#006600;}
+A.darkgreentext:active {color: #006600;}
+A.darkgreentext:visited {color: #006600;}
+A.darkgreentext:hover{color: Black;}
+
+
+.browntext{color:#800000;}
+.smallbrowntext{color:#800000; font-size:10pt;}
+A.browntext:link {color:#800000;}
+A.browntext:active {color: #800000;}
+A.browntext:visited {color: #800000;}
+A.browntext:hover{color: Black;}
+
+
+
+.bluetext{ color: #006599; font-size: 10pt;}
+.bigBlueText{ color: #006599; font-size: 16pt; font-weight: bold;}
+A.bluetext{ color: #006599; font-size: 10pt; }
+A.bluetext:hover{ color: #006599; text-decoration: underline; }
+A.bluetext:visited{ color: #006599 }
+A.bluetext:active{ color: #006599;}
+A.bluetext:link{color: Navy;}
+
+.redtext{ color: red; font-size: 10pt;}
+.bigRedText{ color: red; font-size: 16pt; }
+.smallRedText{ color: red; font-size: 8pt; }
+A.redtext:hover{ color: red; text-decoration: underline; }
+A.redtext:visited{ color: red; }
+A.redtext:active{ color: red;}
+A.redtext:link{ color: red; }
+
+.whitetext{ color: white; font-size: 10pt;}
+.bigwhitetext{ color: white; font-size: 16pt;}
+A.whitetext{ color: white; font-size: 10pt; }
+A.whitetext:hover{ color: white; text-decoration: underline; }
+A.whitetext:visited{ color: white; }
+A.whitetext:active{ color: white;}
+A.whitetext:link{color: #6487DC;}
+
+/* HEADER */
+.header{background-color: #0070BA; border: 1px solid Black;} 
+.headerLinkRow {
+	text-decoration: None;
+	color : #CEDBF7;
+	font-weight: normal;
+	border : 1px solid Black;
+	border-bottom : none;
+}
+.headerName {
+	color: #FFFFFF;
+}
+A.headerlink {	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : white; text-decoration : None; }
+A.headerlink:visited {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : white;  text-decoration : None;}
+A.headerlink:active {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : white;  text-decoration : None;}
+A.headerlink:hover {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;color : #E6D4FF; cursor : hand; text-decoration : None; }
+
+A.TopLink {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : black; text-decoration : None; }
+A.TopLink:visited {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : black;  text-decoration : None;}
+A.TopLink:active {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : black;  text-decoration : None;}
+A.TopLink:hover {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;color : blue; cursor : hand; text-decoration : None; }
+
+.MAINHEADER {
+	background-image:url('/img/bg.jpg');
+
+}
+
+/* BODY */
+.BodyBG{background-color: #99CDFF;}
+.BodyHeader{
+	background-color: #0070BA;
+	border : 1px solid Black;
+	border-top : none;
+}
+
+.DashBoard{
+	font-weight: normal;
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; text-decoration : None; font-size : 12px;	
+}
+
+.BodyHeaderHelp{
+	background-color: #CCCC9A;
+	border : none;
+	font-weight: normal;
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; text-decoration : None; font-size : 10pt;	
+}
+
+.BodyHeaderTitle{background-color: #669ACC; text-align: center; font-family: verdena; font-size:20pt; color: Black; font-weight: Bold; border-top : none; border-bottom : none;}
+.BodyHeaderTitle1{background-color: #669ACC;	font-family: verdena; font-size:20pt; color: Black; font-weight: Bold; border: 1px solid Black; border-top : none;}
+.BodyHeaderTitle2{font-family: verdena; font-size:20pt; color: Black; font-weight: Bold;}
+
+@media (max-width: 480px)
+{
+	.BodyHeaderTitleShrink{font-size: 15pt;}
+
+}
+
+.BodyNav{background-color: #CCCC9A; border : 1px solid Black; border-top : none; }
+
+.EventHeaderTitle{font face: Arial; font-size:16pt;color: #ffffff; font-weight:Bold;text-decoration:underline;}
+
+
+.startBoxTitle
+{
+	font-size: 20px; 
+	background-color:#006599;
+}
+
+.startBoxDescription
+{
+	font-size: 12px; 
+	background-color:#006599;
+}
+
+/* FOOTER */
+.footer{background-color: #000000; min-height: 20px; color: #ffffff; font-size: 9px;} 
+.footerLinkRow1 {text-decoration: None; font-weight: bold; color:#FFFFFF}
+.footerLinkRow2 {text-decoration: None; color : #CEDBF7;}
+A.footerlink {	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : #CEDBF7; 	text-decoration : None; }
+A.footerlink:visited {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : #CEDBF7;  text-decoration : None;}
+A.footerlink:active {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : #CEDBF7;  text-decoration : None;}
+A.footerlink:hover {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; color : white; cursor : hand; 	text-decoration : None; }
+
+/* LOGIN */
+.loginHeader {text-decoration: None; color : Black; font-weight: Bold; background-color: #CCCC9A;}
+.loginBox {padding: 0 10 0 10;}
+.loginBoxBorder {border: 1px solid black;}
+.loginTitle {background-color: #669ACC; font-weight: Bold;}
+
+A.loginLinks { color: #285E8D; font-size: 9px;}
+
+/* MAIN */
+A.mainBlueText{ color: #006699; font-size: 18pt;}
+A.mainBlueText:hover{ color: #006699; text-decoration: underline; }
+A.mainBlueText:visited{ color: #006699 }
+A.mainBlueText:active{ color: #006699;}
+A.mainBlueText:link{color: Navy;}
+
+/* FORM */
+.formSmallFont{ font-size: 8pt; }
+.iform { color: white; background: #9DB3E8; font-weight: normal; font-size: 12px; }
+.locationFormHeader {background-color: #C0CEF0; margin-bottom: 15px;}
+.form {border : 1px solid #669ACC; colr:#ffffff;  background-color : #669ACC; font-weight: normal; }
+.FAQForm {border : 1px solid #006699;  background-color : #FEF9E7; font-weight: normal; }
+
+
+/* NOTES */
+.notesDescription{ font-size: 8pt; }
+.notesForm { background: #FFFFEA; border: 1px solid black; }
+
+/* LOOK-UP */
+.LookUpBox{ background: #006599; border: 1px solid black; }
+
+/* Evaluation form */
+.EvalForm{ font-size: 11px; border-collapse: collapse; }
+
+.EvalForm td
+{
+	font-size: 11px;
+}
+
+.SectionHeader{ background: #CCCCCC; font-size: 11px; text-align:center; font-weight:bold }
+.FormHeader{ background: #CCCCCC; font-size: 11px;  font-weight:bold }
+
+/* CLASS ROSTER */
+.crTD{ width: 100; text-align: center; }
+.crdBigBoldText{ font-size: 12pt; color: red; }
+.InstructionBox{ background: #FFFFEA; border: 1px solid black; }
+.DivTagControl{ text-decoration: underline; cursor: hand;}
+.KeyColumn{ width: 50px; }
+.KeyInfoColumn{ width: 60px; }
+.NamePhoneColumn { width: 190px; }
+.StatusColumn { width: 50px; }
+.NumberColumn { width: 10px; }
+.ListDateColumn { width: 250px; }
+.TestColumn { width: 100px; }
+
+
+/* CLASS REPORT */
+.paymentForm{ background: #EFEFCE; border: 1px solid black; }
+.paymentFormHeader{ background: #00659C; }
+.commissionForm{ background: #DEEFFF; border: 1px solid black; }
+.commissionFormHeader{ background: #0065CE; }
+.paymentDetailForm{ background: #E7EBF7; border: 1px solid black; }
+.paymentDetailFormHeader{ background: #B5A663; }
+.paymentSummaryForm{ background: #FFFFEF; border: 1px solid black; }
+.paymentSummaryFormHeader{ background: #DA7900; }
+.facilityPaymentForm{ background: #E7F7E7; border: 1px solid black; }
+.facilityPaymentFormHeader{ background: #398642; }
+INPUT.instructorInput{ border: 1px solid black; background: #C0C0C0; color: black;}
+
+
+
+/* Messgae */
+.MSGFormatTable {border : 1px solid Gray; background-color : #FFFFEA;}
+.MSGFormatBody{font-family : Verdana, Arial; color:  #000000; font-size: 9px;}
+
+/* Div Tag */
+.divHidden {display:none; visibility:hidden;}
+.divDisplay {display:block; visibility:display;}
+
+/* Instructor Label */
+.TopTitle {text-decoration: None; color : Black; font-weight: Bold; font-size: 16pt;}
+.LabelBox {border: 1px solid Black; }
+.LabelName {font-size: 17pt; color: Black; font-weight: Bold;}
+.LabelPhoneNumber {font-size: 10pt;}
+.LabelAddress {font-size: 8pt;}
+.LabelAddressTab {font-size: 8pt; font-weight: Bold; color: Black; width: 18;}
+.LabelTab {font-size: 9pt; font-weight: Bold; color: Black; width: 18;}
+.LabelLocation {font-size: 7pt; text-align: center;}
+.LabelCity {font-size:9pt;}
+p.PageBreak {page-break-before: always;}
+
+/* Contact Us */
+.ContactUsFont {font-size:10pt;}
+
+/* CLASS SETUP */
+.TableHeader {
+	background-color: #669ACC;
+	font face: Arial;
+	color: #006599;
+	font-weight: bold;
+}
+.GroupHeader1 {
+	background-color: #CC6700;
+	font face: Arial;
+	color: #006599;
+	font-weight: bold;
+}
+.GroupHeader2 {
+	background-color: #D2CECE;
+	font face: Arial;
+	color: #006599;
+	font-weight: bold;
+}
+.WhiteText {
+	font face: Arial;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.SummaryWarning {
+	font face: Arial;
+	color: #0000FF;
+	font-weight: bold;
+}
+.SummaryError {
+	font face: Arial;
+	color: #FF0000;
+	font-weight: bold;
+}
+.SummaryNotice {
+	font face: Arial;
+	color: #00FF00;
+	font-weight: bold;
+}
+/* Profound HRef */
+.AStatusProfound {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #0000FF;
+	text-decoration : None;
+}
+.AStatusProfound:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #0000FF;
+	text-decoration : None;
+}
+.AStatusProfound:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #0000FF;
+	text-decoration : None;
+}
+.AStatusProfound:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #000000;
+	background-color: Yellow;
+	cursor : Hand;
+	text-decoration : None;
+}
+/* White HRef */
+.AStatusWhite {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : White;
+	text-decoration : None;
+}
+.AStatusWhite:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : White;
+	text-decoration : None;
+}
+.AStatusWhite:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : White;
+	text-decoration : None;
+}
+.AStatusWhite:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #00008B;
+	cursor : Hand;
+	text-decoration : None;
+}
+/* Red HRef */
+.AStatusRed {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Red;
+	text-decoration : None;
+}
+.AStatusRed:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Red;
+	text-decoration : None;
+}
+.AStatusRed:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Red;
+	text-decoration : None;
+}
+.AStatusRed:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #00008B;
+	cursor : Hand;
+	text-decoration : None;
+}
+/* Blue HRef */
+.AStatusBlue {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Blue;
+	text-decoration : None;
+}
+.AStatusBlue:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Blue;
+	text-decoration : None;
+}
+.AStatusBlue:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Blue;
+	text-decoration : None;
+}
+.AStatusBlue:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #00008B;
+	cursor : Hand;
+	text-decoration : None;
+}
+/* Green HRef */
+.AStatusGreen {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Green;
+	text-decoration : None;
+}
+.AStatusGreen:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Green;
+	text-decoration : None;
+}
+.AStatusGreen:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Green;
+	text-decoration : None;
+}
+.AStatusGreen:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #00008B;
+	cursor : Hand;
+	text-decoration : None;
+}
+/* Grey HRef */
+.AStatusGray {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Gray;
+	text-decoration : None;
+}
+.AStatusGray:visited {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Gray;
+	text-decoration : None;
+}
+.AStatusGray:active {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : Gray;
+	text-decoration : None;
+}
+.AStatusGray:hover {
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color : #00008B;
+	cursor : Hand;
+	text-decoration : None;
+}
+.popup
+{
+	color: #9F141A;
+	cursor: help;
+	text-decoration: none
+}
+/*Complaint Form*/
+.ComplaintFormHeader
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 16px; 
+	font-weight: bold;
+}
+.ComplaintFormHeaderConfidential
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 14px; 
+	font-style: italic;
+	text-decoration: underline;
+}
+.ComplaintFormTitle
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 18px; 
+	font-weight: bold;
+}
+.ComplaintFormText
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 12px; 
+	font-weight: bold;
+}
+.ComplaintFormDetails
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 12px; 
+	font-weight: bold;
+	text-decoration: underline;
+}
+.ComplaintFormActionTaken
+{
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size : 12px; 
+	font-style: italic;
+	font-weight: none;
+}
+/* END CLASS SETUP */
+
+/* CART */
+.cartSubItem
+{
+	font-weight: bold;
+	color: #364EA2;
+	padding-left: 10px;
+}
+.cartRightItem
+{
+	font-weight: bold;
+	color: #364EA2;
+}
+/* END CART */

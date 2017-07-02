@@ -1,0 +1,207 @@
+<script language="vbscript" runat="server">
+sub Application_OnStart
+	'----------------------------------------------------------------- '
+	' Initializing application variables for web-server, SQL-server, etc. '
+	'Application("strConn") = "DSN=YCOA_AZ;UID=web4Yo;PWD=4thekids;APP=Microsoft(R) Windows (R) 2000 Operating System;WSID=YOLY01"
+	'Application("strConn") = "Provider=SQLOLEDB.1;Persist Security Info=False;User ID=web4Yo;Password=4thekids;Initial Catalog=YCOA_TEST;Data Source=SQLSERVER"
+	Application("strConn") = "Provider=SQLOLEDB.1;Persist Security Info=False;User ID=sa;Password=4theVoIP;Initial Catalog=YCOA_TEST2;Data Source=SQL01"//192.168.251.3"//
+	Application("helpStrConn") = "Provider=SQLOLEDB.1;Persist Security Info=False;User ID=web4Yc;Password=4thekids;Initial Catalog=yo_help;Data Source=SQLSERVER"
+	Application("YCOA") = "ActivStars"
+	Application("FullCompanyName") = "ActivStars"
+	Application("ShortCompanyName") = "ActivStars"
+	Application("CompanyNameInitial") = "ActivStars"
+	Application("notes") = "&lt;Communication&gt;"
+	Application("CR_username") = "sa"
+	Application("CR_password") = "4thevoip"
+	Application("CR_servername") = "YCOA_TEST2"
+	Application("CR_database") = "YCOA_TEST2"
+	Application("dbnConn") = "YCOA_TEST2"
+	Application("YC") = "Arizona / Texas"
+	Application("Staff_Timeout") = "240"
+	Application("Inst_Timeout") = "30"
+	Application("CommSysApproval") =  "kraig.hollingworth@azycoa.com"
+	'Application("ExternalIP") =  "http://65.104.117.227"
+	Application("ExternalIP") =  "https://68.225.17.87"
+	Application("GoogleMapKey") = "ABQIAAAADa04luRrphyyi8rvt5VEzRQ0MeNJb3hvBIf3yj7VNnt5Buux9RRTMI77Obq8ZAjknz0MUWvbtm68kQ"
+	Application("GoogleMapKeyInternal") = "ABQIAAAADa04luRrphyyi8rvt5VEzRTccvao9-NNRpcp7cMRZDggkUc3MRTVnMJKRlU6MuRrboCqnSHLrilyIQ"
+	Application("YahooAppID") = "Map@YCOA"
+	Application("MarketID") = "az"
+	Application("ExternalIPAddress") = "68.225.17.87"
+	Application("InternalIPAddress") = "192.168.169.14"
+	Application("DefaultIPAddress") = "192.168.169.14"
+	Application("YCOA1IneternalIPAddress") = "192.168.169.14"
+	Application("YCOA1ExternalIPAddress") = "68.225.17.87"
+	Application("YCOA1DefaultIPAddress") = "192.168.169.14"	
+	Application("YCOASystemURL") = "http://preregtest.activstarsonline.com"
+	Application("BingMapKey") = "ArpylObidhA_txE9IX5cEDObzSmhzhkxG2S7DwaIvBcwAhcuG811D3XT18HFjTWp "
+	Application("PayPalAccount") = "yohon617-facilitator@gmail.com"
+	Application("SystemFromEmail") = "donotreply@activstars.net"
+
+	'----------------------------------------------------------------- '
+	'Scholarship count toward the commission for instructors --- California only '
+	'1 = count toward commission, 0 = dont count toward commission '
+	Application("Scholarship_Commission") = "0"
+
+	
+	'----------------------------------------------------------------- '
+	' Declaring recordset- and other local variables '
+	Dim objConn
+	Dim objRS_ST, objRS_ST2
+	Dim objRS_SE, objRS_SE2
+	Dim objRS_YR, objRS_YR2
+	Dim objRS_CS
+	Dim objRS_SY
+	Dim objRS_CY
+	
+	' Open a connection to the database and retrieve data ' 
+	' that needs to be available on a number of pages. '
+	set objConn = Server.CreateObject("ADODB.CONNECTION")
+	objConn.open Application("strConn")
+	' Sport type array ' 
+		set objRS_ST = objConn.execute("exec a_lk_sport")
+		set objRS_ST2 = objConn.execute("exec a_lk_sport")
+	' Session array '
+		set objRS_SE = objConn.execute("exec a_lk_semester")
+		set objRS_SE2 = objConn.execute("exec a_lk_semester")
+	' Year array '
+		set objRS_YR = objConn.execute("exec a_lk_year")
+		set objRS_YR2 = objConn.execute("exec a_lk_year")
+	' Current session '
+		set objRS_CS = objConn.execute("exec a_get_CurrentSession")
+	' Current Year '
+		set objRS_CY = objConn.execute("exec a_get_CurrentSessionAndYear")
+	' System settings '
+		set objRS_SY = objConn.execute("exec a_get_tbsettings")
+	set objConn = Nothing
+
+	
+	'----------------------------------------------------------------- '
+	' Save all the information for the current system as app-variables '		
+	Application("Sys_Name") = objRS_SY("stCompanyName")
+	Application("Sys_Address1") = objRS_SY("stAddress1")
+	Application("Sys_Address2") = objRS_SY("stAddress2")
+	Application("Sys_City") = objRS_SY("stCity")
+	Application("Sys_State") = objRS_SY("stState")
+	Application("Sys_Zip") = objRS_SY("stZip")
+	Application("Sys_Phone1") = objRS_SY("stPhone1")
+	Application("Sys_Phone2") = objRS_SY("stPhone2")
+	Application("Sys_Fax") = objRS_SY("stFax")
+	Application("Sys_Email") = objRS_SY("stEmail")
+	Application("Sys_ShipMethod") = objRS_SY("stInstShp")
+	Application("Sys_RafflesInstWh") = objRS_SY("stRafflesInstWh")
+	Application("Test_Commission") = objRS_SY("stTestingComm")
+	Application("Sys_CommForRS") = objRS_SY("stCommForRS")
+	Application("Sys_CommForReg") = objRS_SY("stCommForReg")
+	Application("Sys_InstSessionView") = objRS_SY("stInstSessionView")
+
+	objRS_SY.Close
+	Set objRS_SY = Nothing
+	
+		
+	'----------------------------------------------------------------- '
+	' Build Sport Type Array '
+	Dim SportArray
+	Dim NumOfSports
+	SportArray = ""
+	NumOfSports = 0
+	
+	do while objRS_ST.EOF <> true
+		SportArray = SportArray & ""&objRS_ST("plText")&""
+		objRS_ST.movenext
+		if objRS_ST.EOF <> true then SportArray = SportArray & (", ")
+	loop
+	
+	do while objRS_ST2.EOF <> true
+		NumOfSports = NumOfSports + 1
+		objRS_ST2.movenext
+	loop
+	
+	objRS_ST.Close 
+	Set objRS_ST = Nothing
+	objRS_ST2.Close
+	Set objRS_ST2 = Nothing
+	
+	SportArray = split(SportArray, ", ")
+	Application("SportArray") = SportArray
+	Application("NumOfSports") = NumOfSports
+	
+	
+	'----------------------------------------------------------------- ' 
+	' Build Session Array '
+	Dim SessionArray
+	Dim NumOfSessions
+	SessionArray = ""
+	NumOfSessions = 0
+	
+	do while objRS_SE.EOF <> true
+		SessionArray = SessionArray & ""&objRS_SE("plText")&""
+		objRS_SE.movenext
+		if objRS_SE.EOF <> true then SessionArray = SessionArray & (", ")
+	loop	
+	
+	do while objRS_SE2.EOF <> true
+		NumOfSessions = NumOfSessions + 1
+		objRS_SE2.movenext
+	loop
+	
+	objRS_SE.Close
+	Set objRS_SE = Nothing
+	objRS_SE2.Close
+	Set objRS_SE2 = Nothing
+	
+	SessionArray = split(SessionArray, ", ")
+	Application("SessionArray") = SessionArray
+	Application("NumOfSessions") = NumOfSessions
+	
+	
+	'----------------------------------------------------------------- '
+	' Build Year Array '
+	Dim YearArray
+	Dim NumOfYears
+	YearArray = ""
+	NumOfYears = 0
+	
+	do while objRS_YR.EOF <> true
+		YearArray = YearArray & ""&objRS_YR("plText")&""
+		objRS_YR.movenext
+		if objRS_YR.EOF <> true then YearArray = YearArray & (", ")
+	loop
+	
+	do while objRS_YR2.EOF <> true
+		NumOfYears = NumOfYears + 1
+	objRS_YR2.movenext
+	loop
+	
+	objRS_YR.Close
+	Set objRS_YR = Nothing
+	objRS_YR2.Close
+	Set objRS_YR2 = Nothing
+
+	YearArray = split(YearArray, ", ")
+	Application("YearArray") = YearArray
+	Application("NumOfYears") = NumOfYears
+	
+	
+	'----------------------------------------------------------------- '
+	' Determine the current session (spring, summer...) & present year '
+	Application("CurrentSession") = objRS_CS("CurrentSession")
+	Application("CurrentYear") = right(FormatDateTime(date, 1),4)
+	Application("CurrentSessionYear") = objRS_CY("Year")
+	objRS_CS.Close
+	set objRS_CS = Nothing
+	'----------------------------------------------------------------- '
+	
+end sub
+
+
+sub Application_OnEnd
+end sub
+
+
+sub Session_OnStart
+end sub
+
+
+sub Session_OnEnd
+end sub
+</script>

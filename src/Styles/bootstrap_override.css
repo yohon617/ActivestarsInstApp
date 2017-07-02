@@ -1,0 +1,536 @@
+html, body {
+  height: 100%;
+}
+
+.passwordAlert
+{
+	text-align: center;	
+}
+
+.divCenter
+{
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#content-main
+{
+	background-color: #ffffff;
+  	min-height: 100%;
+	padding-bottom: 35px;
+}
+.navbar-brand
+{
+	padding: 0px;
+	padding-right: 15px;
+}
+
+#PageFooter
+{
+	display: table;
+	width: 100%;
+	background-color: #000000;
+	padding: 0px 15px;
+  	position: relative;
+  	margin-top: -35px; /* negative value of footer height */
+  	clear:both;
+}
+
+.logo-ssl
+{
+	text-align: right;
+	display: block;
+	position: relative;
+}
+
+.footer
+{
+	background-color: #000000;
+	height: 35px;
+	line-height: 30px;
+}
+
+.form-signin {
+    max-width: 625px;
+    margin: 0 auto;
+}
+
+.login-logo
+{
+    float: left;
+}
+
+.login-form
+{
+    float: left;
+    max-width: 350px;
+}
+
+@media (min-width: 768px)
+{
+.modal-dialog
+{
+	width: 80%;
+}
+
+.panel-signin
+{
+	height: 650px;
+}
+.form-signin {
+	position: relative;
+	top: 50%;
+	margin-top: -180px;
+}
+}
+
+
+@media (max-width: 768px)
+{
+
+.login-logo
+{
+    display: none;
+}
+
+.login-form
+{
+    float: none;
+    margin: 0 auto;
+}
+
+}
+
+
+#headline
+{
+	margin-bottom: 25px;
+}
+
+.div-page-footer{
+	top: 100%;
+	left: 0px;
+  	/*height: 100px;*/
+	width: 100%;
+	z-index: 1030;
+	background-color: #ffffff;
+}
+.div-page-footer input, .div-page-footer a
+{
+	width: 100%;
+	margin-top: 5px;
+}
+
+a.btn
+{
+	color: #ffffff !important;
+}
+
+@media (max-width: 768px)
+{
+
+.main-content
+{
+	padding-top: 58px;
+}
+
+#headline
+{
+	margin-bottom: 0px;
+	position: fixed;
+	top: 51px;
+	width: 100%;
+	z-index: 1020;
+}
+
+#content-main .container
+{
+	margin-top: 5px;
+	padding-bottom: 150px;
+}
+
+.div-page-footer{
+	border-top: 2px solid #337ab7;
+  	position: fixed;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	/*margin-top: -120px;*/
+  	height: 120px;
+	width: 100%;
+	z-index: 1030;
+	background-color: #ffffff;
+	text-align: center;
+}
+.div-page-footer-1{
+	border-top: 2px solid #337ab7;
+  	position: fixed;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	/*margin-top: -40px;*/
+  	height: 40px;
+	width: 100%;
+	z-index: 1030;
+	background-color: #ffffff;
+	text-align: center;
+}
+.div-page-footer-2{
+	border-top: 2px solid #337ab7;
+  	position: fixed;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	/*margin-top: -80px;*/
+  	height: 80px;
+	width: 100%;
+	z-index: 1030;
+	background-color: #ffffff;
+	text-align: center;
+}
+}
+
+#form-student-lookup
+{
+	max-width: 400px;
+}
+
+#div-family
+{
+	max-width: 400px;
+}
+
+
+.div-student
+{
+	color: #006599;
+    	padding: 10px;
+    	background-color: #e3e4ea;
+    	max-width: 400px;
+	height: 100px;
+    	border: solid 2px #99cdff;
+
+}
+
+.homepage-student-name
+{
+	font-size: 25px;
+}
+
+@media (max-width: 480px)
+{
+	.homepage-student-name
+	{
+		font-size: 19px;
+	}
+}
+
+.btn-full
+{
+	width: 100%;
+}
+
+.schoolTab>li, .schoolTab>li>a
+{
+	width: 20px;
+	font-size: 12px;
+	padding: 10px 0px 0px 5px;
+}
+@media (max-width: 768px)
+{
+	.schoolTab>li, .schoolTab>li>a
+	{
+		width: 18px;
+		font-size: 9px;
+		padding: 10px 0px 0px 4px;
+	}
+}
+
+.divLookUpEvent
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.divLookUpEventName
+{
+	font-size: 26px;
+	font-weight: bold;
+}
+
+
+#btnPrev, #btnNext
+{
+	color: #000000;
+}
+
+@media (max-width: 768px)
+{
+	#btnPrev 
+	{
+		float: left;
+		margin-left: 20px;
+	}
+	#btnNext
+	{
+		float: right;
+		margin-right: 20px;
+	}
+}
+
+.input_event
+{
+	font-size: 10px;
+	height: 17px;
+    padding: 3px 6px;
+    width: 50%;
+}
+
+.label_event
+{
+	padding: 0px !important;
+	font-size: 10px;
+}
+
+
+@media (max-width: 768px)
+{
+	.input_event
+	{
+		width: 100%;
+	}
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 991px)
+{
+	#divClassMap
+	{
+		/*display: none;*/
+		width: 100%;
+	}
+}
+
+@media (min-width: 991px)
+{
+	.saleItemBox
+	{
+		height: 100px;
+	}
+}
+
+.saleItemCheckboxLeft 
+{
+	height: 35px;
+	width: 25%;
+}
+
+.saleItemCheckboxRight
+{
+	height: 35px;
+	width: 75%;
+}
+
+.saleItemDropdown
+{
+	max-width: 100%;
+}
+
+.spectatorTextBox, .regStudentTextBox
+{
+	display: inline-block;
+	width: auto;
+}
+
+.regStudentLabel
+{
+	width: 100px;
+}
+
+.spectatorLabel
+{
+	width: 100px;
+}
+
+.label-primary .badge
+{
+	background-color: #ffffff;
+	color: #337AB7;
+	float:left;
+
+}
+
+.label-default .badge
+{
+	background-color: #ffffff;
+	color: #777777;
+	float:left;
+}
+
+.rosterDiv
+{
+	min-width: 150px;
+	float: left;
+	margin: 0px 5px 5px 0px
+}
+
+.rosterDiv .label-primary, .rosterDiv .label-default
+{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	height: 50px;
+	width: 100%;
+	text-align: right;
+}
+
+.rosterStat
+{
+	text-align: center;
+	padding-top:10px;
+}
+
+.btn-default .badge
+{
+	background-color: #337AB7;
+}
+
+.badge-left-float
+{
+	position: absolute !important;
+	left: 3px !important;
+	top: 6px !important;
+
+}
+
+.btn-home-student
+{
+	width: 105px;
+}
+
+.nav .open > #headerAccountBtn, .nav .open > #headerAccountBtn:focus, .nav .open > #headerAccountBtn:hover
+{
+	color: #000000 !important;
+}
+
+
+.ticketBarcode
+{
+    height: 70px;
+}
+
+@media (max-width: 321px)
+{
+    .ticketBarcode
+    {
+        height: 140px;
+    }
+
+}
+
+.divHomeStudentList
+{
+    padding-top: 15px;
+}
+
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/*.clearfix
+{
+    display: inline-block;
+}*/
+
+.wait-spinner
+{
+    background: url(/img/map/loader.gif);
+    height:101px;
+    width:101px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    display: none;
+    z-index: 1100;
+}
+
+
+    .classListDiv {
+        float: right;
+        width: 320px;
+        height: 500px;
+        overflow: auto;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-right: 55px;
+    }
+
+.classDivHightlight
+{
+	color: #ffffff;
+    padding: 10px;
+    background-color: #99cdff !important;
+    width: 295px;
+    height: 140px;
+    border: solid 2px #99cdff;
+    float: left;
+}
+
+.classDiv
+{
+	color: #006599;
+    padding: 10px;
+    background-color: #e3e4ea;
+    width: 295px;
+    height: 140px;
+    border: solid 2px #99cdff;
+    float: left;
+
+}
+
+.divClassMapContainer
+{
+    width: 993px;
+}
+
+#myMap
+{
+    position:relative; 
+    width:600px; 
+    height:500px; 
+    left:5px; 
+    top:5px;
+}
+
+@media (max-width: 991px)
+{
+    .classDiv, .classDivHightlight, .classListDiv, .divClassMapContainer
+    {
+        width: 100% !important;
+        float: none;
+        margin: 0px;
+        height: auto;
+    }
+
+
+    #myMap
+    {
+        position:relative; 
+        width:100%; 
+        height:500px; 
+        left:0px; 
+        top:5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
