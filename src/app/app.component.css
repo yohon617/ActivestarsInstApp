@@ -1,1 +1,20 @@
-﻿
+﻿.divMainButton
+{
+  text-align: center;
+  border: solid 1px #000000;
+  padding: 0px;
+}
+
+.divMainButton a
+{
+  display: block;
+  width: 100%;
+  padding: 25px 0px 25px 0px;
+  text-decoration:none;
+}
+
+.divMainButton a:hover, .divMainButton a.active
+{
+  color: #ffffff;
+  background-color: #002060;
+}
