@@ -1,4 +1,4 @@
-<!--#include virtual="/eventsglobal.asp"-->
+﻿<!--#include virtual="/eventsglobal.asp"-->
 <%
 '*************** [ NOTICE ] *********************
 ' All Rights reserved.
@@ -31,6 +31,9 @@ if cmd = "getClass" then
 	else
 		response.write(RStoJSON(classRS, "Classes"))
 	end if
+elseif cmd = "getClasses" then
+    
+	response.write("{""Classes"":[{""id"": 1, ""name"": ""arcadia""},{""id"": 2, ""name"": ""pasadena""}]}")
 elseif cmd = "addClassToCart" then
 	
 	dim acStudentID, acType, acStatus, acWeekly, acWeekNum, acCartID, acTeam, acPaid

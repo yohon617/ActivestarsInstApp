@@ -1,4 +1,4 @@
-<%
+﻿<%
 '*************** [ NOTICE ] *********************
 ' COPYRIGHT (c) 2001 TradeBonds.com 
 ' All Rights reserved.
@@ -9,7 +9,7 @@
 %>
 
 
-<div name="PageFooter" id="PageFooter" class="footer clearfix">
+<div name="PageFooter" id="PageFooter" class="footer">
 
 	<div style="float: left;" class="footer">
 	<%=Application("YC")%>&nbsp;&nbsp;

@@ -1,4 +1,4 @@
-html, body {
+﻿html, body {
   height: 100%;
 }
 
@@ -130,10 +130,10 @@ a.btn
 @media (max-width: 768px)
 {
 
-.main-content
+/*.main-content
 {
 	padding-top: 58px;
-}
+}*/
 
 #headline
 {
