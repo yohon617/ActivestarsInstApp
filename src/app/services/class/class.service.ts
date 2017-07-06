@@ -11,11 +11,27 @@ import { Class }           from './../../models/class';
 export class ClassService {
       
   private headers = new Headers({ 'Content-Type': 'application/json' });
+  private selectedClass: Class
 
   constructor(private http: Http) {}
 
-      
   getClasses(): Promise<Class[]> {
+      return this.getClassesApi()
+          .then(classes => {
+              this.selectedClass = classes[0];
+              return classes;
+          });
+  }
+
+  get SelectedClass():Class {
+        return this.selectedClass;
+  }
+
+  set SelectedClass(value: Class) {
+      this.selectedClass = value;
+  }
+
+  getClassesApi(): Promise<Class[]> {
       console.log("getClasses");
       return this.http.get("http://insttest.activstarsonline.com/Services/class/class.asp?cmd=getClasses")
           .toPromise()
