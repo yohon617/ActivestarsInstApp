@@ -1,4 +1,4 @@
-<%
+﻿<%
 '*************** [ NOTICE ] *********************
 ' COPYRIGHT (c) 2001 TradeBonds.com 
 ' All Rights reserved.
@@ -35,13 +35,13 @@ end if
           </button>
           <a class="navbar-brand" href="#">
 			<%if Application("YC") = "Michigan" then%>
-			<img src="img/MILogo_White.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
+			<img src="assets/img/MILogo_White.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
 			<%elseif Application("YC") = "Arizona / Texas" or Application("YC") = "Kansas" or Application("YC") = "Northwest" then%>
-			<img src="img/ActivStarsLogo.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
+			<img src="assets/img/ActivStarsLogo.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
 			<%elseif Application("YC") = "North Carolina" then%>s
-			<img src="img/ncLogo.png" alt="<%=Application("YCOA")%>" height="120" hspace="0" vspace="0" border="0"><BR>
+			<img src="assets/img/ncLogo.png" alt="<%=Application("YCOA")%>" height="120" hspace="0" vspace="0" border="0"><BR>
 			<%else%>
-			<img src="img/Logo.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
+			<img src="assets/img/Logo.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>
 			<%end if%>
           </a>
         </div>

@@ -1,4 +1,4 @@
-<!--#include file="eventsglobal.asp"-->
+﻿<!--#include file="eventsglobal.asp"-->
 <%
 '*************** [ NOTICE ] *********************
 ' All Rights reserved.
@@ -152,7 +152,7 @@ end if
 				<div class="form-signin clearfix">
 					<%if Application("YC") <> "Michigan" then%>
 					<div class="panel-body login-logo">
-						<img src="/img/gold-star.png">
+						<img src="/assets/img/gold-star.png">
 					</div>
 					<%end if%>
 					

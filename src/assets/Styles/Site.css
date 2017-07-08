@@ -1,4 +1,4 @@
-.clearfix:after{
+﻿.clearfix:after{
     content: ".";
     display: block;
     height: 0;
@@ -13,7 +13,7 @@
 
 .wait-spinner
 {
-    background: url(/img/map/loader.gif);
+    background: url(/assets/img/map/loader.gif);
     height:101px;
     width:101px;
     position:absolute;

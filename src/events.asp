@@ -1,4 +1,4 @@
-<% @ LANGUAGE="VBScript"%>
+﻿<% @ LANGUAGE="VBScript"%>
 <% 'Response.Buffer = True %>
 <%
 '*************** [ NOTICE ] *********************
@@ -52,15 +52,15 @@ const SESSION_SPECAGE = "SPAG"
 
 
 
-	<link rel="stylesheet" href="/Styles/bootstrap_override.css" type="text/css" />
+	<link rel="stylesheet" href="/assets/Styles/bootstrap_override.css" type="text/css" />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="./Scripts/spin.min.js"></script>
-  <script src="./Scripts/jquery.spin.js"></script>
+  <script src="./assets/Scripts/spin.min.js"></script>
+  <script src="./assets/Scripts/jquery.spin.js"></script>
 
   <script>
     var jq = $.noConflict();

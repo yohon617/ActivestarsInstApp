@@ -1,5 +1,5 @@
 ﻿/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+/*@import "~bootstrap/dist/css/bootstrap.min.css";*/
 @import "~font-awesome/css/font-awesome.css";
-@import "./styles/IEstyle.css";
-@import "./styles/bootstrap_override.css";
+@import "./assets/styles/IEstyle.css";
+@import "./assets/styles/bootstrap_override.css";

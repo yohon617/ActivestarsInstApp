@@ -452,7 +452,7 @@ a.btn
 
 .wait-spinner
 {
-    background: url(/img/map/loader.gif);
+    background: url(/assets/img/map/loader.gif);
     height:101px;
     width:101px;
     position:absolute;

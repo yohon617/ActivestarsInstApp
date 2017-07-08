@@ -10,7 +10,9 @@ import { ClassDropdownComponent } from './classDropdown/class-dropdown.component
 import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
-import { RosterComponent }  from './roster/roster.component';
+import { RosterComponent } from './roster/roster.component';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ClassService } from './services/class/class.service'
 
@@ -27,7 +29,8 @@ import { ClassService } from './services/class/class.service'
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [ ClassService ],
   bootstrap: [AppComponent]

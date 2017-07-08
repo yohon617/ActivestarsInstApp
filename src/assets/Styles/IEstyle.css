@@ -1,4 +1,4 @@
-
+﻿
 
 BODY {
 	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; 
@@ -214,7 +214,7 @@ A.TopLink:active {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif; co
 A.TopLink:hover {font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;color : blue; cursor : hand; text-decoration : None; }
 
 .MAINHEADER {
-	background-image:url('/img/bg.jpg');
+	background-image:url('/assets/img/bg.jpg');
 
 }
 

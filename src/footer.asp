@@ -17,6 +17,6 @@
 	<div style="float: right;" class="footer">
 	&#169; <%=year(Now)%>&nbsp;<%=Application("YCOA")%>. 
 	All rights reserved.&nbsp;&nbsp;Powered by <a href="http://www.meiotic.com" target="_blank" class="footerlink">Appsolutely Inc.</a>
-	<img src="img/ssl/rapidssl_ssl_certificate.gif" alt="Secured by RapidSSL" width="60px" height="30px"/>
+	<img src="assets/img/ssl/rapidssl_ssl_certificate.gif" alt="Secured by RapidSSL" width="60px" height="30px"/>
 	</div>
 </div>
