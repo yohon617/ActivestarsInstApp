@@ -15,6 +15,7 @@ import { RosterComponent } from './roster/roster.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ClassService } from './services/class/class.service'
+import { ClassAPIService } from './services/class/class-api.service'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ClassService } from './services/class/class.service'
     AppRoutingModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [ ClassService ],
+  providers: [ClassService, ClassAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
