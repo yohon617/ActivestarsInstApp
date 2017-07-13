@@ -85,7 +85,7 @@ var Session_UserID = <%=session(SESSION_PUSERID)%>;
 	</div>-->
 	<div class="container main-content">
 		<!--<div class="panel panel-default">-->
-			<div class="panel-body">
+			<div class="panel-body ag2-panel-body">
               <app-root></app-root>
 			</div>
 		<!--</div>-->

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ClassDropdownComponent } from './classDropdown/class-dropdown.component';
+import { ClassWeekHeaderComponent } from './classWeekHeader/class-week-header.component';
 import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
@@ -21,17 +22,18 @@ import { ClassAPIService } from './services/class/class-api.service'
   declarations: [
       AppComponent,
       ClassDropdownComponent,
+      ClassWeekHeaderComponent,
       ClassesComponent,
       OrderComponent,
       ReportComponent,
       RosterComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    BsDropdownModule.forRoot()
+      BrowserModule,
+      FormsModule,
+      HttpModule,
+      AppRoutingModule,
+      BsDropdownModule.forRoot()
   ],
   providers: [ClassService, ClassAPIService],
   bootstrap: [AppComponent]

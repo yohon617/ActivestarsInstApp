@@ -2,9 +2,12 @@
   height: 100%;
 }
 
-.passwordAlert
-{
-	text-align: center;	
+.ag2-panel-body {
+  padding: 0px;
+}
+
+.passwordAlert {
+  text-align: center;
 }
 
 .divCenter
@@ -130,10 +133,10 @@ a.btn
 @media (max-width: 768px)
 {
 
-/*.main-content
+.main-content
 {
-	padding-top: 58px;
-}*/
+	padding-top: 0px;
+}
 
 #headline
 {
@@ -146,7 +149,6 @@ a.btn
 
 #content-main .container
 {
-	margin-top: 5px;
 	padding-bottom: 150px;
 }
 
