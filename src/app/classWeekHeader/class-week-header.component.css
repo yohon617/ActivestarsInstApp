@@ -7,12 +7,22 @@
     font-size: 35px;
     font-weight: 100;
     padding: 6px;
+    position:absolute;
 }
 
+.class-week-left-arrow {
+  left:0px;
+}
+
+.class-week-right-arrow {
+  right:0px;
+}
+  
 a.week-header-link {
     color: #000000;
 }
 
 #class-week-header-content {
     text-align: center;
+    width:100%;
 }

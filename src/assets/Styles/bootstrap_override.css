@@ -23,10 +23,14 @@
   	min-height: 100%;
 	padding-bottom: 35px;
 }
-.navbar-brand
-{
-	padding: 0px;
-	padding-right: 15px;
+
+.navbar {
+  padding:0px; 
+}
+
+.navbar-brand {
+  padding: 0px;
+  padding-right: 15px;
 }
 
 #PageFooter
