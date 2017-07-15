@@ -16,7 +16,6 @@ export class ClassAPIService {
   constructor(private http: Http) {}
 
   getClasses(): Promise<Class[]> {
-      console.log("getClasses");
       return this.http.get("http://insttest.activstarsonline.com/Services/class/class.asp?cmd=getClasses")
           .toPromise()
           .then(response => response.json().Classes as Class[])
