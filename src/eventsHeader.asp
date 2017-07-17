@@ -24,7 +24,7 @@ end if
 %>
 
 <form action="eventsChangeChild.asp" method="post" name="form_children" id="form_children"> 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse fixed-top bg-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

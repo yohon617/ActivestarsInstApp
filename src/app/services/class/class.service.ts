@@ -24,6 +24,15 @@ export class ClassService {
           });
   }
 
+  postTest(): Promise<string> {
+      return this.classAPIService.postTest()
+          .then(result => result);
+  }
+
+  uploadFile(files: File[]) {
+      return this.classAPIService.uploadFile(files);
+  }
+
   get SelectedClass():Class {
         return this.selectedClass;
   }
