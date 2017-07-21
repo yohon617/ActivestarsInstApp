@@ -15,11 +15,10 @@ export class ConfigService {
     constructor(private http: Http, @Inject('Session_UserID') private session_UserID ) {}
 
     public load() {
-        return new Promise((resolve, reject) => {
-            console.log('loading config');
-            this.http.get('app/config/config.json') //app/config
+        return this.http.get('app/config/config.json') //app/config
                 .map(res => res.json())
-                .subscribe((config_data => {
+                .toPromise()
+                .then((config_data => {
                     this._config = config_data;
                     this.sessionUserID = this.session_UserID;
                     this.requestOptions = new RequestOptions({
@@ -28,10 +27,7 @@ export class ConfigService {
                     this.requestOptionsNonJSON = new RequestOptions({
                         "headers": new Headers({ 'Region': this.get('region'), 'InstructorID': this.sessionUserID, 'SecurityToken': this.get('securityToken') })
                     });
-
-                    resolve();
                 }));
-        });
     }
 
     public get(key: any) {
