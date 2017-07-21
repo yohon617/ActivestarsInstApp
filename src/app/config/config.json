@@ -1,4 +1,5 @@
-{
+﻿{
   "environment": "dev",
-  "region": "TEST"
+  "region": "TEST",
+  "securityToken": "1234"
 }

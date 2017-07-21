@@ -17,7 +17,7 @@ export class ConfigService {
     public load() {
         return new Promise((resolve, reject) => {
             console.log('loading config');
-            this.http.get('assets/config.json') //app/config
+            this.http.get('app/config/config.json') //app/config
                 .map(res => res.json())
                 .subscribe((config_data => {
                     this._config = config_data;
