@@ -9,11 +9,15 @@ import { ClassService } from './../services/class/class.service';
     styleUrls: ['./class-week-header.component.css']
 })
 export class ClassWeekHeaderComponent implements OnInit {
-    
+
+    testParam: string;
+
     constructor(private classService: ClassService) { }
 
     ngOnInit(): void {
-
+        
+        this.classService.postTest()
+            .then(result => this.testParam = result);
     }
     
 }

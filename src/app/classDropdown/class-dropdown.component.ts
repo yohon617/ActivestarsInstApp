@@ -11,7 +11,6 @@ import { ClassService } from './../services/class/class.service';
 export class ClassDropdownComponent implements OnInit {
     classes: Class[] = [];
     selectedClass: Class;
-    testParam: string;
 
     constructor(private classService: ClassService) { }
 
@@ -21,9 +20,6 @@ export class ClassDropdownComponent implements OnInit {
                 this.classes = classes;
                 this.selectedClass = classes[0];
             });
-
-        this.classService.postTest()
-            .then(result => this.testParam = result);
     }
 
     selectedClassChange(event)

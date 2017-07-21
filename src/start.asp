@@ -49,24 +49,7 @@ end function
 
 <script language="JavaScript">
 <% if session(SESSION_LOGGED) = 1 then %>
-<%Dim sessionStudentList
-if session(SESSION_CHILDRENCOUNT) > 0 then%>
-<%
-	dim counter
-	counter = 0
-	do while counter < session(SESSION_CHILDRENCOUNT)
 
-sessionStudentList = sessionStudentList & """" & split(session(SESSION_CHILDREN)(counter), "-")(0) & "-" & split(session(SESSION_CHILDREN)(counter), "-")(1) &""","
-
-	counter = counter + 1
-	loop
-	sessionStudentList = Mid(sessionStudentList, 1, len(sessionStudentList) - 1)
-%>
-
-var Session_StudentList = [<%=sessionStudentList%>]
-var Session_Region = "<%=Application("YC")%>";
-var Session_SpecAge = <%=session(SESSION_SPECAGE)%>;
-<%end if%>
 var Session_UserID = <%=session(SESSION_PUSERID)%>;
 <%end if%>
 

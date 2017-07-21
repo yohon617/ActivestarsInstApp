@@ -8,5 +8,7 @@ enableProdMode();
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Activstars Instructor App';
+    title = 'Activstars Instructor App';
+
+    constructor() { }
 }

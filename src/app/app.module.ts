@@ -1,5 +1,5 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -18,6 +18,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ClassService } from './services/class/class.service'
 import { ClassAPIService } from './services/class/class-api.service'
 
+import { ConfigService } from './config/config.service'
+
+export declare var Session_UserID: any;
+
 @NgModule({
   declarations: [
       AppComponent,
@@ -35,7 +39,24 @@ import { ClassAPIService } from './services/class/class-api.service'
       AppRoutingModule,
       BsDropdownModule.forRoot()
   ],
-  providers: [ClassService, ClassAPIService],
+  providers: [ClassService, ClassAPIService,
+      ConfigService
+      ,
+      {
+          provide: APP_INITIALIZER,
+          useFactory: initConfig,
+          deps: [ConfigService],
+          multi: true
+      },
+      {
+          provide: 'Session_UserID', useValue: Session_UserID
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+export function initConfig(config: ConfigService) {
+    return () => config.load();
+}
