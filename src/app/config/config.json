@@ -1,5 +1,6 @@
 ﻿{
   "environment": "dev",
   "region": "test",
-  "securityToken": "555523EA-F654-4EC9-870E-B770E7BA23AB"
+  "securityToken": "555523EA-F654-4EC9-870E-B770E7BA23AB",
+  "apiURL": "http://api.activstarsonline.com"
 }

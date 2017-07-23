@@ -17,8 +17,8 @@ export class ClassAPIService {
     
     constructor(private http: Http, private config: ConfigService) {}
 
-  getClasses(): Promise<Class[]> {
-      return this.http.get("http://api.activstarsonline.com/api/classes.mvc/GetClasses", this.config.requestOptions)
+    getClasses(): Promise<Class[]> {
+        return this.http.get(this.config.get("apiURL") + "/api/classes.mvc/GetClasses", this.config.requestOptions)
           .toPromise()
           .then(response => response.json() as Class[])
           //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
@@ -26,7 +26,7 @@ export class ClassAPIService {
 
   postTest(): Promise<string> {
       console.log(JSON.stringify(this.testParam));
-      return this.http.post("http://api.activstarsonline.com/api/classes.mvc/PostTest", JSON.stringify(this.testParam), this.config.requestOptions)
+      return this.http.post(this.config.get("apiURL") + "/api/classes.mvc/PostTest", JSON.stringify(this.testParam), this.config.requestOptions)
           .toPromise()
           .then(response => response.json().Name as string)
   }
@@ -36,7 +36,7 @@ export class ClassAPIService {
       let formData: FormData = new FormData();
       console.log(files[0].name);
       formData.append('uploadFile', files[0], files[0].name);
-      this.http.post("http://api.activstarsonline.com/api/classes.mvc/UploadJsonFile", formData, this.config.requestOptionsNonJSON)
+      this.http.post(this.config.get("apiURL") + "/api/classes.mvc/UploadJsonFile", formData, this.config.requestOptionsNonJSON)
           .catch(error => Observable.throw(error))
           .subscribe(
           data => console.log(data),
