@@ -13,7 +13,7 @@ import { Class }           from './../../models/class';
 export class ClassAPIService {
       
   private selectedClass: Class
-  private testParam = { "ID": 999, "Name" : "rich y333u" }; 
+  private testParam = { "ID": 999, "Name" : "rich y33s3u", "angEx" : "testAngEx" }; 
     
     constructor(private http: Http, private config: ConfigService) {}
 

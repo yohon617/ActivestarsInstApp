@@ -1,5 +1,5 @@
 ﻿{
   "environment": "dev",
-  "region": "TEST",
-  "securityToken": "1234"
+  "region": "test",
+  "securityToken": "555523EA-F654-4EC9-870E-B770E7BA23AB"
 }
