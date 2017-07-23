@@ -4,7 +4,9 @@
     </a>
     <div id="class-week-header-content">
         {{classService.SelectedClass?.Name}}
-
+      <div>
+        {{classService.SelectedClassWeek.ClassDate | date: 'MM/dd/yyyy'}} - {{classService.SelectedClassWeek.WeekHeader}}
+      </div>
       <div>
         {{testParam}}
       </div>

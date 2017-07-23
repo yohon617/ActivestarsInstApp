@@ -2,6 +2,7 @@
 
 import { Class } from './../models/class';
 import { ClassService } from './../services/class/class.service';
+import { ConfigService } from './../config/config.service';
 
 @Component({
     selector: 'class-week-header',
@@ -12,7 +13,7 @@ export class ClassWeekHeaderComponent implements OnInit {
 
     testParam: string;
 
-    constructor(private classService: ClassService) { }
+    constructor(private classService: ClassService, private config: ConfigService) { }
 
     ngOnInit(): void {
         

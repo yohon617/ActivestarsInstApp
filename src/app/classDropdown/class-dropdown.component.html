@@ -1,5 +1,5 @@
 ﻿<div class="row classDropdownDiv">
     <select class="form-control input-sm" [ngModel]="selectedClass" (ngModelChange)="selectedClassChange($event)">
-        <option *ngFor="let class of classes" [ngValue]="class">{{class.Name}}</option>
+        <option *ngFor="let class of classes" [ngValue]="class">{{class.Name}} ({{class.SportType}}) {{class.NumOfWeeks}}</option>
     </select>
 </div>

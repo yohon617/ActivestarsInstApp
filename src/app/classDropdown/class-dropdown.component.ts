@@ -24,6 +24,8 @@ export class ClassDropdownComponent implements OnInit {
 
     selectedClassChange(event)
     {
-        this.classService.SelectedClass = event;
+        //this.classService.SelectedClass = event;
+        this.classService.classSelectedChange(event);
+        this.selectedClass = event;
     }
 }

@@ -7,7 +7,8 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 
-import { Class }           from './../../models/class';
+import { Class } from './../../models/class';
+import { ClassWeek } from './../../models/classWeek';
 
 @Injectable()
 export class ClassAPIService {
@@ -15,18 +16,25 @@ export class ClassAPIService {
   private selectedClass: Class
   private testParam = { "ID": 999, "Name" : "rich y33s3u", "angEx" : "testAngEx" }; 
     
-    constructor(private http: Http, private config: ConfigService) {}
+  constructor(private http: Http, private config: ConfigService) {}
 
-    getClasses(): Promise<Class[]> {
+  getClasses(): Promise<Class[]> {
         return this.http.get(this.config.get("apiURL") + "/api/classes.mvc/GetClasses", this.config.requestOptions)
           .toPromise()
           .then(response => response.json() as Class[])
           //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
   }
 
+  getClassWeeks(classID): Promise<ClassWeek[]> {
+      return this.http.get(this.config.get("apiURL") + "/api/classes.mvc/GetClassWeeks?classID=" + classID, this.config.requestOptions)
+          .toPromise()
+          .then(response => response.json() as ClassWeek[])
+      //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
+  }
+
   postTest(): Promise<string> {
       console.log(JSON.stringify(this.testParam));
-      return this.http.post(this.config.get("apiURL") + "/api/classes.mvc/PostTest", JSON.stringify(this.testParam), this.config.requestOptions)
+      return this.http.post(this.config.get("apiURL") + "/api/classes.mvc/PostTest?id=ianchan&numnum=617", JSON.stringify(this.testParam), this.config.requestOptions)
           .toPromise()
           .then(response => response.json().Name as string)
   }
