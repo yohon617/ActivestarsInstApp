@@ -2,6 +2,9 @@
 import { Http }       from '@angular/http';
 
 
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
 import 'rxjs/add/operator/toPromise';
 
 import { ClassAPIService } from './class-api.service';
@@ -14,7 +17,8 @@ export class ClassService {
       
   private selectedClass: Class;
   private selectedClassWeeks: ClassWeek[]
-  private selectedWeek: ClassWeek;
+  private selectedWeek: ClassWeek
+  private weekChange = new Subject<string>()
 
   constructor(private http: Http, private classAPIService: ClassAPIService) {}
 
@@ -41,9 +45,11 @@ export class ClassService {
                   console.log(new Date(week.ClassDate));
                   if (week.WeekNumber == this.selectedClass.NumOfWeeks) {
                       this.selectedWeek = week;
+                      this.weekChange.next();
                   }
                   else if (new Date().getTime() < new Date(week.ClassDate).getTime()) {
                       this.selectedWeek = week;
+                      this.weekChange.next();
                       break;
                   }
 
@@ -78,7 +84,11 @@ export class ClassService {
 
   set SelectedClassWeek(value: ClassWeek) {
       this.selectedWeek = value;
+      this.weekChange.next();
   }
 
+  get WeekChange(): Subject<string> {
+      return this.weekChange;
+  }
  
 }
