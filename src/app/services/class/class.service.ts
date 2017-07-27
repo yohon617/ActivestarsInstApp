@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Headers, Http }       from '@angular/http';
+import { Http }       from '@angular/http';
 
 
 import 'rxjs/add/operator/toPromise';
@@ -12,7 +12,6 @@ import { ClassWeek }           from './../../models/classWeek';
 @Injectable()
 export class ClassService {
       
-  private headers = new Headers({ 'Content-Type': 'application/json' });
   private selectedClass: Class;
   private selectedClassWeeks: ClassWeek[]
   private selectedWeek: ClassWeek;

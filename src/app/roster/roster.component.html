@@ -1,1 +1,4 @@
-﻿<div style="text-align:center; padding-top: 100px;">Roster</div>
+﻿<div style="text-align:center;">Roster</div>
+<div>
+  <div *ngFor="let student of studentList">{{student.LastName}}, {{student.FirstName}}</div>  
+</div>
