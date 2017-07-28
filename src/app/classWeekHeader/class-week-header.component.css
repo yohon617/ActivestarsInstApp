@@ -22,6 +22,10 @@ a.week-header-link {
     color: #000000;
 }
 
+.week-header-link-disabled {
+  color: #E1E1E1 !important;
+}
+
 #class-week-header-content {
     text-align: center;
     width:100%;

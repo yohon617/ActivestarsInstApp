@@ -18,7 +18,13 @@ import { StudentSearchHeaderComponent } from './studentSearch/student-search-hea
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { ClassService } from './services/class/class.service'
+<<<<<<< HEAD
 import { ClassAPIService } from './services/class/class-api.service';
+=======
+import { ClassAPIService } from './services/class/class-api.service'
+import { StudentService } from './services/student/student.service'
+import { StudentAPIService } from './services/student/student-api.service'
+>>>>>>> master
 
 import { ConfigService } from './config/config.service'
 
@@ -43,7 +49,7 @@ export declare var Session_UserID: any;
       AppRoutingModule,
       BsDropdownModule.forRoot()
   ],
-  providers: [ClassService, ClassAPIService,
+  providers: [ClassService, ClassAPIService, StudentService, StudentAPIService,
       ConfigService
       ,
       {

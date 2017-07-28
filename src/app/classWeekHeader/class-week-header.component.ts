@@ -20,5 +20,18 @@ export class ClassWeekHeaderComponent implements OnInit {
         this.classService.postTest()
             .then(result => this.testParam = result);
     }
+
+    prev() {
+        console.log("prev");
+        if (this.classService.SelectedClassWeek.WeekNumber > 1)
+          this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber - 2];
+    }
+
+    next() {
+        console.log("next");
+        if (this.classService.SelectedClassWeek.WeekNumber < this.classService.SelectedClassWeeks.length)
+          this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber];
+        
+    }
     
 }
