@@ -19,6 +19,7 @@ export class ClassService {
   private selectedClassWeeks: ClassWeek[]
   private selectedWeek: ClassWeek
   private weekChange = new Subject<string>()
+  public weekChange$ = this.weekChange.asObservable();
 
   constructor(private http: Http, private classAPIService: ClassAPIService) {}
 
@@ -41,8 +42,6 @@ export class ClassService {
           .then(weeks => {
               this.selectedClassWeeks = weeks;
               for (let week of this.selectedClassWeeks) {
-                  console.log(Date.now());
-                  console.log(new Date(week.ClassDate));
                   if (week.WeekNumber == this.selectedClass.NumOfWeeks) {
                       this.selectedWeek = week;
                       this.weekChange.next();
