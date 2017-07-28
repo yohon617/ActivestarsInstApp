@@ -12,6 +12,8 @@ import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
+import { StudentSearchComponent } from './studentSearch/student-search.component';
+import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component'
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -32,7 +34,9 @@ export declare var Session_UserID: any;
       ClassesComponent,
       OrderComponent,
       ReportComponent,
-      RosterComponent
+      RosterComponent,
+      StudentSearchComponent,
+      StudentSearchHeaderComponent
   ],
   imports: [
       BrowserModule,

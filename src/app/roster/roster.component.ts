@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -13,25 +13,36 @@ import { StudentRoster } from './../models/studentRoster';
   templateUrl: './roster.component.html',
   styleUrls: ['./roster.component.css']
 })
-export class RosterComponent implements OnInit {
+export class RosterComponent implements OnInit, OnDestroy {
 
     //studentList: StudentRoster[] = [];
-    studentList: Observable<StudentRoster[]>;
+    studentList: StudentRoster[];
+    subscription: any;
 
 
     constructor(private studentService: StudentService, private classService: ClassService) { }
 
     ngOnInit(): void {
-        //this.studentService.getStudentRosters(this.classService.SelectedClassWeek.ClassReportID)
-        //    .then(rosters => {
-        //        this.studentList = rosters;
-        //    });
+        this.subscription = this.classService.weekChange$.subscribe(() => {
+            this.getStudentRosters();
+        })
 
-        this.studentList = this.classService.WeekChange
-            .switchMap(
-            () => this.studentService.getStudentRosters(this.classService.SelectedClassWeek.ClassReportID)
-                
-            );
+        if (this.classService.SelectedClassWeeks != null) {
+            this.getStudentRosters();
+        }
     }
+
+    ngOnDestroy() {
+        // TODO: is there a better way of doing this?
+        this.subscription.unsubscribe();
+    }
+
+    getStudentRosters() {
+           this.studentService.getStudentRosters(this.classService.SelectedClassWeek.ClassReportID).then(
+                response => {
+                    this.studentList = response;
+                })        
+    }
+
 
 }

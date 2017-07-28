@@ -18,10 +18,6 @@ export class StudentService {
     constructor(private http: Http, private studentAPIService: StudentAPIService) { }
 
     getStudentRosters(classReportID): Promise<StudentRoster[]> {
-        return this.studentAPIService.getStudentRosters(classReportID)
-            .then(rosters => {
-                this.studentRosters = rosters;
-                return rosters;
-            });
+        return this.studentAPIService.getStudentRosters(classReportID);
     }
 }
