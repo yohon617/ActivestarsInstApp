@@ -5,6 +5,7 @@ import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent }  from './roster/roster.component';
+import { StudentSearchComponent }  from './studentSearch/student-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/classes', pathMatch: 'full' },
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'classes', component: ClassesComponent },
   { path: 'roster', component: RosterComponent },
   { path: 'report', component: ReportComponent },
-  { path: 'order', component: OrderComponent }
+  { path: 'order', component: OrderComponent },
+  { path: 'studentSearch', redirectTo: '/studentSearch/new', pathMatch: 'full' },
+  { path: 'studentSearch/:id', component: StudentSearchComponent },
 ];
 
 @NgModule({
