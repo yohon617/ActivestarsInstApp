@@ -9,5 +9,6 @@
     Testing: boolean;
     Online: boolean;
     TestingWeek: number;
-
+    HomePhone: string;
+    CellPhone: string;
 }

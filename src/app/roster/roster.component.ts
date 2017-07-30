@@ -19,6 +19,11 @@ export class RosterComponent implements OnInit, OnDestroy {
     studentList: StudentRoster[];
     subscription: any;
 
+    selectedWeekStudentList: StudentRoster[];
+    studentListByClassNumber: StudentRoster[][] = [];
+
+    selectedClassNumber: number;
+
 
     constructor(private studentService: StudentService, private classService: ClassService) { }
 
@@ -38,10 +43,36 @@ export class RosterComponent implements OnInit, OnDestroy {
     }
 
     getStudentRosters() {
-           this.studentService.getStudentRosters(this.classService.SelectedClassWeek.ClassReportID).then(
-                response => {
-                    this.studentList = response;
-                })        
+        this.studentService.getStudentRosters(this.classService.SelectedClassWeek.ClassReportID).then(
+            response => {
+                this.studentList = response;
+                this.studentListByClassNumber = [];
+                this.selectedClassNumber = 1;
+
+                for (let student of this.studentList) {
+                    //console.log(this.studentListByClassNumber);
+                    if (this.studentListByClassNumber[student.ClassNumber] === undefined) {
+                        this.studentListByClassNumber[student.ClassNumber] = [];
+                    }
+                    this.studentListByClassNumber[student.ClassNumber].push(student);
+                }
+                this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
+            });
+    }
+
+    prevClass() {
+        if (this.selectedClassNumber > 1) {
+            this.selectedClassNumber--;
+            this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
+        }
+    }
+
+    nextClass() {
+        if (this.selectedClassNumber < this.studentListByClassNumber.length - 1) {
+            this.selectedClassNumber++;
+            this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
+        }
+
     }
 
 

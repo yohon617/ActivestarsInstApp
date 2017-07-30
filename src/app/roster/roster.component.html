@@ -1,4 +1,71 @@
-﻿<div style="text-align:center;">Roster</div>
-<div>
-  <div *ngFor="let student of studentList">{{student.LastName}}, {{student.FirstName}}</div>  
+﻿<div>
+  <div class="row" id="class-number-header">
+    <a class="class-header-link" [attr.href]="selectedClassNumber == 1 ? null : 'javascript: void(0);'"
+       (click)="prevClass()" [class.class-header-link-disabled]="selectedClassNumber == 1">
+      <i class="fa fa-chevron-left class-number-left-arrow" aria-hidden="true"></i>
+    </a>
+    <div id="class-number-header-content">
+      Class {{selectedClassNumber}}
+    </div>
+    <a class="class-header-link" [attr.href]="selectedClassNumber == studentListByClassNumber.length - 1 ? null : 'javascript: void(0);'"
+       (click)="nextClass()" [class.class-header-link-disabled]="selectedClassNumber == studentListByClassNumber.length - 1">
+      <i class="fa fa-chevron-right class-number-right-arrow" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="row roster-list">
+    <div *ngFor="let student of selectedWeekStudentList" class="roster-student">
+      <div class="roster-student-name">
+        <div class="btn-group" dropdown>
+          <span dropdownToggle class="student-search-toggle pointer">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+          </span>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem" class="roster-student-sub">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              {{student.LastName}}, {{student.FirstName}}
+              <div class="roster-student-phone">
+                hm: {{student.HomePhone}} <br />
+                cel: {{student.CellPhone}}
+              </div>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" (click)="editStudent($event, 'new')">View / Edit Student Info</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#" (click)="emailStudent($event, 'transfer')">Email</a>
+            </li>
+          </ul>
+        </div>
+        {{student.LastName}}, {{student.FirstName}}
+      </div>
+      <div class="roster-student-button-div">
+        <div class="btn-group roster-student-button" dropdown placement="bottom right">
+          <button type="button" class="btn btn-danger">Check-in</button>
+          <button type="button" dropdownToggle class="btn btn-danger dropdown-toggle dropdown-toggle-split">
+            <span class="caret"></span>
+            <span class="sr-only">Split button!</span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+            <!--<li role="menuitem"><a class="dropdown-item" href="#">Check-in</a></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Drop Request</a>
+            </li>-->
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">
+                Order Merchandise
+              </a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Drop Request</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

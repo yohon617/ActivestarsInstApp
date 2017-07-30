@@ -1,1 +1,77 @@
-﻿
+﻿#class-number-header {
+  height: 50px;
+  background-color: #E7E7E7;
+}
+
+.class-number-left-arrow, .class-number-right-arrow {
+  font-size: 22px;
+  font-weight: 100;
+  padding: 13px;
+  position: absolute;
+}
+
+.class-number-left-arrow {
+  left: 0px;
+}
+
+.class-number-right-arrow {
+  right: 0px;
+}
+
+a.class-header-link {
+  color: #000000;
+}
+
+.class-header-link-disabled {
+  color: #ffffff !important;
+}
+
+#class-number-header-content {
+  text-align: center;
+  font-size: 35px;
+  width: 100%;
+}
+
+.roster-list {
+  height: calc( 100vh - 274px );
+  overflow-y: auto;
+  align-content:flex-start;
+}
+
+.roster-list div.roster-student:nth-child(even) {
+  background-color: #E7E7E7;
+}
+
+.roster-student {
+  min-height: 50px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 25px;
+  padding-left: 10px;
+}
+
+.roster-student-name {
+  max-width:260px;
+  display:inline-block;
+}
+
+.roster-student-name .fa {
+  font-weight:100;
+  font-size: 22px;
+  color: #C4C4C4;
+}
+
+.roster-student-sub {
+  padding-left: 10px;
+}
+
+.roster-student-phone {
+  font-size: 13px;
+}
+
+.roster-student-button-div {
+  margin-top:3px;
+  display: inline;
+  float: right;
+  margin-right: 10px;
+}
