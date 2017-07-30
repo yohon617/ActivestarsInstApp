@@ -12,6 +12,7 @@ import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
+import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent } from './studentSearch/student-search.component';
 import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component'
 
@@ -35,6 +36,7 @@ export declare var Session_UserID: any;
       OrderComponent,
       ReportComponent,
       RosterComponent,
+      StudentProfileComponent,
       StudentSearchComponent,
       StudentSearchHeaderComponent
   ],

@@ -22,4 +22,10 @@ export class StudentAPIService {
             .then(response => response.json() as StudentRoster[])
         //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
     }
+
+    getStudent(studentID, classReportID): Promise<Student> {
+        return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudent?studentID=" + studentID + "&classReportID=" + classReportID, this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as Student)
+    }
 }

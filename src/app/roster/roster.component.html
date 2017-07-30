@@ -22,7 +22,7 @@
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li role="menuitem" class="roster-student-sub">
               <i class="fa fa-user" aria-hidden="true"></i>
-              {{student.LastName}}, {{student.FirstName}}
+              {{student.StudentID}} - {{student.LastName}}, {{student.FirstName}}
               <div class="roster-student-phone">
                 hm: {{student.HomePhone}} <br />
                 cel: {{student.CellPhone}}
@@ -30,7 +30,7 @@
             </li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem">
-              <a class="dropdown-item" href="#" (click)="editStudent($event, 'new')">View / Edit Student Info</a>
+              <a class="dropdown-item" href="#" [routerLink]="['/studentProfile', student.StudentID]">View / Edit Student Info</a>
             </li>
             <li role="menuitem">
               <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>

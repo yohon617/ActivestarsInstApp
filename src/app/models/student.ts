@@ -21,4 +21,6 @@
     CellPhoneFCode: string;
     CellPhoneLCode: string;
     ReceiveSMS: boolean;
+    ClassNumber: number;
+    PayType: string;
 }

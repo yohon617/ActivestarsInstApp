@@ -20,4 +20,8 @@ export class StudentService {
     getStudentRosters(classReportID): Promise<StudentRoster[]> {
         return this.studentAPIService.getStudentRosters(classReportID);
     }
+
+    getStudent(studentID, classReportID): Promise<Student> {
+        return this.studentAPIService.getStudent(studentID, classReportID);
+    }
 }

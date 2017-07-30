@@ -23,8 +23,7 @@ export class RosterComponent implements OnInit, OnDestroy {
     studentListByClassNumber: StudentRoster[][] = [];
 
     selectedClassNumber: number;
-
-
+    
     constructor(private studentService: StudentService, private classService: ClassService) { }
 
     ngOnInit(): void {
