@@ -1,4 +1,6 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -9,11 +11,13 @@ import { Student } from './../models/student';
 import { StudentRoster } from './../models/studentRoster';
 
 @Component({
-  selector: 'app-root',
+  selector: 'roster',
   templateUrl: './roster.component.html',
   styleUrls: ['./roster.component.css']
 })
 export class RosterComponent implements OnInit, OnDestroy {
+
+    public modalRef: BsModalRef;
 
     //studentList: StudentRoster[] = [];
     studentList: StudentRoster[];
@@ -23,8 +27,13 @@ export class RosterComponent implements OnInit, OnDestroy {
     studentListByClassNumber: StudentRoster[][] = [];
 
     selectedClassNumber: number;
+    selectedStudentRoster: StudentRoster;
     
-    constructor(private studentService: StudentService, private classService: ClassService) { }
+    constructor(
+        private studentService: StudentService,
+        private classService: ClassService,
+        private modalService: BsModalService
+    ) { }
 
     ngOnInit(): void {
         this.subscription = this.classService.weekChange$.subscribe(() => {
@@ -74,5 +83,14 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     }
 
+    public openCheckIn(template: TemplateRef<any>, studentRoster: StudentRoster) {
+        this.selectedStudentRoster = studentRoster;
+        this.modalRef = this.modalService.show(template);
+    }
+
+    refreshRoster() {
+        this.getStudentRosters();
+        console.log("refresh roster");
+    }
 
 }

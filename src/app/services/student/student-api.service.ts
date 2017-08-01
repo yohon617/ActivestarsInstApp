@@ -28,4 +28,18 @@ export class StudentAPIService {
             .toPromise()
             .then(response => response.json() as Student)
     }
+
+    getStudentRosterABWeeks(studentID, classReportID): Promise<string> {
+        return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudentRosterABWeeks?studentID=" + studentID + "&classReportID=" + classReportID, this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as string)
+    }
+
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, makeupWeeks): void {
+        this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
+            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&makeupWeeks=" + makeupWeeks
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json());
+    }
 }

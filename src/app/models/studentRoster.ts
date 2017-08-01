@@ -11,4 +11,6 @@
     TestingWeek: number;
     HomePhone: string;
     CellPhone: string;
+    InSpecialtyClass: boolean;
+    Prepaid: boolean;
 }

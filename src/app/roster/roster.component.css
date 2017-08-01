@@ -75,3 +75,11 @@ a.class-header-link {
   float: right;
   margin-right: 10px;
 }
+
+.btnCheckInDisabled {
+  width: 132px;
+}
+
+.btnCheckInPIFREG {
+  width: 97px;
+}

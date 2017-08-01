@@ -1,0 +1,35 @@
+﻿<div *ngIf="timeToLoad">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{studentRoster.FirstName}} {{studentRoster.LastName}} Check In</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="text-align: center;">
+    <div *ngIf="absentWeekList[0]!==undefined && absentWeekList[0]!==''">
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[0]}} make-up <input type="checkbox" name="chkMakeUpFee1" (change)="checkMakeUpFee($event)" [value]="absentWeekList[0]" class="chkCheckIn form-control form-control-sm" />
+    </div>
+    <div *ngIf="absentWeekList[1]!==undefined && absentWeekList[1]!==''">
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[1]}} make-up <input type="checkbox" name="chkMakeUpFee2" (change)="checkMakeUpFee($event)" [value]="absentWeekList[1]" class="chkCheckIn form-control form-control-sm" />
+    </div>
+    <div *ngIf="absentWeekList[2]!==undefined && absentWeekList[2]!==''">
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[2]}} make-up <input type="checkbox" name="chkMakeUpFee3" (change)="checkMakeUpFee($event)" [value]="absentWeekList[2]" class="chkCheckIn form-control form-control-sm" />
+    </div>
+    <div>
+      ${{classFee}} Weekly Class Fee <input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" />
+    </div>
+    <div style="font-weight: bold; padding-top: 15px;">
+      Total: ${{totalFee}} 
+      
+    </div>
+    <div>
+      Cash/Credit: $<input type="text" [value]="cashCreditFee" class="txtCheckIn form-control form-control-sm" />
+    </div>
+    <div>
+      Voucher: $<input type="text" [value]="voucherFee" (change)="voucherFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" />
+    </div>
+    <div style="padding-top: 20px;">
+      <button type="button" dropdownToggle class="btn btn-success" style="width: 100%;" (click)="checkInClick()">Check In</button>
+    </div>
+  </div>
+</div>

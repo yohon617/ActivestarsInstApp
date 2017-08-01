@@ -44,8 +44,18 @@
       </div>
       <div class="roster-student-button-div">
         <div class="btn-group roster-student-button" dropdown placement="bottom right">
-          <button type="button" class="btn btn-danger">Check-in</button>
-          <button type="button" dropdownToggle class="btn btn-danger dropdown-toggle dropdown-toggle-split">
+          <!--<button type="button" class="btn btn-danger" [routerLink]="['/studentCheckIn', student.StudentID]">Check-in</button>-->
+          <button type="button" 
+                  [ngClass]="student.Prepaid ? 'btn-warning btnCheckInPIFREG' : ((student.PayType == 'n/a' || student.PayType == '') ? 'btn-danger' : (student.PayType == 'REG' ? 'btn-success btnCheckInPIFREG' : 'btn-success btnCheckInDisabled'))" 
+                  class="btn" 
+                  [disabled]="(student.PayType != 'n/a' && student.PayType != '') || student.Prepaid"
+                  (click)="openCheckIn(modalStudentCheckIn, student)">
+          {{student.Prepaid ? 'PIF' : ((student.PayType == 'n/a' || student.PayType == '') ? 'Check-in' : student.PayType)}} 
+          </button>
+          <button type="button" dropdownToggle 
+                  [ngClass]="student.Prepaid ? 'btn-warning' : (student.PayType == 'REG' ? 'btn-success' : 'btn-danger')"
+                  class="btn dropdown-toggle dropdown-toggle-split" 
+                  *ngIf="(student.PayType == 'n/a' || student.PayType == '' || student.PayType == 'REG')">
             <span class="caret"></span>
             <span class="sr-only">Split button!</span>
           </button>
@@ -54,18 +64,31 @@
             <li role="menuitem">
               <a class="dropdown-item" href="#">Drop Request</a>
             </li>-->
-            <li role="menuitem">
+            <li role="menuitem" *ngIf="(student.PayType != '' && student.PayType != 'n/a') || student.Prepaid">
               <a class="dropdown-item" href="#">
                 Order Merchandise
               </a>
             </li>
-            <li class="divider dropdown-divider"></li>
+            <li role="menuitem" *ngIf="!student.Prepaid && student.PayType != 'REG'">
+              <a class="dropdown-item" href="#">
+                Absent
+              </a>
+            </li>
+            <li class="divider dropdown-divider" *ngIf="!student.Prepaid && student.PayType != 'REG'"></li>
             <li role="menuitem">
-              <a class="dropdown-item" href="#">Drop Request</a>
+              <a class="dropdown-item" href="#" *ngIf="!student.Prepaid && student.PayType != 'REG'">Drop Request</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+
+  <ng-template #modalStudentCheckIn>
+    <student-check-in 
+      [studentRoster]="selectedStudentRoster"
+      [modalRef]="modalRef"
+      (refreshRoster)="refreshRoster($event)">
+    </student-check-in>
+  </ng-template>
 </div>
