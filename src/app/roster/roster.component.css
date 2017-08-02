@@ -42,6 +42,10 @@ a.class-header-link {
   background-color: #E7E7E7;
 }
 
+.roster-list div.roster-student-prepaid {
+  background-color: #FFFF00;
+}
+  
 .roster-student {
   min-height: 50px;
   width: 100%;
@@ -76,8 +80,12 @@ a.class-header-link {
   margin-right: 10px;
 }
 
+.btnCheckIn {
+  width: 100px;
+}
+
 .btnCheckInDisabled {
-  width: 132px;
+  /*width: 132px;*/
 }
 
 .btnCheckInPIFREG {

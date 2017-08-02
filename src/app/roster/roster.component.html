@@ -13,7 +13,7 @@
     </a>
   </div>
   <div class="row roster-list">
-    <div *ngFor="let student of selectedWeekStudentList" class="roster-student">
+    <div *ngFor="let student of selectedWeekStudentList" class="roster-student" [ngClass]="student.Prepaid ? 'roster-student-prepaid' : ''">
       <div class="roster-student-name">
         <div class="btn-group" dropdown>
           <span dropdownToggle class="student-search-toggle pointer">
@@ -32,9 +32,9 @@
             <li role="menuitem">
               <a class="dropdown-item" href="#" [routerLink]="['/studentProfile', student.StudentID]">View / Edit Student Info</a>
             </li>
-            <li role="menuitem">
+            <!--<li role="menuitem">
               <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>
-            </li>
+            </li>-->
             <li role="menuitem">
               <a class="dropdown-item" href="#" (click)="emailStudent($event, 'transfer')">Email</a>
             </li>
@@ -46,16 +46,16 @@
         <div class="btn-group roster-student-button" dropdown placement="bottom right">
           <!--<button type="button" class="btn btn-danger" [routerLink]="['/studentCheckIn', student.StudentID]">Check-in</button>-->
           <button type="button" 
-                  [ngClass]="student.Prepaid ? 'btn-warning btnCheckInPIFREG' : ((student.PayType == 'n/a' || student.PayType == '') ? 'btn-danger' : (student.PayType == 'REG' ? 'btn-success btnCheckInPIFREG' : 'btn-success btnCheckInDisabled'))" 
-                  class="btn" 
-                  [disabled]="(student.PayType != 'n/a' && student.PayType != '') || student.Prepaid"
+                  [ngClass]="(student.PayType == 'n/a' || student.PayType == '') ? 'btn-danger' : 'btn-success btnCheckInDisabled'" 
+                  class="btn btnCheckIn" 
+                  [disabled]="(student.PayType != 'n/a' && student.PayType != '')"
                   (click)="openCheckIn(modalStudentCheckIn, student)">
-          {{student.Prepaid ? 'PIF' : ((student.PayType == 'n/a' || student.PayType == '') ? 'Check-in' : student.PayType)}} 
+          {{(student.PayType == 'n/a' || student.PayType == '') ? 'Check-in' : student.PayType}} 
           </button>
           <button type="button" dropdownToggle 
-                  [ngClass]="student.Prepaid ? 'btn-warning' : (student.PayType == 'REG' ? 'btn-success' : 'btn-danger')"
+                  [ngClass]="(student.PayType == 'n/a' || student.PayType == '') ? 'btn-danger' : 'btn-success'"
                   class="btn dropdown-toggle dropdown-toggle-split" 
-                  *ngIf="(student.PayType == 'n/a' || student.PayType == '' || student.PayType == 'REG')">
+                  >
             <span class="caret"></span>
             <span class="sr-only">Split button!</span>
           </button>
@@ -69,14 +69,14 @@
                 Order Merchandise
               </a>
             </li>
-            <li role="menuitem" *ngIf="!student.Prepaid && student.PayType != 'REG'">
-              <a class="dropdown-item" href="#">
+            <li role="menuitem" *ngIf="student.PayType == 'n/a' || student.PayType == ''">
+              <a class="dropdown-item" (click)="dropStudent(student.StudentID)">
                 Absent
               </a>
             </li>
-            <li class="divider dropdown-divider" *ngIf="!student.Prepaid && student.PayType != 'REG'"></li>
+            <li class="divider dropdown-divider" *ngIf="student.PayType == 'n/a' || student.PayType == ''"></li>
             <li role="menuitem">
-              <a class="dropdown-item" href="#" *ngIf="!student.Prepaid && student.PayType != 'REG'">Drop Request</a>
+              <a class="dropdown-item" href="#" *ngIf="student.PayType == 'n/a' || student.PayType == ''">Drop Request</a>
             </li>
           </ul>
         </div>
@@ -86,6 +86,7 @@
 
   <ng-template #modalStudentCheckIn>
     <student-check-in 
+      [isRegister]="false"
       [studentRoster]="selectedStudentRoster"
       [modalRef]="modalRef"
       (refreshRoster)="refreshRoster($event)">

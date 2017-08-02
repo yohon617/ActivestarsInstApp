@@ -2,7 +2,7 @@
     StudentID: number;
     FirstName: string;
     LastName: string;
-    Status: number;
+    Status: number; //1=Regular, 2=Advanced, 5=Extended
     PayType: string;
     ClassNumber: number;
     Visiting: boolean;
