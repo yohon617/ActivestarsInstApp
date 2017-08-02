@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
+import { StudentService } from './../services/student/student.service';
 
 @Component({
   selector: 'app-student-search',
@@ -8,10 +9,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudentSearchComponent implements OnInit {
 
-  constructor(route: ActivatedRoute) {
+  public firstName: string = '';
+  public lastName: string = '';
+  public aCode: string;
+  public fCode: string;
+  public sCode: string;
+
+  constructor(private studentService: StudentService) {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    
+      this.studentService.searchStudent(this.firstName, this.lastName, this.aCode, this.fCode, this.sCode)
+        .then(response => console.log(response));
   }
 
 }

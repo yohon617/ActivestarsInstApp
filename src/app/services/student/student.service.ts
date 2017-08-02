@@ -20,4 +20,8 @@ export class StudentService {
     getStudentRosters(classReportID): Promise<StudentRoster[]> {
         return this.studentAPIService.getStudentRosters(classReportID);
     }
+
+    searchStudent(firstName = '', lastName = '', aCode = '', fCode = '', sCode = ''): Promise<any> {
+        return this.studentAPIService.searchStudent(firstName, lastName, aCode, fCode, sCode);
+    }
 }

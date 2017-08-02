@@ -21,6 +21,7 @@ import { ClassService } from './services/class/class.service'
 import { ClassAPIService } from './services/class/class-api.service'
 import { StudentService } from './services/student/student.service'
 import { StudentAPIService } from './services/student/student-api.service'
+import { UtilitiesService } from './services/utilities.service'
 
 import { ConfigService } from './config/config.service'
 
@@ -46,7 +47,7 @@ export declare var Session_UserID: any;
       BsDropdownModule.forRoot()
   ],
   providers: [ClassService, ClassAPIService, StudentService, StudentAPIService,
-      ConfigService
+      ConfigService, UtilitiesService
       ,
       {
           provide: APP_INITIALIZER,
