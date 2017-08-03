@@ -15,9 +15,43 @@
     <div *ngIf="absentWeekList[2]!==undefined && absentWeekList[2]!==''">
       <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[2]}} make-up <input type="checkbox" name="chkMakeUpFee3" (change)="checkMakeUpFee($event)" [value]="absentWeekList[2]" class="chkCheckIn form-control form-control-sm" />
     </div>
-    <div>
+    <div *ngIf="!isRegister && !studentRoster.Prepaid">
       ${{classFee}} Weekly Class Fee <input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" />
     </div>
+    <div *ngIf="!isRegister && studentRoster.Prepaid">
+      P <input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" />
+    </div>
+    <div *ngIf="isRegister">
+      ${{regFee}} REG Fee<input type="radio" name="radioRegister" value="REG" checked (change)="checkRegFee($event)" /> <br/>
+      ${{prepaidFee}} PIF Fee<input type="radio" name="radioRegister" value="PIF" (change)="checkRegFee($event)" />
+    </div>
+    <div>
+      Specialty Class Fee: $
+      <select (change)="changeSpecialFee($event)" class="ddlSpecielFee form-control form-control-sm">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
     <div style="font-weight: bold; padding-top: 15px;">
       Total: ${{totalFee}} 
       

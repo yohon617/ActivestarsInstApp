@@ -41,11 +41,27 @@ export class StudentAPIService {
             .then(response => response.json() as string)
     }
 
-    CheckInStudent(studentID, classReportID, payType, specialClassFee, makeupWeeks): void {
-        this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
-            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&makeupWeeks=" + makeupWeeks
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks) {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
+            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&classFee=" + classFee + "&makeupWeeks=" + makeupWeeks
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
             .then(response => response.json());
+    }
+
+    AddStudentToClass(studentID, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
+            + "&section=" + section + "&payType=" + payType + "&status=" + status + "&visiting=" + visiting + "&transfered=" + transfered
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as StudentRoster);
+    }
+
+    AddNewStudentToClass(student: Student, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?classReportID=" + classReportID
+            + "&section=" + section + "&payType=" + payType + "&status=" + status + "&visiting=" + visiting + "&transfered=" + transfered
+            , JSON.stringify(student), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as StudentRoster);
     }
 }

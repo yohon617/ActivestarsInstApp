@@ -8,4 +8,8 @@
     WeeklyFee: number;
     WeeklyAdvancedFee: number;
     WeeklyExtendedFee: number;
+    RegFee: number;
+    PrepaidFee: number;
+    PrepaidAdvancedFee: number;
+    PrepaidExtendedFee: number;
 }

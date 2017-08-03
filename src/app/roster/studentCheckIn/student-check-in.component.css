@@ -1,9 +1,14 @@
 ﻿.txtCheckIn {
-  width: 40px;
+  width: 45px;
   display: inline;
 }
 
 .chkCheckIn {
   width: 20px;
+  display: inline;
+}
+
+.ddlSpecielFee {
+  width: 60px;
   display: inline;
 }
