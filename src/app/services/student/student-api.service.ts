@@ -58,4 +58,13 @@ export class StudentAPIService {
             .toPromise()
             .then(response => response.json() as StudentRoster);
     }
+
+    AddDropStudentRequest(studentID, classReportID, reason) {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/AddDropRequest?studentID=" + studentID + "&classReportID=" + classReportID
+            + "&reason=" + reason
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json())
+            .catch(error => { console.log(error) });
+    }
 }

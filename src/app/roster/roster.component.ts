@@ -28,6 +28,9 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     selectedClassNumber: number;
     selectedStudentRoster: StudentRoster;
+
+    dropRequestStudent: StudentRoster;
+    txtDropReason: string;
     
     constructor(
         private studentService: StudentService,
@@ -93,12 +96,28 @@ export class RosterComponent implements OnInit, OnDestroy {
         console.log("refresh roster");
     }
 
-    dropStudent(studentID) {
+    setStudentAB(studentID) {
         //console.log(studentID);
         this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "")
             .then(() => {
                 this.refreshRoster();
             });
     }
+
+    dropStudent(template: TemplateRef<any>, dropRequestStudent: StudentRoster) {
+        this.modalRef = this.modalService.show(template);
+        this.dropRequestStudent = dropRequestStudent;
+    }
+
+    requestDrop()
+    {
+        this.studentService.AddDropStudentRequest(this.dropRequestStudent.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.txtDropReason + " (Student ID: " + this.dropRequestStudent.StudentID + ")")
+            .then(() => {
+                this.refreshRoster();
+                this.modalRef.hide();
+            });
+    }
+
+
 
 }

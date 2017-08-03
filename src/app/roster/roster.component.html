@@ -70,13 +70,13 @@
               </a>
             </li>
             <li role="menuitem" *ngIf="student.PayType == 'n/a' || student.PayType == ''">
-              <a class="dropdown-item" (click)="dropStudent(student.StudentID)">
+              <a class="dropdown-item" (click)="setStudentAB(student.StudentID)">
                 Absent
               </a>
             </li>
             <li class="divider dropdown-divider" *ngIf="student.PayType == 'n/a' || student.PayType == ''"></li>
             <li role="menuitem">
-              <a class="dropdown-item" href="#" *ngIf="student.PayType == 'n/a' || student.PayType == ''">Drop Request</a>
+              <a class="dropdown-item" *ngIf="student.PayType == 'n/a' || student.PayType == ''" (click)="dropStudent(modalDropRequest, student)">Drop Request</a>
             </li>
           </ul>
         </div>
@@ -92,4 +92,20 @@
       (refreshRoster)="refreshRoster($event)">
     </student-check-in>
   </ng-template>
+
+  <ng-template #modalDropRequest>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Drop Request for {{dropRequestStudent.FirstName}} {{dropRequestStudent.LastName}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="text-align: center;">
+      Reason: 
+      <input type="text" [(ngModel)]="txtDropReason" class="form-control form-control-sm" />
+      <button type="button" class="btn btn-primary" (click)="requestDrop()">Request Drop</button>
+    </div>
+
+</ng-template>
+
 </div>
