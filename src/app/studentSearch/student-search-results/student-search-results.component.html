@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="search-results-header">
+        <h4 *ngIf="studentList.length > 0">Student<span *ngIf="studentList.length > 1">s</span> Found</h4>
+        <h4 *ngIf="studentList.length === 0">No Students Found</h4>
+        <button class="btn btn-success pointer">Add New Student</button>
+    </div>
+    <ul class="list-unstyled">
+        <li *ngFor="let student of studentList" class="search-item">
+            <div class="search-item-detail">
+                <div>
+                    <span><b>Name:</b> </span>
+                    <span>{{ student.FirstName }} {{ student.LastName }}</span>
+                </div>
+                <div>
+                    <span><b>Age:</b> </span>
+                    <span>{{ student.Age}}</span>
+                </div>
+                <div>
+                    <span><b>Phone:</b> </span>
+                    <span>({{ student.HomePhoneACode}}) {{ student.HomePhoneFCode }}-{{ student.HomePhoneSCode }}</span>
+                </div>
+                <div>
+                    <span><b>Location:</b> </span>
+                    <span>{{ student.City }}</span>
+                </div>
+                <div>
+                    <span><b>Class # / Team:</b> </span>
+                    <span>
+                        <select>
+                            <option value="">Please select...</option>
+                            <option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{ x }}">{{ x }}</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span><b>Type:</b> </span>
+                    <span>
+                        <select>
+                            <option>Regular</option>
+                            <option>Advanced</option>
+                            <option>Extended</option>
+                        </select>
+                    </span>
+                </div>                
+            </div>
+            <div class="search-item-button">
+                <button class="btn btn-primary pointer">Add Student</button>
+            </div>
+        </li>
+    </ul>
+</div>

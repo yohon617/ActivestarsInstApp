@@ -24,4 +24,16 @@ export class StudentService {
     searchStudent(firstName = '', lastName = '', aCode = '', fCode = '', sCode = ''): Promise<any> {
         return this.studentAPIService.searchStudent(firstName, lastName, aCode, fCode, sCode);
     }
+    
+    getStudent(studentID, classReportID): Promise<Student> {
+        return this.studentAPIService.getStudent(studentID, classReportID);
+    }
+
+    getStudentRosterABWeeks(studentID, classReportID): Promise<string> {
+        return this.studentAPIService.getStudentRosterABWeeks(studentID, classReportID);
+    }
+
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, makeupWeeks): void {
+        this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, makeupWeeks);
+    }
 }

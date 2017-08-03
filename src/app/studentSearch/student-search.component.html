@@ -20,17 +20,23 @@
     <div class="form-inline">
       <label for="student-search-aCode">
         Home Phone: &nbsp;
-        <span>
+        <div class="phone-number">
           (
-          <input type="tel" class="form-control phone-input" id="student-search-aCode" name="aCode" maxlength="3" [(ngModel)]="aCode"/>
-          )
-          <input type="tel" class="form-control phone-input" id="student-search-fCode" name="fCode" maxlength="3" [(ngModel)]="fCode"/>
-          -
-          <input type="tel" class="form-control phone-input" id="student-search-sCode" name="sCode" maxlength="4" [(ngModel)]="sCode"/>
-        </span>
+          <input type="tel" class="form-control phone-input-3" id="student-search-aCode" name="aCode" maxlength="3" [(ngModel)]="aCode"/>
+          ) &nbsp;
+          <input type="tel" class="form-control phone-input-3" id="student-search-fCode" name="fCode" maxlength="3" [(ngModel)]="fCode"/>
+          &nbsp; - &nbsp;
+          <input type="tel" class="form-control phone-input-4" id="student-search-sCode" name="sCode" maxlength="4" [(ngModel)]="sCode"/>
+        </div>
 
       </label>
     </div>
-    <button type="submit" class="btn btn-success">Look Up</button>
+    <br />
+    <button type="submit" class="btn btn-success pointer">Look Up</button>
   </form>
+
+  <div [hidden]="searchResults.length === 0">
+    <hr />
+    <student-search-results [studentList]="searchResults"></student-search-results>
+  </div>
 </div>

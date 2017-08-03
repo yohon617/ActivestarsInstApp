@@ -17,8 +17,8 @@ export class ClassWeekHeaderComponent implements OnInit {
 
     ngOnInit(): void {
         
-        this.classService.postTest()
-            .then(result => this.testParam = result);
+        //this.classService.postTest()
+        //    .then(result => this.testParam = result);
     }
 
     prev() {

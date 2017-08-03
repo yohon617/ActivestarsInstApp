@@ -12,10 +12,14 @@ import { ClassesComponent }   from './classes/classes.component';
 import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
+import { StudentCheckInComponent } from './roster/studentCheckIn/student-check-in.component';
+import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent } from './studentSearch/student-search.component';
-import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component'
+import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component';
+import { StudentSearchResultsComponent } from './studentSearch/student-search-results/student-search-results.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ClassService } from './services/class/class.service'
 import { ClassAPIService } from './services/class/class-api.service'
@@ -36,15 +40,19 @@ export declare var Session_UserID: any;
       OrderComponent,
       ReportComponent,
       RosterComponent,
+      StudentCheckInComponent,
+      StudentProfileComponent,
       StudentSearchComponent,
-      StudentSearchHeaderComponent
+      StudentSearchHeaderComponent,
+      StudentSearchResultsComponent
   ],
   imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
       AppRoutingModule,
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      ModalModule.forRoot()
   ],
   providers: [ClassService, ClassAPIService, StudentService, StudentAPIService,
       ConfigService, UtilitiesService

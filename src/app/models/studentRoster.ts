@@ -1,5 +1,5 @@
 ﻿export class StudentRoster {
-    StduentID: number;
+    StudentID: number;
     FirstName: string;
     LastName: string;
     Status: number;
@@ -9,5 +9,8 @@
     Testing: boolean;
     Online: boolean;
     TestingWeek: number;
-
+    HomePhone: string;
+    CellPhone: string;
+    InSpecialtyClass: boolean;
+    Prepaid: boolean;
 }
