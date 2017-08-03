@@ -26,25 +26,36 @@
                 <div>
                     <span><b>Class # / Team:</b> </span>
                     <span>
-                        <select>
-                            <option value="">Please select...</option>
-                            <option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" value="{{ x }}">{{ x }}</option>
+                        <select class="form-control" [(ngModel)]="student.ClassNumber">
+                            <option value="0">Please select...</option>
+                            <option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [ngValue]="x">{{ x }}</option>
                         </select>
                     </span>
                 </div>
                 <div>
-                    <span><b>Type:</b> </span>
+                    <span><b>Status:</b> </span>
                     <span>
-                        <select>
-                            <option>Regular</option>
-                            <option>Advanced</option>
-                            <option>Extended</option>
+                        <select class="form-control" [(ngModel)]="student.Status">
+                            <option [value]="''">Please select...</option>
+                            <option [value]="'1'">Regular</option>
+                            <option [value]="'2'">Advanced</option>
+                            <option [value]="'5'">Extended</option>
                         </select>
                     </span>
-                </div>                
+                </div>    
+                <div>
+                    <span><b>Type:</b> </span>
+                    <span>
+                        <select class="form-control" [(ngModel)]="student.PayType">
+                            <option [value]="''">Please select...</option>
+                            <option [value]="'REG'">REG</option>
+                            <option [value]="'PIF'">PIF</option>
+                        </select>
+                    </span>
+                </div>                                 
             </div>
             <div class="search-item-button">
-                <button class="btn btn-primary pointer">Add Student</button>
+                <button class="btn btn-primary pointer" [disabled]="student.PayType === '' || student.Status === '' || student.ClassNumber === 0" (click)="addStudent(student)">Add Student</button>
             </div>
         </li>
     </ul>

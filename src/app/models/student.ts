@@ -23,4 +23,5 @@
     ReceiveSMS: boolean;
     ClassNumber: number;
     PayType: string;
+    Status: string;
 }

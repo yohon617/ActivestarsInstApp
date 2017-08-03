@@ -1,4 +1,4 @@
-<student-search-header></student-search-header>
+<student-search-header [searchType]="searchType"></student-search-header>
 
 <div class="container">
   <h4> Student Look Up</h4>
@@ -37,6 +37,6 @@
 
   <div [hidden]="searchResults.length === 0">
     <hr />
-    <student-search-results [studentList]="searchResults"></student-search-results>
+    <student-search-results [studentList]="searchResults" [searchType]="searchType"></student-search-results>
   </div>
 </div>

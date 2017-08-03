@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { StudentService } from './../services/student/student.service';
 
@@ -11,26 +12,32 @@ import { Student } from './../models/student';
 })
 export class StudentSearchComponent implements OnInit {
 
-  public firstName: string = '';
-  public lastName: string = '';
-  public aCode: string = '';
-  public fCode: string = '';
-  public sCode: string = '';
-  public searchResults: Student[] = [];
+    public searchType: string = '';
+    public firstName: string = '';
+    public lastName: string = '';
+    public aCode: string = '';
+    public fCode: string = '';
+    public sCode: string = '';
+    public searchResults: Student[] = [];
 
-  constructor(private studentService: StudentService) {
-  }
+  constructor(private route: ActivatedRoute,
+              private studentService: StudentService
+  ) {}
 
   ngOnInit() {
+      this.searchType = this.route.snapshot.paramMap.get('id');
   }
 
-  onSubmit() {
+  public onSubmit() {
     
       this.studentService.searchStudent(this.firstName, this.lastName, this.aCode, this.fCode, this.sCode)
-        .then(response => {
-          console.log(response);
-          this.searchResults = response
-        });
+          .then(response => {
+              console.log(response);
+              this.searchResults = response.map(student => {
+                  student['Status'] = '';
+                  return student;
+              });
+          });
   }
 
 }
