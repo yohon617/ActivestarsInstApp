@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ClassService } from './../../services/class/class.service';
 import { StudentService } from './../../services/student/student.service';
@@ -19,7 +20,8 @@ export class StudentSearchResultsComponent implements OnInit, OnDestroy {
     private subscription: any;
 
     constructor(private classService: ClassService,
-                private studentService: StudentService 
+        private studentService: StudentService,
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -50,6 +52,8 @@ export class StudentSearchResultsComponent implements OnInit, OnDestroy {
         this.studentService.AddStudentToClass(student.ID, this.classReportID, student.ClassNumber, student.PayType, student.Status, visiting, transfer)
             .then((response) => {
                 console.log(response);
+
+                this.router.navigate(['/roster']);
             });
     }
 

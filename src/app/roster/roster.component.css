@@ -43,7 +43,7 @@ a.class-header-link {
 }
 
 .roster-list div.roster-student-prepaid {
-  background-color: #FFFF00;
+  background-color: #FFFF00 !important;
 }
   
 .roster-student {

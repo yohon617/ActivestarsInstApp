@@ -50,7 +50,7 @@ export class StudentAPIService {
     }
 
     AddStudentToClass(studentID, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {
-        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/AddStudentToClass?studentID=" + studentID + "&classReportID=" + classReportID
             + "&section=" + section + "&payType=" + payType + "&status=" + status + "&visiting=" + visiting + "&transfered=" + transfered
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
@@ -58,7 +58,7 @@ export class StudentAPIService {
     }
 
     AddNewStudentToClass(student: Student, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {
-        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?classReportID=" + classReportID
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/AddNewStudentToClass?classReportID=" + classReportID
             + "&section=" + section + "&payType=" + payType + "&status=" + status + "&visiting=" + visiting + "&transfered=" + transfered
             , JSON.stringify(student), this.config.requestOptions)
             .toPromise()
