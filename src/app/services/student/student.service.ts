@@ -21,6 +21,10 @@ export class StudentService {
         return this.studentAPIService.getStudentRosters(classReportID);
     }
 
+    searchStudent(firstName = '', lastName = '', aCode = '', fCode = '', sCode = ''): Promise<any> {
+        return this.studentAPIService.searchStudent(firstName, lastName, aCode, fCode, sCode);
+    }
+    
     getStudent(studentID, classReportID): Promise<Student> {
         return this.studentAPIService.getStudent(studentID, classReportID);
     }

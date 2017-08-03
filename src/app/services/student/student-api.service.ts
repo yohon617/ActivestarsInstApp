@@ -23,6 +23,12 @@ export class StudentAPIService {
         //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
     }
 
+    searchStudent(firstName: string, lastName: string, aCode: string, fCode: string, sCode: string) {
+        return this.http.get(`${this.config.get('apiURL')}/api/Students.mvc/SearchStudents?firstName=${firstName}&lastName=${lastName}&aCode=${aCode}&fCode=${fCode}&sCode=${sCode}`, this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json(), error => console.log(error));
+    }
+
     getStudent(studentID, classReportID): Promise<Student> {
         return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudent?studentID=" + studentID + "&classReportID=" + classReportID, this.config.requestOptions)
             .toPromise()

@@ -15,7 +15,8 @@ import { RosterComponent } from './roster/roster.component';
 import { StudentCheckInComponent } from './roster/studentCheckIn/student-check-in.component';
 import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent } from './studentSearch/student-search.component';
-import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component'
+import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component';
+import { StudentSearchResultsComponent } from './studentSearch/student-search-results/student-search-results.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -24,6 +25,7 @@ import { ClassService } from './services/class/class.service'
 import { ClassAPIService } from './services/class/class-api.service'
 import { StudentService } from './services/student/student.service'
 import { StudentAPIService } from './services/student/student-api.service'
+import { UtilitiesService } from './services/utilities.service'
 
 import { ConfigService } from './config/config.service'
 
@@ -41,7 +43,8 @@ export declare var Session_UserID: any;
       StudentCheckInComponent,
       StudentProfileComponent,
       StudentSearchComponent,
-      StudentSearchHeaderComponent
+      StudentSearchHeaderComponent,
+      StudentSearchResultsComponent
   ],
   imports: [
       BrowserModule,
@@ -52,7 +55,7 @@ export declare var Session_UserID: any;
       ModalModule.forRoot()
   ],
   providers: [ClassService, ClassAPIService, StudentService, StudentAPIService,
-      ConfigService
+      ConfigService, UtilitiesService
       ,
       {
           provide: APP_INITIALIZER,

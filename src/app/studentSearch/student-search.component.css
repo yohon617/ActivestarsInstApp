@@ -1,0 +1,12 @@
+.phone-number {
+    display: flex;
+    align-items: center;
+}
+
+.phone-input-3 {
+    width: 60px;
+}
+
+.phone-input-4 {
+    width: 80px;
+}
