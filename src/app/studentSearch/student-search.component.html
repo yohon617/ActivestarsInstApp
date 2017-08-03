@@ -1,17 +1,42 @@
-<student-search-header></student-search-header>
+<student-search-header [searchType]="searchType"></student-search-header>
 
-<h4> Student Look Up</h4>
-<div>
-  <label>
-    First Name:
-    <input type="text"/>
-  </label>
-  <label>
-    Last Name:
-    <input type="text"/>
-  </label>
-  <label>
-    Home Phone:
-    <input type="text"/>
-  </label>
+<div class="container">
+  <h4> Student Look Up</h4>
+  <form #studentSearchForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-inline">
+      <label for="student-search-firstName" class="control-label">
+        First Name: &nbsp;
+        <input type="text" class="form-control" id="student-search-firstName" name="firstName" [(ngModel)]="firstName" />
+      </label>
+    </div>
+    <br />
+    <div class="form-inline">
+      <label for="student-search-lastName">
+        Last Name: &nbsp;
+        <input type="text" class="form-control" id="student-search-lastName" name="lastName" [(ngModel)]="lastName" />
+      </label>
+    </div>
+    <br />
+    <div class="form-inline">
+      <label for="student-search-aCode">
+        Home Phone: &nbsp;
+        <div class="phone-number">
+          (
+          <input type="tel" class="form-control phone-input-3" id="student-search-aCode" name="aCode" maxlength="3" [(ngModel)]="aCode"/>
+          ) &nbsp;
+          <input type="tel" class="form-control phone-input-3" id="student-search-fCode" name="fCode" maxlength="3" [(ngModel)]="fCode"/>
+          &nbsp; - &nbsp;
+          <input type="tel" class="form-control phone-input-4" id="student-search-sCode" name="sCode" maxlength="4" [(ngModel)]="sCode"/>
+        </div>
+
+      </label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success pointer">Look Up</button>
+  </form>
+
+  <div [hidden]="searchResults.length === 0">
+    <hr />
+    <student-search-results [studentList]="searchResults" [searchType]="searchType"></student-search-results>
+  </div>
 </div>

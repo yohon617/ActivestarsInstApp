@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'student-search-header',
@@ -9,15 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudentSearchHeaderComponent implements OnInit {
 
+    @Input('searchType') searchType: string;
+
     public headerText: string;
 
-    constructor(private location: Location,
-                private route: ActivatedRoute
+    constructor(private location: Location
     ) {}
 
     ngOnInit() {
-        let id = this.route.snapshot.paramMap.get('id');
-        this.setHeaderText(id);
+        this.setHeaderText(this.searchType);
     }
 
     public goBack() {
@@ -36,6 +35,6 @@ export class StudentSearchHeaderComponent implements OnInit {
                 this.headerText = 'Add Visiting Student';
                 break;
         }
-    }
+    }    
 
 }
