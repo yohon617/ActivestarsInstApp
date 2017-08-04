@@ -19,7 +19,7 @@
       ${{classFee}} Weekly Class Fee <input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" />
     </div>
     <div *ngIf="!isRegister && studentRoster.Prepaid">
-      P <input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" />
+      Prepaid <input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" />
     </div>
     <div *ngIf="isRegister">
       ${{regFee}} REG Fee<input type="radio" name="radioRegister" value="REG" checked (change)="checkRegFee($event)" /> <br/>
