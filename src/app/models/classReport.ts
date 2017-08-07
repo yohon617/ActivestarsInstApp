@@ -6,8 +6,8 @@
     CashPayment: number;
     OnlinePayment: number;
     VoucherPayment: number;
-    ParentHeadHelperFormImage: string;
-    DepositReceiptImage: string;
-    PromoOrdersImage: string;
-    OtherImage: string;
+    ParentHelperFormImage: string[];
+    DepositReceiptImage: string[];
+    PromoOrdersImage: string[];
+    OtherImage: string[];
 }

@@ -20,12 +20,15 @@ import { StudentSearchResultsComponent } from './studentSearch/student-search-re
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { ClassService } from './services/class/class.service'
 import { ClassAPIService } from './services/class/class-api.service'
 import { StudentService } from './services/student/student.service'
 import { StudentAPIService } from './services/student/student-api.service'
 import { UtilitiesService } from './services/utilities.service'
+import { ClassReportService } from './services/classReport/classReport.service'
+import { ClassReportAPIService } from './services/classReport/classReport-api.service'
 
 import { ConfigService } from './config/config.service'
 
@@ -52,10 +55,11 @@ export declare var Session_UserID: any;
       HttpModule,
       AppRoutingModule,
       BsDropdownModule.forRoot(),
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      TabsModule.forRoot()
   ],
   providers: [ClassService, ClassAPIService, StudentService, StudentAPIService,
-      ConfigService, UtilitiesService
+      ConfigService, UtilitiesService, ClassReportService, ClassReportAPIService
       ,
       {
           provide: APP_INITIALIZER,

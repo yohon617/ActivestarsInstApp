@@ -1,6 +1,87 @@
-﻿<div style="text-align:center; padding-top: 100px;">
-  
-    <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload" />
-
-
+﻿<div class="row">
+  <tabset>
+    <tab heading="ClassReport">
+      <div class="classReportNumbers">
+        <div>
+          Total Student Count: {{classReport?.StudentCount}}
+        </div>
+        <div>
+          Total Class Fees: ${{classReport?.ClassFee}}
+        </div>
+        <div>
+          Total Merchandise Fees ${{classReport?.MerchFee}}
+        </div>
+      </div>
+      <div class="classReportPayments">
+        <div>Payments Received</div>
+        <div>
+          Cash: ${{classReport?.CashPayment}}
+        </div>
+        <div>
+          Online Payment: ${{classReport?.OnlinePayment}}
+        </div>
+        <div>
+          Voucher: ${{classReport?.VoucherPayment}} 
+        </div>
+      </div>
+    </tab>
+    <tab heading="Files">
+      <div class="ClassReportFiles">
+        <div class="divFile">
+          <div>
+            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          </div>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 1)" class="upload custom-file-input" />
+              <span class="custom-file-control parentHelper-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.ParentHelperFormImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(1, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 2)" class="upload" />
+              <span class="custom-file-control depositReceipt-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.DepositReceiptImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(2, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 3)" class="upload" />
+              <span class="custom-file-control promoOrders-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.PromoOrdersImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(3, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 4)" class="upload" />
+              <span class="custom-file-control others-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.OtherImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(4, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+  </tabset>
 </div>

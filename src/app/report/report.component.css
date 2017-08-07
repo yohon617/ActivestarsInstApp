@@ -1,1 +1,64 @@
-﻿
+﻿.tab-container {
+  width: 100%;
+}
+
+.classReportNumbers {
+  border: solid 1px #000;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+}
+
+.classReportPayments {
+  width: 100%;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.ClassReportFiles {
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.ClassReportFiles .fa {
+  font-size: 35px;
+  padding-right: 20px;
+}
+
+.divFile {
+  display: flex;
+}
+
+a.deleteLink {
+  color: red;
+  font-weight: bold;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+a.classReportFileLink {
+  display: inline-block;
+  margin: 10px 16px;
+}
+
+.upload {
+  padding-left: 10px;
+}
+
+.parentHelper-file-control:lang(en)::after {
+  content: "Parent Helper Form";
+}
+
+.depositReceipt-file-control:lang(en)::after {
+  content: "Deposit Receipt";
+}
+
+.promoOrders-file-control:lang(en)::after {
+  content: "Promo Orders";
+}
+
+.others-file-control:lang(en)::after {
+  content: "Others";
+}
