@@ -28,7 +28,7 @@ if len(Request("username")) > 0 and len(Request("password")) > 0 then
 	Set lg_objConn = Server.CreateObject("ADODB.Command")
 	With lg_objConn
 		.ActiveConnection = Application("strConn")
-		.CommandText = "a_events_get_login"
+		.CommandText = "a_inst_get_login"
 		.CommandType = 4
 		.Parameters.Append .CreateParameter("@pUsername", adVarchar, adParamInput,50,Request ("username"))
 		.Parameters.Append .CreateParameter("@pPassword", adVarchar, adParamInput,50,Request ("password"))		
@@ -42,13 +42,13 @@ if len(Request("username")) > 0 and len(Request("password")) > 0 then
 	if not lg_rs.EOF then
 
 
-		session(SESSION_NAME) = trim(lg_rs("elFirstName")) & " " & trim(lg_rs("elLastName"))
+		session(SESSION_NAME) = trim(lg_rs("inFirstName")) & " " & trim(lg_rs("inLastName"))
 		session(SESSION_USERSTUDENTID) = ""
 		session(SESSION_USERSTUDENTNAME) = ""
-		session(SESSION_PUSERID) = lg_rs("elID")
+		session(SESSION_PUSERID) = lg_rs("inID")
 		session(SESSION_USERNAME) = "wtam"'ucase(lg_rs("usUsername"))
 		session(SESSION_SPORT) = ""
-		session(SESSION_EMAIL) = trim(lg_rs("elEmail"))
+		session(SESSION_EMAIL) = ""'trim(lg_rs("inEmail"))
 		session(SESSION_AGE) = ""
 		session(SESSION_STUDENT) = 1
 		session(SESSION_LOGGED) = 1
@@ -78,54 +78,7 @@ if len(Request("username")) > 0 and len(Request("password")) > 0 then
 		'end if
 		
 		'a_events_get_ParentChildren
-		dim connChildrenList
-		dim childrenListRS
-		dim childrenCount
-		childrenCount = 0
-		dim childrenList
 		
-		set connChildrenList = Server.CreateObject("ADODB.connection")
-		connChildrenList.Open Application("strConn")
-		set childrenListRS = connChildrenList.execute("a_events_get_ParentChildren "&session(SESSION_PUSERID))
-		if not childrenListRS.eof then
-			session(SESSION_USERSTUDENTID) = childrenListRS("lcStudentID")
-			
-			dim instRS
-			dim connInst
-			set connInst = Server.CreateObject("ADODB.connection")
-			connInst.Open Application("strConn")
-			set instRS = connInst.execute("a_events_get_studInstNameLoc "&session(SESSION_USERSTUDENTID))
-
-			if not instRS.eof then
-				session(SESSION_INSTNAME) = trim(instRS("instName"))
-				session(SESSION_CLSLOC) = trim(instRS("loc"))
-			end if
-			
-			set instRS = connInst.execute("a_events_get_StudNameSport "&session(SESSION_USERSTUDENTID))
-
-			if not instRS.eof then
-				session(SESSION_USERSTUDENTNAME) = trim(instRS("studname"))
-				session(SESSION_SPORT) = trim(instRS("stsport"))
-				session(SESSION_AGE) = trim(instRS("stage"))
-			end if
-			
-			set connInst = nothing
-			
-			childrenList = childrenListRS("lcStudentID") & "-" & childrenListRS("studentname")
-			childrenCount = childrenCount + 1
-			childrenListRS.MoveNext
-		end if
-		do while not childrenListRS.eof
-			childrenList = childrenList &  "," & childrenListRS("lcStudentID") & "-" & childrenListRS("studentname")
-			childrenCount = childrenCount + 1
-			childrenListRS.MoveNext
-		loop
-
-		session(SESSION_CHILDRENCOUNT) = childrenCount
-		childrenList = split(childrenList, ",")
-		if childrenCount > 0 then
-			session(SESSION_CHILDREN) = childrenList
-		end if
 		response.redirect("/start.asp")
 	else
 		lg_Failed = 1

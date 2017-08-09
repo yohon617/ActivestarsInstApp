@@ -1,41 +1,12 @@
 ﻿<% @ LANGUAGE="VBScript"%>
 <% option explicit %>
 <% 'Response.Buffer = True %>
-<%
-'*************** [ NOTICE ] *********************
-' COPYRIGHT (c) 2001 TradeBonds.com
-' All Rights reserved.
-' Unlawful use of this code is prohibited
-' Written by Ian Chan October, 2005
-' Powered by Meiotic Inc.
-'************************************************
 
-
-function makeLink(whereTo)
-	makeLink = "events.asp?v1=" & whereTo
-end function
-
-'const SESSION_LOGGED = "SLOG"
-'const SESSION_SUPER = "SUPR"
-'const SESSION_INSTONLY = "IOLY"
-'const SESSION_USERID = "SUID"
-'const SESSION_USERNAME = "SUNM"
-'const SESSION_NAME = "SNAM"
-'const SESSION_USERSTUDENTID = "SUID"
-' Added by Mamoru 2/7/2005
-'const SESSION_ACCOUNTING = "ACCT"
-'const SESSION_FACILITYOPS = "FAOP"
-'const SESSION_CHILDREN = "CHLD"
-'const SESSION_CHILDRENCOUNT = "CHCT"
-'const SESSION_PUSERID = "USID"
-'const SESSION_SPECAGE = "SPAG"
-'--------------------------------------------------------------------------------------
-%>
 
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <base href="/">
   

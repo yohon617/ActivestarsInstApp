@@ -1,4 +1,4 @@
-<% 'option explicit %>
+﻿<% 'option explicit %>
 <!--#INCLUDE FILE="ADOVBS.asp"-->
 
 
@@ -189,9 +189,6 @@ if not PageName = "events.asp" and not PageName = "Services" and not PageName = 
 
 	if session(SESSION_PUSERID) = "" then
 		response.Redirect("/events.asp")
-	end if
-	if session(SESSION_CHILDRENCOUNT) = 0 and not PageName = "eventslookupstudent.asp" and not PageName = "eventsAddChild.asp" and not PageName = "eventsNewStuReg.asp" and not PageName = "eventsNewStuRegS.asp" then
-		response.Redirect(makelink("eventslookupstudent.asp&nochild=1"))
 	end if
 	' Retrieve which groups have view and/or edit rights to the current page
 	
