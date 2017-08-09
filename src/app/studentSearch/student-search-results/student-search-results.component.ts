@@ -58,6 +58,13 @@ export class StudentSearchResultsComponent implements OnInit, OnDestroy {
     }
 
 
-
+    addNewStudent() {
+        let type: number = 0;
+        if (this.searchType === 'transfer')
+            type = 1;
+        else if (this.searchType === 'visiting')
+            type = 2;
+        this.router.navigate(['/studentProfile', 0, type]);
+    }
 
 }

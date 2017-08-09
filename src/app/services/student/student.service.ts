@@ -9,6 +9,7 @@ import { StudentAPIService } from './student-api.service';
 import { StudentSearchResult } from './../../models/studentSearchResult';
 import { Student } from './../../models/student';
 import { StudentRoster } from './../../models/studentRoster';
+import { School } from './../../models/school';
 
 @Injectable()
 export class StudentService {
@@ -45,7 +46,15 @@ export class StudentService {
         return this.studentAPIService.AddNewStudentToClass(student, classReportID, section, payType, status, visiting, transfered);
     }
 
+    UpdateStudent(student: Student): Promise<any> {
+        return this.studentAPIService.UpdateStudent(student);
+    }
+
     AddDropStudentRequest(studentID, classReportID, reason) {
         return this.studentAPIService.AddDropStudentRequest(studentID, classReportID, reason);
+    }
+
+    getSchools(): Promise<School[]> {
+        return this.studentAPIService.getSchools();
     }
 }

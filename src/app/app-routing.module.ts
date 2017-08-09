@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'studentCheckIn/:id', component: StudentCheckInComponent },
   { path: 'report', component: ReportComponent },
   { path: 'order', component: OrderComponent },
-  { path: 'studentProfile/:id', component: StudentProfileComponent },
+  { path: 'studentProfile/:id/:type', component: StudentProfileComponent },
   { path: 'studentSearch', redirectTo: '/studentSearch/new', pathMatch: 'full' },
   { path: 'studentSearch/:id', component: StudentSearchComponent },
 ];

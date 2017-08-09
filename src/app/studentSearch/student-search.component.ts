@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StudentService } from './../services/student/student.service';
@@ -19,6 +19,7 @@ export class StudentSearchComponent implements OnInit {
     public fCode: string = '';
     public sCode: string = '';
     public searchResults: Student[] = [];
+    private showResult: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private studentService: StudentService
@@ -37,6 +38,7 @@ export class StudentSearchComponent implements OnInit {
                   student['Status'] = '';
                   return student;
               });
+              this.showResult = true;
           });
   }
 

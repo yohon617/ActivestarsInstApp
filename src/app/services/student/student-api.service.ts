@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 import { StudentSearchResult } from './../../models/studentSearchResult';
 import { Student } from './../../models/student';
 import { StudentRoster } from './../../models/studentRoster';
+import { School } from './../../models/school';
 
 @Injectable()
 export class StudentAPIService {
@@ -65,6 +66,13 @@ export class StudentAPIService {
             .then(response => response.json() as StudentRoster);
     }
 
+    UpdateStudent(student: Student): Promise<any> {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/UpdateStudent"
+            , JSON.stringify(student), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as StudentRoster);
+    }
+
     AddDropStudentRequest(studentID, classReportID, reason) {
         return this.http.post(this.config.get("apiURL") + "/api/students.mvc/AddDropRequest?studentID=" + studentID + "&classReportID=" + classReportID
             + "&reason=" + reason
@@ -72,5 +80,11 @@ export class StudentAPIService {
             .toPromise()
             .then(response => response.json())
             .catch(error => { console.log(error) });
+    }
+
+    getSchools(): Promise<School[]> {
+        return this.http.get(this.config.get("apiURL") + "/api/schools.mvc/GetSchools", this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as School[])
     }
 }

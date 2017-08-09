@@ -6,10 +6,10 @@
     BDayDay: number;
     BDayYear: number;
     Age: number;
-    BDayAddress: string;
-    BDayCity: string;
-    BDayState: string;
-    BDayZip: string;
+    Address: string;
+    City: string;
+    State: string;
+    Zip: string;
     PFirstName: string;
     PLastName: string;
     PEmail: string;

@@ -1,8 +1,8 @@
-<div class="container">
+﻿<div class="container">
     <div class="search-results-header">
         <h4 *ngIf="studentList.length > 0">Student<span *ngIf="studentList.length > 1">s</span> Found</h4>
         <h4 *ngIf="studentList.length === 0">No Students Found</h4>
-        <button class="btn btn-success pointer">Add New Student</button>
+        <button class="btn btn-success pointer" (click)="addNewStudent()">Add New Student</button>
     </div>
     <ul class="list-unstyled">
         <li *ngFor="let student of studentList" class="search-item">

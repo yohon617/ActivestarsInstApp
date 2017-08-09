@@ -1,4 +1,4 @@
-<student-search-header [searchType]="searchType"></student-search-header>
+﻿<student-search-header [searchType]="searchType"></student-search-header>
 
 <div class="container">
   <h4> Student Look Up</h4>
@@ -35,7 +35,7 @@
     <button type="submit" class="btn btn-success pointer">Look Up</button>
   </form>
 
-  <div [hidden]="searchResults.length === 0">
+  <div [hidden]="searchResults.length === 0 && !showResult">
     <hr />
     <student-search-results [studentList]="searchResults" [searchType]="searchType"></student-search-results>
   </div>
