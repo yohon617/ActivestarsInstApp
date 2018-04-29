@@ -8,6 +8,8 @@
     VoucherPayment: number;
     ParentHelperFormImage: string[];
     DepositReceiptImage: string[];
-    PromoOrdersImage: string[];
+    OrderEnvelopesImage: string[];
     OtherImage: string[];
+    SignInSheetImage: string[];
+    ClassReportSheetImage: string[];
 }

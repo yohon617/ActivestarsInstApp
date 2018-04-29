@@ -23,16 +23,16 @@ end if
 
 %>
 
-<form action="eventsChangeChild.asp" method="post" name="form_children" id="form_children"> 
+<form method="post" name="form_children" id="form_children"> 
     <nav class="navbar navbar-inverse fixed-top bg-inverse">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
+          </button>-->
           <a class="navbar-brand" href="#">
 			<%if Application("YC") = "Michigan" then%>
 			<img src="assets/img/MILogo_White.png" alt="<%=Application("YCOA")%>" height="50" hspace="0" vspace="0" border="0"><BR>

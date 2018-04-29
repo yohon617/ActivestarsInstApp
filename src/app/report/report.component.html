@@ -33,6 +33,21 @@
           </div>
           <div>
             <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 5)" class="upload custom-file-input" />
+              <span class="custom-file-control signInSheet-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.SignInSheetImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(5, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <div>
+            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          </div>
+          <div>
+            <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 1)" class="upload custom-file-input" />
               <span class="custom-file-control parentHelper-file-control"></span>
             </label>
@@ -46,7 +61,33 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div>
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 2)" class="upload" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 6)" class="upload custom-file-input" />
+              <span class="custom-file-control classReportSheet-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.ClassReportSheetImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(6, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 3)" class="upload custom-file-input" />
+              <span class="custom-file-control orderEnvelopes-file-control"></span>
+            </label>
+            <br />
+            <div *ngFor="let fileLink of classReport?.OrderEnvelopesImage">
+              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(3, getFileName(fileLink))" class="deleteLink">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="divFile">
+          <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          <div>
+            <label class="custom-file">
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 2)" class="upload custom-file-input" />
               <span class="custom-file-control depositReceipt-file-control"></span>
             </label>
             <br />
@@ -59,20 +100,7 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div>
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 3)" class="upload" />
-              <span class="custom-file-control promoOrders-file-control"></span>
-            </label>
-            <br />
-            <div *ngFor="let fileLink of classReport?.PromoOrdersImage">
-              <a href="{{fileLink}}" target="_blank" class="classReportFileLink">{{getFileName(fileLink)}}</a><a (click)="deleteFile(3, getFileName(fileLink))" class="deleteLink">X</a>
-            </div>
-          </div>
-        </div>
-        <div class="divFile">
-          <i class="fa fa-file-image-o" aria-hidden="true"></i>
-          <div>
-            <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 4)" class="upload" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 4)" class="upload custom-file-input" />
               <span class="custom-file-control others-file-control"></span>
             </label>
             <br />

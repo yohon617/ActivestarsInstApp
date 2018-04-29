@@ -47,18 +47,26 @@ a.classReportFileLink {
   padding-left: 10px;
 }
 
+.signInSheet-file-control:lang(en)::after {
+  content: "Sign-in Sheets";
+}
+
 .parentHelper-file-control:lang(en)::after {
-  content: "Parent Helper Form";
+  content: "Parent Helper";
+}
+
+.classReportSheet-file-control:lang(en)::after {
+  content: "Class Report Sheet";
+}
+
+.orderEnvelopes-file-control:lang(en)::after {
+  content: "Order Envelopes";
 }
 
 .depositReceipt-file-control:lang(en)::after {
   content: "Deposit Receipt";
 }
 
-.promoOrders-file-control:lang(en)::after {
-  content: "Promo Orders";
-}
-
 .others-file-control:lang(en)::after {
-  content: "Others";
+  content: "Other";
 }
