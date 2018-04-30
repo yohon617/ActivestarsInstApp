@@ -12,3 +12,29 @@
   width: 60px;
   display: inline;
 }
+
+.divCheckInRow {
+  border: dashed 1px #E7EBF7;
+}
+
+.divCheckInRowPayment {
+  border: dashed 1px #E7EBF7;
+  background-color: #8DC98D;
+}
+
+.divCheckInRowPaymentBreakDown {
+  border: dashed 1px #E7EBF7;
+  background-color: #D4FFAA;
+}
+
+.divCheckInRowLeft {
+  display: inline-block;
+  text-align: left;
+  width: 49%;
+}
+
+.divCheckInRowRight {
+  display: inline-block;
+  text-align: right;
+  width: 49%;
+}

@@ -1,5 +1,5 @@
 ﻿<div id="class-week-header" class="row">
-    <a class="week-header-link" [attr.href]="classService.SelectedClassWeek?.WeekNumber == 1 ? null : 'http://insttest.activstarsonline.com'" 
+    <a class="week-header-link" [attr.href]="classService.SelectedClassWeek?.WeekNumber == 1 ? null : '/classes'" 
        (click)="prev()" [class.week-header-link-disabled]="classService.SelectedClassWeek?.WeekNumber == 1">
       <i class="fa fa-chevron-left class-week-left-arrow" aria-hidden="true"></i>
     </a>
@@ -9,7 +9,7 @@
         {{classService.SelectedClassWeek?.ClassDate | date: 'MMMM dd, yyyy'}} - {{classService.SelectedClassWeek?.WeekHeader}}
       </div>
     </div>
-    <a class="week-header-link" [attr.href]="classService.SelectedClassWeek?.WeekNumber == classService.SelectedClassWeeks?.length ? null : 'http://insttest.activstarsonline.com'" 
+    <a class="week-header-link" [attr.href]="classService.SelectedClassWeek?.WeekNumber == classService.SelectedClassWeeks?.length ? null : '/classes'" 
        (click)="next()" [class.week-header-link-disabled]="classService.SelectedClassWeek?.WeekNumber == classService.SelectedClassWeeks?.length">
       <i class="fa fa-chevron-right class-week-right-arrow" aria-hidden="true"></i>
     </a>

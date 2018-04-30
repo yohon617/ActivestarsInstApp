@@ -48,11 +48,12 @@ end if
         
 		<div id="navbar" class="collapse navbar-collapse">
 		<% if session(SESSION_LOGGED) = 1 then %>
+          <!--
 		  <ul class="nav navbar-nav">
 			<li><a href="<%=makelink("start.asp")%>">Home</a></li>
 			<li><a href="<%=makelink("eventsLookUp.asp")%>">Events</a></li>
 			<li><a href="<%=makelink("RegClassLookUp.asp")%>">Classes</a></li>
-			<!--<li><a href="<%'=makelink("RegClassSRFO.asp")%>">Orders</a></li>-->
+			<li><a href="<%'=makelink("RegClassSRFO.asp")%>">Orders</a></li>
 			<li><a href="<%=makelink("cart.asp")%>"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Cart(<%=headerRS("cartCount")%>)</a></li>
 		  </ul>
 		  <div class="nav navbar-nav navbar-right">
@@ -71,6 +72,7 @@ end if
 		   <br/>
 		   <span style="color: #ffffff;">(If you're not <%=SESSION(SESSION_NAME)%>, <a href="<%=makeLink("eventsLo.asp")%>" class="greentext">LOG OUT</a>.)</span>
 		  </div>
+          -->
 		<%else%>
 		  <ul class="nav navbar-nav navbar-right">
 		   <li><a href="<%=makelink("eventslogin.asp")%>">Login</a></li>
