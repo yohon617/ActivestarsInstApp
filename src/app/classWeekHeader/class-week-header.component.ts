@@ -25,12 +25,14 @@ export class ClassWeekHeaderComponent implements OnInit {
         console.log("prev");
         if (this.classService.SelectedClassWeek.WeekNumber > 1)
           this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber - 2];
+      return false;
     }
 
     next() {
         console.log("next");
         if (this.classService.SelectedClassWeek.WeekNumber < this.classService.SelectedClassWeeks.length)
           this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber];
+      return false;
         
     }
     

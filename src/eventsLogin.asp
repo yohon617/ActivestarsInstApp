@@ -110,7 +110,7 @@ end if
 					<%end if%>
 					
 					<div class="panel-body login-form clearfix">
-						<h2 class="form-signin-heading">Parent Sign In</h2>
+						<h2 class="form-signin-heading">Instructor Sign In</h2>
 						<%if lg_Failed = 1 then%>
 						<div>
 							<span class="redtext">Login failed.</span>
