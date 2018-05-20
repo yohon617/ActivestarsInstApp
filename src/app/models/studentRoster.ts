@@ -13,4 +13,18 @@
     CellPhone: string;
     InSpecialtyClass: boolean;
     Prepaid: boolean;
+
+    get StatusNote():string {
+        switch (this.Status) {
+            case 2: {
+                return "(A)"
+            }
+            case 5: {
+                return "(E)"
+            }
+            default: {
+                return "(R)"
+            }
+        }
+    }
 }

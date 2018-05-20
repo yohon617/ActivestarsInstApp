@@ -4,6 +4,7 @@
     ClassFee: number;
     MerchFee: number;
     CashPayment: number;
+    CreditPayment: number;
     OnlinePayment: number;
     VoucherPayment: number;
     ParentHelperFormImage: string[];

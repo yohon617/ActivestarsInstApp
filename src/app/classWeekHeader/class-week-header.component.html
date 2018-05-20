@@ -6,7 +6,7 @@
     <div id="class-week-header-content">
         {{classService.SelectedClass?.Name}}
       <div>
-        {{classService.SelectedClassWeek?.ClassDate | date: 'MMMM dd, yyyy'}} - {{classService.SelectedClassWeek?.WeekHeader}}
+        {{classService.SelectedClassWeek?.ClassDate | date: 'MMMM dd, yyyy'}} - {{classService.SelectedClassWeek?.WeekHeader}} <span *ngIf="classService.SelectedClassWeek?.IsTest">(TEST)</span>
       </div>
     </div>
     <a class="week-header-link" [attr.href]="classService.SelectedClassWeek?.WeekNumber == classService.SelectedClassWeeks?.length ? null : '/classes'" 

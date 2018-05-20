@@ -55,8 +55,8 @@ a.class-header-link {
 }
 
 .roster-student-name {
-  max-width:260px;
-  display:inline-block;
+  max-width: calc( 100vw - 160px );
+  display: inline-block;
 }
 
 .roster-student-name .fa {

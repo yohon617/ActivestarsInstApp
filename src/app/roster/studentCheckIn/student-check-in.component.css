@@ -3,7 +3,7 @@
   display: inline;
 }
 
-.chkCheckIn {
+.chkCheckIn, .chkTest {
   width: 20px;
   display: inline;
 }
@@ -37,4 +37,9 @@
   display: inline-block;
   text-align: right;
   width: 49%;
+}
+
+input[type='checkbox'] {
+  transform: scale(2);
+  margin-top: 7px;
 }

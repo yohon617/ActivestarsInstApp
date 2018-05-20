@@ -22,6 +22,10 @@
       <div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
+    <div *ngIf="this.classService.SelectedClassWeek.IsTest" class="divCheckInRow">
+      <div class="divCheckInRowLeft">${{testFee}} Test Fee</div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkTestFee" (change)="checkTestFee($event)" class="chkTest form-control form-control-sm" /></div>
+    </div>
     <div *ngIf="!isRegister && studentRoster.Prepaid" class="divCheckInRow">
       <div class="divCheckInRowLeft">Prepaid </div>
       <div class="divCheckInRowRight"><input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
@@ -67,8 +71,12 @@
       <div class="divCheckInRowRight">${{totalFee}}</div> 
     </div>
     <div class="divCheckInRowPaymentBreakDown">
-      <div class="divCheckInRowLeft">---Cash/Credit: </div>
-      <div class="divCheckInRowRight">$<input type="text" [value]="cashCreditFee" class="txtCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowLeft">---Cash: </div>
+      <div class="divCheckInRowRight">$<input type="text" [value]="cashFee" class="txtCheckIn form-control form-control-sm" disabled /></div>
+    </div>
+    <div class="divCheckInRowPaymentBreakDown">
+      <div class="divCheckInRowLeft">---Credit: </div>
+      <div class="divCheckInRowRight">$<input type="text" [value]="creditFee" (change)="creditFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" /></div>
     </div>
     <div class="divCheckInRowPaymentBreakDown">
       <div class="divCheckInRowLeft">---Voucher:</div>

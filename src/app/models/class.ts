@@ -12,4 +12,5 @@
     PrepaidFee: number;
     PrepaidAdvancedFee: number;
     PrepaidExtendedFee: number;
+    TestFee: number;
 }

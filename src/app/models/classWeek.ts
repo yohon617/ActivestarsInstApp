@@ -3,4 +3,5 @@
     WeekNumber: number;
     WeekHeader: string;
     ClassDate: Date;
+    IsTest: boolean;
 }

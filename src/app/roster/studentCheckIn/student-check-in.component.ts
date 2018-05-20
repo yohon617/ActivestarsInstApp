@@ -28,12 +28,15 @@ export class StudentCheckInComponent implements OnInit {
     makeUpFee: number = 0;
     totalFee: number;
     specialFee: number = 0;
-    cashCreditFee: number = 0;
+    cashFee: number = 0;
+    creditFee: number = 0;
     voucherFee: number = 0;
     absentWeekList: string[];
     timeToLoad: boolean = false;
     makeupWeeks: string = "";
     payType: string;
+    testFee: number;
+    testChecked: boolean = false;
 
     constructor(
         private location: Location,
@@ -63,8 +66,10 @@ export class StudentCheckInComponent implements OnInit {
         }
 
         this.regFee = this.classService.SelectedClass.RegFee + this.classFee;
+        this.testFee = this.classService.SelectedClass.TestFee;
+
         if (this.isRegister) {
-            this.cashCreditFee = this.totalFee = this.checkInFee = this.regFee;
+            this.cashFee = this.totalFee = this.checkInFee = this.regFee;
             this.payType = "REG";
         }
         else {
@@ -91,12 +96,12 @@ export class StudentCheckInComponent implements OnInit {
         if (e.target.value == "REG") {
             this.checkInFee -= this.prepaidFee;
             this.checkInFee += this.regFee;
-            this.cashCreditFee = this.totalFee = this.checkInFee + this.specialFee;
+            this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
         }
         else {//PIF
             this.checkInFee -= this.regFee;
             this.checkInFee += this.prepaidFee;
-            this.cashCreditFee = this.totalFee = this.checkInFee + this.specialFee;
+            this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
         }
     }
 
@@ -107,7 +112,20 @@ export class StudentCheckInComponent implements OnInit {
         else {
             this.checkInFee -= this.classFee;
         }
-        this.cashCreditFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.voucherFee = 0;
+    }
+
+    checkTestFee(e) {
+        if (e.target.checked) {
+            this.checkInFee += this.testFee;
+            this.testChecked = true;
+        }
+        else {
+            this.checkInFee -= this.testFee;
+            this.testChecked = false;
+        }
+        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
         this.voucherFee = 0;
     }
 
@@ -120,7 +138,7 @@ export class StudentCheckInComponent implements OnInit {
             this.makeUpFee -= this.classFee;
             this.makeupWeeks = this.makeupWeeks.replace("," + e.target.value, "")
         }
-        this.cashCreditFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
         this.voucherFee = 0;
         if (this.makeupWeeks.length > 0)
             console.log(this.makeupWeeks.substring(1));
@@ -128,21 +146,36 @@ export class StudentCheckInComponent implements OnInit {
 
     changeSpecialFee(e) {
         this.specialFee = +e.target.value;
-        this.cashCreditFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
         this.voucherFee = 0;
+    }
+
+    creditFeeUpdate(e) {
+        if (e.target.value == "" || isNaN(e.target.value)) {
+            this.creditFee = e.target.value = 0;
+            this.cashFee = this.totalFee;
+        }
+        else if ((+this.voucherFee + +e.target.value) > this.totalFee) {
+            this.creditFee = e.target.value = 0;
+            this.cashFee = this.totalFee - this.voucherFee;
+        }
+        else {
+            this.cashFee = this.totalFee - e.target.value - this.voucherFee;
+            this.creditFee = e.target.value;
+        }
     }
 
     voucherFeeUpdate(e) {
         if (e.target.value == "" || isNaN(e.target.value)) {
             this.voucherFee = e.target.value = 0;
-            this.cashCreditFee = this.totalFee;
+            this.cashFee = this.totalFee;
         }
-        else if (e.target.value > this.totalFee) {
+        else if ((+this.creditFee + +e.target.value) > this.totalFee) {
             this.voucherFee = e.target.value = 0;
-            this.cashCreditFee = this.totalFee;
+            this.cashFee = this.totalFee - this.creditFee;
         }
         else {
-            this.cashCreditFee = this.totalFee - e.target.value;
+            this.cashFee = this.totalFee - e.target.value - this.creditFee;
             this.voucherFee = e.target.value;
         }
     }
@@ -150,7 +183,7 @@ export class StudentCheckInComponent implements OnInit {
     checkInClick() {
         if (this.makeupWeeks.length > 0)
             this.makeupWeeks = this.makeupWeeks.substring(1);
-        this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks)
+        this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.voucherFee, this.testChecked)
             .then(() => {
               this.refreshRoster.emit();
               this.modalRef.hide();

@@ -42,9 +42,10 @@ export class StudentAPIService {
             .then(response => response.json() as string)
     }
 
-    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks) {
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked) {
         return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
-            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&classFee=" + classFee + "&makeupWeeks=" + makeupWeeks
+            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&classFee=" + classFee + "&makeupWeeks=" + makeupWeeks + "&cashFee=" + cashFee
+            + "&creditFee=" + creditFee + "&voucherFee=" + voucherFee + "&testChecked=" + testChecked
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
             .then(response => response.json());

@@ -98,7 +98,7 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     setStudentAB(studentID) {
         //console.log(studentID);
-        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "")
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "", 0, 0, 0, false)
             .then(() => {
                 this.refreshRoster();
             });
