@@ -26,4 +26,8 @@ export class ClassReportService {
     deleteClassReportFile(classReportID: number, type: number, fileName: string): Promise<any> {
         return this.classReportAPIService.deleteClassReportFile(classReportID, type, fileName);
     }
+
+    updateClassReportRaffle(classReportID: number, rafflePack: number, raffleAmount: number): Promise<any> {
+        return this.classReportAPIService.updateClassReportRaffle(classReportID, rafflePack, raffleAmount);
+    }
 }

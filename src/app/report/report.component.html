@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="classReportPayments">
-        <div>Payments Received</div>
+        <div class="paymentHeader">Payments Received</div>
         <div>
           Cash: ${{classReport?.CashPayment}}
         </div>
@@ -25,6 +25,18 @@
         </div>
         <div>
           Voucher: ${{classReport?.VoucherPayment}} 
+        </div>
+      </div>
+      <div class="raffleNumbers">
+        <div class="raffleHeader">Raffle</div>
+        <div>
+          Pack: <input type="text" [value]="classReport?.RafflePack" class="txtRaffle form-control form-control-sm" (input)="classReport.RafflePack=$event.target.value" />
+        </div>
+        <div>
+          Amount: <input type="text" [value]="classReport?.RaffleAmount" class="txtRaffle form-control form-control-sm" (input)="classReport.RaffleAmount=$event.target.value" />
+        </div>
+        <div style="padding-top: 20px;">
+          <button type="button" dropdownToggle class="btn btn-success" style="width: 100%;" (click)="updateRaffle($event)">Update Raffle</button>
         </div>
       </div>
     </tab>

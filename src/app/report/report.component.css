@@ -13,7 +13,15 @@
   width: 100%;
   font-weight: bold;
   padding: 10px;
-  text-align: center;
+  text-align: left;
+}
+
+.paymentHeader {
+  background-color: #00659C;
+  color: #ffffff;
+  padding-left: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 .ClassReportFiles {
@@ -69,4 +77,24 @@ a.classReportFileLink {
 
 .others-file-control:lang(en)::after {
   content: "Other";
+}
+
+.raffleNumbers {
+  border: solid 1px #000;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+}
+
+.raffleHeader {
+  background-color: #00659C;
+  color: #ffffff;
+  padding-left: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.txtRaffle {
+  width: 45px;
+  display: inline;
 }

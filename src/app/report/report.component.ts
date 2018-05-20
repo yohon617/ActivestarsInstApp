@@ -55,4 +55,22 @@ export class ReportComponent implements OnInit {
                 this.getClassReport();
             });
     }
+
+    updateRaffle(e) {
+        e.target.textContent = "Updating..";
+        e.target.disabled = true;
+        e.target.classList = "btn btn-default";
+
+        this.classReportService.updateClassReportRaffle(this.classService.SelectedClassWeek.ClassReportID, this.classReport.RafflePack, this.classReport.RaffleAmount)
+            .then(() => {
+                this.getClassReport();
+                e.target.textContent = "Updated";
+                e.target.disabled = false;
+                e.target.classList = "btn btn-primary";
+                setTimeout(() => {    //<<<---    using ()=> syntax
+                    e.target.textContent = "Update Raffle";
+                    e.target.classList = "btn btn-success";
+                }, 2000);
+            });
+    }
 }

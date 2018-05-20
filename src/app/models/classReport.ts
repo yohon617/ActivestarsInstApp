@@ -13,4 +13,6 @@
     OtherImage: string[];
     SignInSheetImage: string[];
     ClassReportSheetImage: string[];
+    RafflePack: number;
+    RaffleAmount: number;
 }

@@ -39,4 +39,12 @@ export class ClassReportAPIService {
         //return new Promise<any>((resolve, reject) => {
         //});
     }
+
+    updateClassReportRaffle(classReportID: number, rafflePack: number, raffleAmount: number): Promise<any> {
+        return this.http.post(this.config.get("apiURL") + "/api/classreports.mvc/UpdateClassReportRaffle?classReportID=" + classReportID + "&rafflePack=" + rafflePack
+            + "&raffleAmount=" + raffleAmount
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json());
+    }
 }
