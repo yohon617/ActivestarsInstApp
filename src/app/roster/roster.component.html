@@ -40,7 +40,7 @@
             </li>
           </ul>
         </div>
-        {{student.StatusNote}} {{student.LastName}}, {{student.FirstName}}
+        <span class="spanStudStat">{{(student.Status == 5) ? "(E)" : ((student.Status == 2) ? "(A)" : "(R)")}}</span> {{student.LastName}}, {{student.FirstName}}
       </div>
       <div class="roster-student-button-div">
         <div class="btn-group roster-student-button" dropdown placement="bottom right">
