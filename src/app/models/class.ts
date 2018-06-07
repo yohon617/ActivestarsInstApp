@@ -13,4 +13,10 @@
     PrepaidAdvancedFee: number;
     PrepaidExtendedFee: number;
     TestFee: number;
+    Specialty1Desc: string;
+    Specialty1Fee: number;
+    Specialty2Desc: string;
+    Specialty2Fee: number;
+    Specialty3Desc: string;
+    Specialty3Fee: number;
 }

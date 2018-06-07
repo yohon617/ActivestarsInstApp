@@ -34,6 +34,7 @@ export class StudentCheckInComponent implements OnInit {
     absentWeekList: string[];
     timeToLoad: boolean = false;
     makeupWeeks: string = "";
+    specialtyClasses: string = "";
     payType: string;
     testFee: number;
     testChecked: boolean = false;
@@ -89,6 +90,8 @@ export class StudentCheckInComponent implements OnInit {
         //this.route.params
         //    .switchMap((params: Params) => this.studentService.getStudent(+params['id'], this.classService.SelectedClassWeek.ClassReportID))
         //    .subscribe(student => this.student = student);
+
+//        this.classService.SelectedClass.Specialty1Desc
     }
 
     checkRegFee(e) {
@@ -131,14 +134,15 @@ export class StudentCheckInComponent implements OnInit {
 
     checkMakeUpFee(e) {
         if (e.target.checked) {
-            this.makeUpFee += this.classFee;
+            this.makeUpFee += this.studentRoster.Prepaid ? 0 : this.classFee;
             this.makeupWeeks += "," + e.target.value;
         }
         else {
-            this.makeUpFee -= this.classFee;
+            this.makeUpFee -= this.studentRoster.Prepaid ? 0 : this.classFee;
             this.makeupWeeks = this.makeupWeeks.replace("," + e.target.value, "")
         }
-        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.cashFee = this.totalFee = this.checkInFee + (this.studentRoster.Prepaid ? 0 : this.makeUpFee) + this.specialFee;
+        this.creditFee = 0;
         this.voucherFee = 0;
         if (this.makeupWeeks.length > 0)
             console.log(this.makeupWeeks.substring(1));
@@ -147,7 +151,25 @@ export class StudentCheckInComponent implements OnInit {
     changeSpecialFee(e) {
         this.specialFee = +e.target.value;
         this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.creditFee = 0;
         this.voucherFee = 0;
+    }
+
+    checkSpec(e, specClassNum) {
+        if (e.target.checked) {
+            this.specialFee += +e.target.value;
+            this.specialtyClasses += "," + specClassNum;
+        }
+        else {
+            this.specialFee -= +e.target.value;
+            this.specialtyClasses = this.specialtyClasses.replace("," + specClassNum, "")
+        }
+        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+        this.creditFee = 0;
+        this.voucherFee = 0;
+
+        if (this.specialtyClasses.length > 0)
+            console.log(this.specialtyClasses.substring(1));
     }
 
     creditFeeUpdate(e) {
@@ -183,6 +205,8 @@ export class StudentCheckInComponent implements OnInit {
     checkInClick() {
         if (this.makeupWeeks.length > 0)
             this.makeupWeeks = this.makeupWeeks.substring(1);
+        if (this.specialtyClasses.length > 0)
+            this.specialtyClasses = this.specialtyClasses.substring(1);
         this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.voucherFee, this.testChecked)
             .then(() => {
               this.refreshRoster.emit();

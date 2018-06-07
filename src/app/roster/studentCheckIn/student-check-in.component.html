@@ -37,7 +37,7 @@
       <div class="divCheckInRowLeft">${{prepaidFee}} PIF Fee</div>
       <div class="divCheckInRowRight"><input type="radio" name="radioRegister" value="PIF" (change)="checkRegFee($event)" /></div>
     </div>
-    <div class="divCheckInRow">
+    <!--<div class="divCheckInRow">
       <div class="divCheckInRowLeft">Specialty Class Fee:</div>
       <div class="divCheckInRowRight">
         $<select (change)="changeSpecialFee($event)" class="ddlSpecielFee form-control form-control-sm">
@@ -64,6 +64,19 @@
           <option value="20">20</option>
         </select>
       </div>
+    </div>-->
+
+    <div *ngIf="this.classService.SelectedClass.Specialty1Fee>0">
+      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty1Fee}} {{this.classService.SelectedClass.Specialty1Desc}} </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec1" (change)="checkSpec($event, 1)" [value]="this.classService.SelectedClass.Specialty1Fee" class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+    <div *ngIf="this.classService.SelectedClass.Specialty2Fee>0">
+      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty2Fee}} {{this.classService.SelectedClass.Specialty2Desc}} </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec2" (change)="checkSpec($event, 2)" [value]="this.classService.SelectedClass.Specialty2Fee" class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+    <div *ngIf="this.classService.SelectedClass.Specialty3Fee>0">
+      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty3Fee}} {{this.classService.SelectedClass.Specialty3Desc}} </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec3" (change)="checkSpec($event, 3)" [value]="this.classService.SelectedClass.Specialty3Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
 
     <div style="font-weight: bold; margin-top: 15px;" class="divCheckInRowPayment">
