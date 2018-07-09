@@ -34,8 +34,8 @@ export class StudentService {
         return this.studentAPIService.getStudentRosterABWeeks(studentID, classReportID);
     }
 
-    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked) {
-        return this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked);
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked, prepaidFee) {
+        return this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked, prepaidFee);
     }
 
     AddStudentToClass(studentID, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {

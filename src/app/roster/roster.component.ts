@@ -104,6 +104,14 @@ export class RosterComponent implements OnInit, OnDestroy {
             });
     }
 
+    setStudentNP(studentID) {
+        //console.log(studentID);
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "NP", 0, 0, "", 0, 0, 0, false)
+            .then(() => {
+                this.refreshRoster();
+            });
+    }
+
     dropStudent(template: TemplateRef<any>, dropRequestStudent: StudentRoster) {
         this.modalRef = this.modalService.show(template);
         this.dropRequestStudent = dropRequestStudent;

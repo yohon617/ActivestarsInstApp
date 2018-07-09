@@ -18,9 +18,24 @@
       <div class="divCheckInRowLeft"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[2]}} make-up </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkMakeUpFee3" (change)="checkMakeUpFee($event)" [value]="absentWeekList[2]" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="!isRegister && !studentRoster.Prepaid" class="divCheckInRow">
+    <div *ngIf="!isRegister && !studentRoster.Prepaid && !studentRoster.Scholarship && !studentRoster.ParentHelper" class="divCheckInRow">
+      <!--<div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" /></div>-->
+
       <div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
-      <div class="divCheckInRowRight"><input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="W" checked (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
+      
+      <div class="divCheckInRowLeft">${{prepaidFee}} PIF Fee</div>
+      <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="PIF" (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
+
+    </div>
+    <div *ngIf="!isRegister && studentRoster.Scholarship" class="divCheckInRow">
+      <div class="divCheckInRowLeft">${{scholarshipFee}} Scholarship Fee</div>
+      <div class="divCheckInRowRight"><input type="checkbox" checked disabled name="chkScholarshipFee" (change)="checkScholarshipFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+    <div *ngIf="!isRegister && studentRoster.ParentHelper" class="divCheckInRow">
+      <div class="divCheckInRowLeft">${{parentHelperFee}} Parent Helper Fee</div>
+      <div class="divCheckInRowRight"><input type="checkbox" checked disabled name="chkParentHelperFee" (change)="checkParentHelperFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="this.classService.SelectedClassWeek.IsTest" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{testFee}} Test Fee</div>
@@ -67,15 +82,15 @@
     </div>-->
 
     <div *ngIf="this.classService.SelectedClass.Specialty1Fee>0">
-      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty1Fee}} {{this.classService.SelectedClass.Specialty1Desc}} </div>
+      <div class="divCheckInRowLeft">${{this.specFee1}} {{this.classService.SelectedClass.Specialty1Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec1" (change)="checkSpec($event, 1)" [value]="this.classService.SelectedClass.Specialty1Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="this.classService.SelectedClass.Specialty2Fee>0">
-      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty2Fee}} {{this.classService.SelectedClass.Specialty2Desc}} </div>
+      <div class="divCheckInRowLeft">${{this.specFee2}} {{this.classService.SelectedClass.Specialty2Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec2" (change)="checkSpec($event, 2)" [value]="this.classService.SelectedClass.Specialty2Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="this.classService.SelectedClass.Specialty3Fee>0">
-      <div class="divCheckInRowLeft">${{this.classService.SelectedClass.Specialty3Fee}} {{this.classService.SelectedClass.Specialty3Desc}} </div>
+      <div class="divCheckInRowLeft">${{this.specFee3}} {{this.classService.SelectedClass.Specialty3Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec3" (change)="checkSpec($event, 3)" [value]="this.classService.SelectedClass.Specialty3Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
 

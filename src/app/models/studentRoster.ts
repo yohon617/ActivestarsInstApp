@@ -13,6 +13,8 @@
     CellPhone: string;
     InSpecialtyClass: boolean;
     Prepaid: boolean;
+    Scholarship: boolean;
+    ParentHelper: boolean;
 
     get StatusNote():string {
         switch (this.Status) {

@@ -19,4 +19,6 @@
     Specialty2Fee: number;
     Specialty3Desc: string;
     Specialty3Fee: number;
+    ScholarshipFee: number;
+    ParentHelperFee: number;
 }

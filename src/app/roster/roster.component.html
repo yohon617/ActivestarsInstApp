@@ -40,7 +40,7 @@
             </li>
           </ul>
         </div>
-        <span class="spanStudStat">{{(student.Status == 5) ? "(E)" : ((student.Status == 2) ? "(A)" : "(R)")}}</span> {{student.LastName}}, {{student.FirstName}}
+        <span class="spanStudStat">{{(student.Status == 5) ? "(E)" : ((student.Status == 2) ? "(A)" : "(R)")}}</span> {{student.LastName}}, {{student.FirstName}} {{(student.Scholarship) ? "(S)" : ((student.ParentHelper) ? "(PH)" : "")}}
       </div>
       <div class="roster-student-button-div">
         <div class="btn-group roster-student-button" dropdown placement="bottom right">
@@ -72,6 +72,11 @@
             <li role="menuitem" *ngIf="student.PayType == 'n/a' || student.PayType == ''">
               <a class="dropdown-item" (click)="setStudentAB(student.StudentID)">
                 Absent
+              </a>
+            </li>
+            <li role="menuitem" *ngIf="student.PayType == 'n/a' || student.PayType == ''">
+              <a class="dropdown-item" (click)="setStudentNP(student.StudentID)">
+                Not Paid
               </a>
             </li>
             <li class="divider dropdown-divider" *ngIf="student.PayType == 'n/a' || student.PayType == ''"></li>

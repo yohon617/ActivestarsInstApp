@@ -8,6 +8,11 @@
   display: inline;
 }
 
+.rdoCheckIn {
+  width: 20px;
+  display: inline;
+}
+
 .ddlSpecielFee {
   width: 60px;
   display: inline;
@@ -39,7 +44,7 @@
   width: 49%;
 }
 
-input[type='checkbox'] {
+input[type='checkbox'], input[type='radio'] {
   transform: scale(2);
   margin-top: 7px;
 }
