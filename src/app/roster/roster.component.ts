@@ -26,7 +26,7 @@ export class RosterComponent implements OnInit, OnDestroy {
     selectedWeekStudentList: StudentRoster[];
     studentListByClassNumber: StudentRoster[][] = [];
 
-    selectedClassNumber: number;
+    selectedClassNumber: number = 1;
     selectedStudentRoster: StudentRoster;
 
     dropRequestStudent: StudentRoster;
@@ -58,7 +58,7 @@ export class RosterComponent implements OnInit, OnDestroy {
             response => {
                 this.studentList = response;
                 this.studentListByClassNumber = [];
-                this.selectedClassNumber = 1;
+                //this.selectedClassNumber = 1;
 
                 for (let student of this.studentList) {
                     //console.log(this.studentListByClassNumber);
@@ -98,7 +98,7 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     setStudentAB(studentID) {
         //console.log(studentID);
-        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "", 0, 0, 0, false)
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "", 0, 0, 0, false, 0)
             .then(() => {
                 this.refreshRoster();
             });
@@ -106,7 +106,7 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     setStudentNP(studentID) {
         //console.log(studentID);
-        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "NP", 0, 0, "", 0, 0, 0, false)
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "NP", 0, 0, "", 0, 0, 0, false, 0)
             .then(() => {
                 this.refreshRoster();
             });

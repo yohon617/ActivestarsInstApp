@@ -1,4 +1,4 @@
-﻿<div *ngIf="timeToLoad">
+<div *ngIf="timeToLoad">
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{studentRoster.FirstName}} {{studentRoster.LastName}} Check In</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -25,7 +25,7 @@
       <div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
       <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="W" checked (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
       
-      <div class="divCheckInRowLeft">${{prepaidFee}} PIF Fee</div>
+      <div class="divCheckInRowLeft">${{prepaidFee}} Pay Remaining</div>
       <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="PIF" (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
 
     </div>
@@ -81,15 +81,15 @@
       </div>
     </div>-->
 
-    <div *ngIf="this.classService.SelectedClass.Specialty1Fee>0">
+    <div *ngIf="this.classService.SelectedClass.Specialty1Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee1}} {{this.classService.SelectedClass.Specialty1Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec1" (change)="checkSpec($event, 1)" [value]="this.classService.SelectedClass.Specialty1Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="this.classService.SelectedClass.Specialty2Fee>0">
+    <div *ngIf="this.classService.SelectedClass.Specialty2Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee2}} {{this.classService.SelectedClass.Specialty2Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec2" (change)="checkSpec($event, 2)" [value]="this.classService.SelectedClass.Specialty2Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="this.classService.SelectedClass.Specialty3Fee>0">
+    <div *ngIf="this.classService.SelectedClass.Specialty3Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee3}} {{this.classService.SelectedClass.Specialty3Desc}} </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec3" (change)="checkSpec($event, 3)" [value]="this.classService.SelectedClass.Specialty3Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>

@@ -1,4 +1,4 @@
-﻿.txtCheckIn {
+.txtCheckIn {
   width: 45px;
   display: inline;
 }
@@ -35,16 +35,16 @@
 .divCheckInRowLeft {
   display: inline-block;
   text-align: left;
-  width: 49%;
+  width: 65%;
 }
 
 .divCheckInRowRight {
   display: inline-block;
   text-align: right;
-  width: 49%;
+  width: 32%;
 }
 
 input[type='checkbox'], input[type='radio'] {
-  transform: scale(2);
+  transform: scale(1.8);
   margin-top: 7px;
 }
