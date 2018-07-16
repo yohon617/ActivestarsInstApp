@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 
 
@@ -42,11 +42,18 @@ export class ClassService {
           .then(weeks => {
               this.selectedClassWeeks = weeks;
               for (let week of this.selectedClassWeeks) {
+                //console.log(week.WeekNumber);
+                //console.log(new Date().getTime());
+                //console.log(new Date(week.ClassDate).getTime());
+                //console.log(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000));
+                //console.log(new Date(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000)));
+                //console.log(new Date());
+                //console.log(new Date(week.ClassDate));
                   if (week.WeekNumber == this.selectedClass.NumOfWeeks) {
                       this.selectedWeek = week;
                       this.weekChange.next();
                   }
-                  else if (new Date().getTime() < new Date(week.ClassDate).getTime()) {
+                  else if (new Date().getTime() < new Date(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000)).getTime()) {
                       this.selectedWeek = week;
                       this.weekChange.next();
                       break;
