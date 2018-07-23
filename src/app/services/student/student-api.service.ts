@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { RequestOptions, Headers, Http } from '@angular/http';
 
 import { ConfigService } from './../../config/config.service';
@@ -42,10 +42,17 @@ export class StudentAPIService {
             .then(response => response.json() as string)
     }
 
-    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked, prepaidFee) {
+    getStudentPIFWeeks(classReportID, studentID): Promise<number> {
+        return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudentPIFWeeks?classReportID=" + classReportID + "&studentID=" + studentID, this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as number)
+    }
+
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, prepaidFee, specialtyClasses) {
         return this.http.post(this.config.get("apiURL") + "/api/students.mvc/CheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
             + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&classFee=" + classFee + "&makeupWeeks=" + makeupWeeks + "&cashFee=" + cashFee
-            + "&creditFee=" + creditFee + "&voucherFee=" + voucherFee + "&testChecked=" + testChecked + "&prepaidFee=" + prepaidFee
+            + "&creditFee=" + creditFee+ "&checkFee=" + checkFee + "&voucherFee=" + voucherFee + "&testChecked=" + testChecked + "&prepaidFee=" + prepaidFee
+            + "&specialtyClasses=" + specialtyClasses
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
             .then(response => response.json());

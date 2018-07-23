@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {  Http } from '@angular/http';
 
 
@@ -34,8 +34,12 @@ export class StudentService {
         return this.studentAPIService.getStudentRosterABWeeks(studentID, classReportID);
     }
 
-    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked, prepaidFee) {
-        return this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, voucherFee, testChecked, prepaidFee);
+    getStudentPIFWeeks(studentID, classReportID): Promise<number> {
+        return this.studentAPIService.getStudentPIFWeeks(classReportID, studentID);
+    }
+
+    CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, prepaidFee, specialtyClasses) {
+      return this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, prepaidFee, specialtyClasses);
     }
 
     AddStudentToClass(studentID, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {

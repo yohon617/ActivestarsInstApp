@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -32,6 +32,7 @@ export class StudentCheckInComponent implements OnInit {
     specialFee: number = 0;
     cashFee: number = 0;
     creditFee: number = 0;
+    checkFee: number = 0;
     voucherFee: number = 0;
     absentWeekList: string[];
     timeToLoad: boolean = false;
@@ -43,6 +44,7 @@ export class StudentCheckInComponent implements OnInit {
     specFee1: number = 0;
     specFee2: number = 0;
     specFee3: number = 0;
+    studentPIFWeeks: number = 0;
 
     constructor(
         private location: Location,
@@ -52,6 +54,14 @@ export class StudentCheckInComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+      
+      this.studentService.getStudentRosterABWeeks(this.classService.SelectedClassWeek.ClassReportID, this.studentRoster.StudentID)
+        .then(response => {
+          this.studentPIFWeeks = +response;
+          //this.timeToLoad = true;
+        }
+        );
+
         if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
             switch (this.studentRoster.Status) {
                 case 1://regular
@@ -85,8 +95,8 @@ export class StudentCheckInComponent implements OnInit {
             }
             //console.log(this.classService.SelectedClass.PrepaidExtendedFee);
             this.specFee1 = this.classService.SelectedClass.Specialty1Fee;
-            this.specFee2 = this.classService.SelectedClass.Specialty1Fee;
-            this.specFee3 = this.classService.SelectedClass.Specialty1Fee;
+            this.specFee2 = this.classService.SelectedClass.Specialty2Fee;
+            this.specFee3 = this.classService.SelectedClass.Specialty3Fee;
             this.testFee = this.classService.SelectedClass.TestFee;
             this.regFee = this.classService.SelectedClass.RegFee + this.classFee;
 
@@ -136,31 +146,31 @@ export class StudentCheckInComponent implements OnInit {
     }
 
     checkRegFee(e) {
-        this.payType = e.target.value;
-        if (e.target.value == "REG") {
-            this.checkInFee -= this.prepaidFee;
-            this.checkInFee += this.regFee;
-            this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
-        }
-        else {//PIF
-            this.checkInFee -= this.regFee;
-            this.checkInFee += this.prepaidFee;
-            this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
-        }
+      this.payType = e.target.value;
+      if (e.target.value == "REG") {
+          this.checkInFee -= this.prepaidFee;
+          this.checkInFee += this.regFee;
+          this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
+      }
+      else {//PIF
+          this.checkInFee -= this.regFee;
+          this.checkInFee += this.prepaidFee;
+          this.cashFee = this.totalFee = this.checkInFee + this.specialFee;
+      }
     }
 
     checkWeeklyFee(e) {
-        if (e.target.value == 'PIF') {
-            this.checkInFee -= this.classFee;
-            this.checkInFee += this.prepaidFee;
-        }
-        else {
-            this.checkInFee += this.classFee;
-            this.checkInFee -= this.prepaidFee;
-        }
-        this.payType = e.target.value;
-        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
-        this.voucherFee = 0;
+      if (e.target.value == 'PIF') {
+          this.checkInFee -= this.classFee;
+          this.checkInFee += this.prepaidFee;
+      }
+      else {
+          this.checkInFee += this.classFee;
+          this.checkInFee -= this.prepaidFee;
+      }
+      this.payType = e.target.value;
+      this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+      this.creditFee = this.checkFee = this.voucherFee = 0;
     }
 
     checkScholarshipFee(e) {
@@ -170,101 +180,119 @@ export class StudentCheckInComponent implements OnInit {
     }
 
     checkTestFee(e) {
-        if (e.target.checked) {
-            this.checkInFee += this.testFee;
-            this.testChecked = true;
-        }
-        else {
-            this.checkInFee -= this.testFee;
-            this.testChecked = false;
-        }
-        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
-        this.voucherFee = 0;
+      if (e.target.checked) {
+          this.checkInFee += this.testFee;
+          this.testChecked = true;
+      }
+      else {
+          this.checkInFee -= this.testFee;
+          this.testChecked = false;
+      }
+      this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+      this.creditFee = this.checkFee = this.voucherFee = 0;
     }
 
     checkMakeUpFee(e) {
-        if (e.target.checked) {
-            this.makeUpFee += this.studentRoster.Prepaid ? 0 : this.classFee;
-            this.makeupWeeks += "," + e.target.value;
-        }
-        else {
-            this.makeUpFee -= this.studentRoster.Prepaid ? 0 : this.classFee;
-            this.makeupWeeks = this.makeupWeeks.replace("," + e.target.value, "")
-        }
-        this.cashFee = this.totalFee = this.checkInFee + (this.studentRoster.Prepaid ? 0 : this.makeUpFee) + this.specialFee;
-        this.creditFee = 0;
-        this.voucherFee = 0;
-        if (this.makeupWeeks.length > 0)
-            console.log(this.makeupWeeks.substring(1));
+      if (e.target.checked) {
+          this.makeUpFee += this.studentRoster.Prepaid ? 0 : this.classFee;
+          this.makeupWeeks += "," + e.target.value;
+      }
+      else {
+          this.makeUpFee -= this.studentRoster.Prepaid ? 0 : this.classFee;
+          this.makeupWeeks = this.makeupWeeks.replace("," + e.target.value, "")
+      }
+      this.cashFee = this.totalFee = this.checkInFee + (this.studentRoster.Prepaid ? 0 : this.makeUpFee) + this.specialFee;
+      this.creditFee = 0;
+      this.checkFee = 0;
+      this.voucherFee = 0;
+      if (this.makeupWeeks.length > 0)
+        console.log(this.makeupWeeks.substring(1));
     }
 
     changeSpecialFee(e) {
-        this.specialFee = +e.target.value;
-        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
-        this.creditFee = 0;
-        this.voucherFee = 0;
+      this.specialFee = +e.target.value;
+      this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+      this.creditFee = 0;
+      this.checkFee = 0;
+      this.voucherFee = 0;
     }
 
     checkSpec(e, specClassNum) {
-        if (e.target.checked) {
-            if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
-                this.specialFee += +e.target.value;
-            }
-            this.specialtyClasses += "," + specClassNum;
-        }
-        else {
-            if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
-                this.specialFee -= +e.target.value;
-            }
-            this.specialtyClasses = this.specialtyClasses.replace("," + specClassNum, "")
-        }
-        this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
-        this.creditFee = 0;
-        this.voucherFee = 0;
+      if (e.target.checked) {
+          if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
+              this.specialFee += +e.target.value;
+          }
+          this.specialtyClasses += "," + specClassNum;
+      }
+      else {
+          if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
+              this.specialFee -= +e.target.value;
+          }
+          this.specialtyClasses = this.specialtyClasses.replace("," + specClassNum, "")
+      }
+      this.cashFee = this.totalFee = this.checkInFee + this.makeUpFee + this.specialFee;
+      this.creditFee = 0;
+      this.checkFee = 0;
+      this.voucherFee = 0;
 
         if (this.specialtyClasses.length > 0)
             console.log(this.specialtyClasses.substring(1));
     }
 
     creditFeeUpdate(e) {
-        if (e.target.value == "" || isNaN(e.target.value)) {
-            this.creditFee = e.target.value = 0;
-            this.cashFee = this.totalFee;
-        }
-        else if ((+this.voucherFee + +e.target.value) > this.totalFee) {
-            this.creditFee = e.target.value = 0;
-            this.cashFee = this.totalFee - this.voucherFee;
-        }
-        else {
-            this.cashFee = this.totalFee - e.target.value - this.voucherFee;
-            this.creditFee = e.target.value;
-        }
+      if (e.target.value == "" || isNaN(e.target.value)) {
+        this.creditFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.voucherFee - this.checkFee;
+      }
+      else if ((+this.voucherFee + +this.checkFee + +e.target.value) > this.totalFee) {
+        this.creditFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.voucherFee - this.checkFee;
+      }
+      else {
+        this.cashFee = this.totalFee - e.target.value - this.voucherFee - this.checkFee;
+        this.creditFee = e.target.value;
+      }
+    }
+
+    checkFeeUpdate(e) {
+      if (e.target.value == "" || isNaN(e.target.value)) {
+        this.checkFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.voucherFee - this.creditFee;
+      }
+      else if ((+this.voucherFee + +this.creditFee + +e.target.value) > this.totalFee) {
+        this.checkFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.voucherFee - this.creditFee;
+      }
+      else {
+        this.cashFee = this.totalFee - e.target.value - this.voucherFee - this.creditFee;
+        this.checkFee = e.target.value;
+      }
     }
 
     voucherFeeUpdate(e) {
-        if (e.target.value == "" || isNaN(e.target.value)) {
-            this.voucherFee = e.target.value = 0;
-            this.cashFee = this.totalFee;
-        }
-        else if ((+this.creditFee + +e.target.value) > this.totalFee) {
-            this.voucherFee = e.target.value = 0;
-            this.cashFee = this.totalFee - this.creditFee;
-        }
-        else {
-            this.cashFee = this.totalFee - e.target.value - this.creditFee;
-            this.voucherFee = e.target.value;
-        }
+      if (e.target.value == "" || isNaN(e.target.value)) {
+        this.voucherFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.creditFee - this.checkFee;
+      }
+      else if ((+this.creditFee + +this.checkFee + +e.target.value) > this.totalFee) {
+        this.voucherFee = e.target.value = 0;
+        this.cashFee = this.totalFee - this.creditFee - this.checkFee;
+      }
+      else {
+        this.cashFee = this.totalFee - e.target.value - this.creditFee - this.checkFee;
+        this.voucherFee = e.target.value;
+      }
     }
 
     checkInClick() {
-        if (this.makeupWeeks.length > 0)
-            this.makeupWeeks = this.makeupWeeks.substring(1);
-        if (this.specialtyClasses.length > 0)
-            this.specialtyClasses = this.specialtyClasses.substring(1);
-        this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.voucherFee, this.testChecked, this.prepaidFee)
-            .then(() => {
-              this.refreshRoster.emit();
-              this.modalRef.hide();
-            });
+      if (this.makeupWeeks.length > 0)
+          this.makeupWeeks = this.makeupWeeks.substring(1);
+      if (this.specialtyClasses.length > 0)
+          this.specialtyClasses = this.specialtyClasses.substring(1);
+      this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.checkFee, this.voucherFee, this.testChecked, this.prepaidFee, this.specialtyClasses)
+          .then(() => {
+            this.refreshRoster.emit();
+            this.modalRef.hide();
+          });
     }
 }

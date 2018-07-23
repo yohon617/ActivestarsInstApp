@@ -1,3 +1,7 @@
+.modal-body > div.divCheckInRow:nth-of-type(odd) {
+  background-color: #AAD4FF;
+}
+
 .txtCheckIn {
   width: 45px;
   display: inline;

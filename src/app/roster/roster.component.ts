@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
@@ -98,7 +98,7 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     setStudentAB(studentID) {
         //console.log(studentID);
-        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "", 0, 0, 0, false, 0)
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "AB", 0, 0, "", 0, 0, 0, 0, false, 0, "")
             .then(() => {
                 this.refreshRoster();
             });
@@ -106,7 +106,7 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     setStudentNP(studentID) {
         //console.log(studentID);
-        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "NP", 0, 0, "", 0, 0, 0, false, 0)
+        this.studentService.CheckInStudent(studentID, this.classService.SelectedClassWeek.ClassReportID, "NP", 0, 0, "", 0, 0, 0, 0, false, 0, "")
             .then(() => {
                 this.refreshRoster();
             });
