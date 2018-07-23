@@ -1,4 +1,4 @@
-﻿<div class="row">
+<div class="row">
   <tabset>
     <tab heading="ClassReport">
       <div class="classReportNumbers">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="raffleNumbers">
-        <div class="raffleHeader">Raffle</div>
+        <div class="raffleHeader">Order Envelopes</div>
         <div>
           Pack: <input type="text" [value]="classReport?.RafflePack" class="txtRaffle form-control form-control-sm" (input)="classReport.RafflePack=$event.target.value" />
         </div>
@@ -46,7 +46,7 @@
           <div>
             <i class="fa fa-file-image-o" aria-hidden="true"></i>
           </div>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 5)" class="upload custom-file-input" />
               <span class="custom-file-control signInSheet-file-control"></span>
@@ -61,7 +61,7 @@
           <div>
             <i class="fa fa-file-image-o" aria-hidden="true"></i>
           </div>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 1)" class="upload custom-file-input" />
               <span class="custom-file-control parentHelper-file-control"></span>
@@ -74,7 +74,7 @@
         </div>
         <div class="divFile">
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 6)" class="upload custom-file-input" />
               <span class="custom-file-control classReportSheet-file-control"></span>
@@ -87,7 +87,7 @@
         </div>
         <div class="divFile">
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 3)" class="upload custom-file-input" />
               <span class="custom-file-control orderEnvelopes-file-control"></span>
@@ -100,7 +100,7 @@
         </div>
         <div class="divFile">
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 2)" class="upload custom-file-input" />
               <span class="custom-file-control depositReceipt-file-control"></span>
@@ -113,7 +113,7 @@
         </div>
         <div class="divFile">
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
-          <div>
+          <div class="divFileSelect">
             <label class="custom-file">
               <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 4)" class="upload custom-file-input" />
               <span class="custom-file-control others-file-control"></span>
