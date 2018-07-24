@@ -17,6 +17,10 @@
       <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="PIF" (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
 
     </div>
+    <div *ngIf="!isRegister && studentRoster.Prepaid" class="divCheckInRow">
+      <div class="divCheckInRowLeft">Prepaid </div>
+      <div class="divCheckInRowRight"><input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
     <div *ngIf="!isRegister && studentRoster.Scholarship" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{scholarshipFee}} Scholarship Fee</div>
       <div class="divCheckInRowRight"><input type="checkbox" checked disabled name="chkScholarshipFee" (change)="checkScholarshipFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
@@ -36,10 +40,6 @@
     <div *ngIf="absentWeekList[2]!==undefined && absentWeekList[2]!==''" class="divCheckInRow">
       <div class="divCheckInRowLeft"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[2]}} make-up </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkMakeUpFee3" (change)="checkMakeUpFee($event)" [value]="absentWeekList[2]" class="chkCheckIn form-control form-control-sm" /></div>
-    </div>
-    <div *ngIf="!isRegister && studentRoster.Prepaid" class="divCheckInRow">
-      <div class="divCheckInRowLeft">Prepaid </div>
-      <div class="divCheckInRowRight"><input type="checkbox" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="isRegister" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{regFee}} REG Fee</div>

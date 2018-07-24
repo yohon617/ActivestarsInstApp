@@ -55,94 +55,98 @@ export class StudentCheckInComponent implements OnInit {
 
     ngOnInit(): void {
       
-      this.studentService.getStudentRosterABWeeks(this.classService.SelectedClassWeek.ClassReportID, this.studentRoster.StudentID)
+      this.studentService.getStudentPIFWeeks(this.classService.SelectedClassWeek.ClassReportID, this.studentRoster.StudentID)
         .then(response => {
+          console.log("res: "+response);
           this.studentPIFWeeks = +response;
           //this.timeToLoad = true;
-        }
-        );
+          //console.log(this.classService.SelectedClassWeek.ClassReportID);
+          //console.log(this.studentRoster.StudentID);
+          //console.log(this.studentPIFWeeks);
 
-        if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
-            switch (this.studentRoster.Status) {
-                case 1://regular
-                case 4://transfered
-                    this.classFee = this.classService.SelectedClass.WeeklyFee;
-                    if (this.classService.SelectedClassWeek.WeekNumber == 1)
-                        this.prepaidFee = this.classService.SelectedClass.PrepaidFee;
-                    else
-                        this.prepaidFee = (this.classService.SelectedClass.PrepaidFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.classService.SelectedClass.NumOfWeeks - this.classService.SelectedClassWeek.WeekNumber + 1);
-                    break;
-                case 2://advanced
-                    this.classFee = this.classService.SelectedClass.WeeklyAdvancedFee;
-                    if (this.classService.SelectedClassWeek.WeekNumber == 1)
-                        this.prepaidFee = this.classService.SelectedClass.PrepaidAdvancedFee;
-                    else
-                        this.prepaidFee = (this.classService.SelectedClass.PrepaidAdvancedFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.classService.SelectedClass.NumOfWeeks - this.classService.SelectedClassWeek.WeekNumber + 1);
-                    break;
-                case 5://extended
-                    this.classFee = this.classService.SelectedClass.WeeklyExtendedFee;
-                    if (this.classService.SelectedClassWeek.WeekNumber == 1)
-                        this.prepaidFee = this.classService.SelectedClass.PrepaidExtendedFee;
-                    else
-                        this.prepaidFee = (this.classService.SelectedClass.PrepaidExtendedFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.classService.SelectedClass.NumOfWeeks - this.classService.SelectedClassWeek.WeekNumber + 1);
-                    break;
-                default:
-                    this.classFee = this.classService.SelectedClass.WeeklyFee;
-                    if (this.classService.SelectedClassWeek.WeekNumber == 1)
-                        this.prepaidFee = this.classService.SelectedClass.PrepaidFee;
-                    else
-                        this.prepaidFee = (this.classService.SelectedClass.PrepaidFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.classService.SelectedClass.NumOfWeeks - this.classService.SelectedClassWeek.WeekNumber + 1);
-            }
-            //console.log(this.classService.SelectedClass.PrepaidExtendedFee);
-            this.specFee1 = this.classService.SelectedClass.Specialty1Fee;
-            this.specFee2 = this.classService.SelectedClass.Specialty2Fee;
-            this.specFee3 = this.classService.SelectedClass.Specialty3Fee;
-            this.testFee = this.classService.SelectedClass.TestFee;
-            this.regFee = this.classService.SelectedClass.RegFee + this.classFee;
+          if (!this.studentRoster.Scholarship && !this.studentRoster.ParentHelper) {
+              switch (this.studentRoster.Status) {
+                  case 1://regular
+                  case 4://transfered
+                      this.classFee = this.classService.SelectedClass.WeeklyFee;
+                      if (this.classService.SelectedClassWeek.WeekNumber == 1)
+                          this.prepaidFee = this.classService.SelectedClass.PrepaidFee;
+                      else
+                        this.prepaidFee = (this.classService.SelectedClass.PrepaidFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.studentPIFWeeks);
+                      break;
+                  case 2://advanced
+                      this.classFee = this.classService.SelectedClass.WeeklyAdvancedFee;
+                      if (this.classService.SelectedClassWeek.WeekNumber == 1)
+                          this.prepaidFee = this.classService.SelectedClass.PrepaidAdvancedFee;
+                      else
+                        this.prepaidFee = (this.classService.SelectedClass.PrepaidAdvancedFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.studentPIFWeeks);
+                      break;
+                  case 5://extended
+                      this.classFee = this.classService.SelectedClass.WeeklyExtendedFee;
+                      if (this.classService.SelectedClassWeek.WeekNumber == 1)
+                          this.prepaidFee = this.classService.SelectedClass.PrepaidExtendedFee;
+                      else
+                        this.prepaidFee = (this.classService.SelectedClass.PrepaidExtendedFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.studentPIFWeeks);
+                      break;
+                  default:
+                      this.classFee = this.classService.SelectedClass.WeeklyFee;
+                      if (this.classService.SelectedClassWeek.WeekNumber == 1)
+                          this.prepaidFee = this.classService.SelectedClass.PrepaidFee;
+                      else
+                        this.prepaidFee = (this.classService.SelectedClass.PrepaidFee - this.classService.SelectedClass.RegFee) / (this.classService.SelectedClass.NumOfWeeks) * (this.studentPIFWeeks);
+              }
+              //console.log(this.classService.SelectedClass.PrepaidExtendedFee);
+              this.specFee1 = this.classService.SelectedClass.Specialty1Fee;
+              this.specFee2 = this.classService.SelectedClass.Specialty2Fee;
+              this.specFee3 = this.classService.SelectedClass.Specialty3Fee;
+              this.testFee = this.classService.SelectedClass.TestFee;
+              this.regFee = this.classService.SelectedClass.RegFee + this.classFee;
 
-        }
-        else {
-            this.classFee = 0;
-            this.prepaidFee = 0;
-            this.testFee = 0;
-            this.regFee = 0;
-        }
-
-        this.scholarshipFee = this.classService.SelectedClass.ScholarshipFee;
-        this.parentHelperFee = this.classService.SelectedClass.ParentHelperFee;
-
-        if (this.isRegister) {
-            this.cashFee = this.totalFee = this.checkInFee = this.regFee;
-            this.payType = "REG";
-        }
-        else {
-          if (!this.studentRoster.Prepaid) {
-              this.cashFee = this.totalFee = this.checkInFee = this.classFee;
           }
           else {
-              this.cashFee = this.totalFee = this.checkInFee = 0;
+              this.classFee = 0;
+              this.prepaidFee = 0;
+              this.testFee = 0;
+              this.regFee = 0;
           }
-          if (this.studentRoster.Scholarship)
-              this.payType = "S";
-          else if (this.studentRoster.ParentHelper)
-              this.payType = "PH";
-          else if (this.studentRoster.Prepaid)
-            this.payType = "P";
-          else
-            this.payType = "W";
-        }
-        
-        this.studentService.getStudentRosterABWeeks(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID)
-            .then(response => {
-                this.absentWeekList = response.split(",");
-                this.timeToLoad = true;
-            }
-            );
-        //this.route.params
-        //    .switchMap((params: Params) => this.studentService.getStudent(+params['id'], this.classService.SelectedClassWeek.ClassReportID))
-        //    .subscribe(student => this.student = student);
 
-//        this.classService.SelectedClass.Specialty1Desc
+          this.scholarshipFee = this.classService.SelectedClass.ScholarshipFee;
+          this.parentHelperFee = this.classService.SelectedClass.ParentHelperFee;
+
+          if (this.isRegister) {
+              this.cashFee = this.totalFee = this.checkInFee = this.regFee;
+              this.payType = "REG";
+          }
+          else {
+            if (!this.studentRoster.Prepaid) {
+                this.cashFee = this.totalFee = this.checkInFee = this.classFee;
+            }
+            else {
+                this.cashFee = this.totalFee = this.checkInFee = 0;
+            }
+            if (this.studentRoster.Scholarship)
+                this.payType = "S";
+            else if (this.studentRoster.ParentHelper)
+                this.payType = "PH";
+            else if (this.studentRoster.Prepaid)
+              this.payType = "P";
+            else
+              this.payType = "W";
+          }
+        
+          this.studentService.getStudentRosterABWeeks(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID)
+              .then(response => {
+                  this.absentWeekList = response.split(",");
+                  this.timeToLoad = true;
+              }
+              );
+          //this.route.params
+          //    .switchMap((params: Params) => this.studentService.getStudent(+params['id'], this.classService.SelectedClassWeek.ClassReportID))
+          //    .subscribe(student => this.student = student);
+
+            //        this.classService.SelectedClass.Specialty1Desc
+          }
+        );
     }
 
     checkRegFee(e) {
@@ -194,14 +198,14 @@ export class StudentCheckInComponent implements OnInit {
 
     checkMakeUpFee(e) {
       if (e.target.checked) {
-          this.makeUpFee += this.studentRoster.Prepaid ? 0 : this.classFee;
+          this.makeUpFee += (this.studentRoster.Prepaid || this.payType == "PIF") ? 0 : this.classFee;
           this.makeupWeeks += "," + e.target.value;
       }
       else {
-          this.makeUpFee -= this.studentRoster.Prepaid ? 0 : this.classFee;
+          this.makeUpFee -= (this.studentRoster.Prepaid || this.payType == "PIF") ? 0 : this.classFee;
           this.makeupWeeks = this.makeupWeeks.replace("," + e.target.value, "")
       }
-      this.cashFee = this.totalFee = this.checkInFee + (this.studentRoster.Prepaid ? 0 : this.makeUpFee) + this.specialFee;
+      this.cashFee = this.totalFee = this.checkInFee + ((this.studentRoster.Prepaid || this.payType == "PIF") ? 0 : this.makeUpFee) + this.specialFee;
       this.creditFee = 0;
       this.checkFee = 0;
       this.voucherFee = 0;

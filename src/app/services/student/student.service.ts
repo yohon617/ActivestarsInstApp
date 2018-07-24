@@ -34,7 +34,7 @@ export class StudentService {
         return this.studentAPIService.getStudentRosterABWeeks(studentID, classReportID);
     }
 
-    getStudentPIFWeeks(studentID, classReportID): Promise<number> {
+    getStudentPIFWeeks(classReportID, studentID): Promise<number> {
         return this.studentAPIService.getStudentPIFWeeks(classReportID, studentID);
     }
 
