@@ -1,10 +1,11 @@
-﻿export class ClassReport {
+export class ClassReport {
     ID: number;
     StudentCount: number;
     ClassFee: number;
     MerchFee: number;
     CashPayment: number;
     CreditPayment: number;
+    ChecksPayment: number;
     OnlinePayment: number;
     VoucherPayment: number;
     ParentHelperFormImage: string[];
