@@ -42,6 +42,12 @@ export class StudentAPIService {
             .then(response => response.json() as string)
     }
 
+    getStudentRosterMadeUpWeeks(studentID, classReportID): Promise<string> {
+        return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudentRosterMadeUpWeeks?studentID=" + studentID + "&classReportID=" + classReportID, this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json() as string)
+    }
+
     getStudentPIFWeeks(classReportID, studentID): Promise<number> {
         return this.http.get(this.config.get("apiURL") + "/api/students.mvc/GetStudentPIFWeeks?classReportID=" + classReportID + "&studentID=" + studentID, this.config.requestOptions)
             .toPromise()
@@ -53,6 +59,16 @@ export class StudentAPIService {
             + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&classFee=" + classFee + "&makeupWeeks=" + makeupWeeks + "&cashFee=" + cashFee
             + "&creditFee=" + creditFee+ "&checkFee=" + checkFee + "&voucherFee=" + voucherFee + "&testChecked=" + testChecked + "&prepaidFee=" + prepaidFee
             + "&specialtyClasses=" + specialtyClasses
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json());
+    }
+
+    UpdateCheckInStudent(studentID, classReportID, payType, specialClassFee, makeupFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, specialtyClasses, madeUpWeekList) {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/UpdateCheckInStudent?studentID=" + studentID + "&classReportID=" + classReportID
+            + "&payType=" + payType + "&specialClassFee=" + specialClassFee + "&makeupFee=" + makeupFee + "&makeupWeeks=" + makeupWeeks + "&cashFee=" + cashFee
+            + "&creditFee=" + creditFee+ "&checkFee=" + checkFee + "&voucherFee=" + voucherFee + "&testChecked=" + testChecked
+            + "&specialtyClasses=" + specialtyClasses+ "&madeupWeeks=" + madeUpWeekList
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
             .then(response => response.json());

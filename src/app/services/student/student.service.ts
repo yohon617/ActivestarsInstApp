@@ -34,12 +34,20 @@ export class StudentService {
         return this.studentAPIService.getStudentRosterABWeeks(studentID, classReportID);
     }
 
+    getStudentRosterMadeUpWeeks(studentID, classReportID): Promise<string> {
+        return this.studentAPIService.getStudentRosterMadeUpWeeks(studentID, classReportID);
+    }
+
     getStudentPIFWeeks(classReportID, studentID): Promise<number> {
         return this.studentAPIService.getStudentPIFWeeks(classReportID, studentID);
     }
 
     CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, prepaidFee, specialtyClasses) {
       return this.studentAPIService.CheckInStudent(studentID, classReportID, payType, specialClassFee, classFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, prepaidFee, specialtyClasses);
+    }
+
+    UpdateCheckInStudent(studentID, classReportID, payType, specialClassFee, makeupFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, specialtyClasses, madeUpWeekList) {
+      return this.studentAPIService.UpdateCheckInStudent(studentID, classReportID, payType, specialClassFee, makeupFee, makeupWeeks, cashFee, creditFee, checkFee, voucherFee, testChecked, specialtyClasses, madeUpWeekList);
     }
 
     AddStudentToClass(studentID, classReportID, section, payType, status, visiting, transfered): Promise<StudentRoster> {

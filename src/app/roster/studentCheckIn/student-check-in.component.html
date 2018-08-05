@@ -6,15 +6,20 @@
     </button>
   </div>
   <div class="modal-body" style="text-align: center;">
+    <div *ngIf="this.checkedIn" class="divCheckedInPayType">
+      {{this.studentRoster.PayType}}
+    </div>
     <div *ngIf="!isRegister && !studentRoster.Prepaid && !studentRoster.Scholarship && !studentRoster.ParentHelper" class="divCheckInRow">
-      <!--<div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
+      <!--<div class="divCheckInRowLeft">${{classFee
+      }} Weekly Class Fee
+    </div>
     <div class="divCheckInRowRight"><input type="checkbox" name="chkWeeklyFee" (change)="checkWeeklyFee($event)" class="chkCheckIn form-control form-control-sm" /></div>-->
 
       <div class="divCheckInRowLeft">${{classFee}} Weekly Class Fee</div>
       <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="W" checked (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
 
-      <div class="divCheckInRowLeft">${{prepaidFee}} Pay Remaining</div>
-      <div class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="PIF" (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
+      <div *ngIf="!this.checkedIn" class="divCheckInRowLeft">${{prepaidFee}} Pay Remaining</div>
+      <div *ngIf="!this.checkedIn" class="divCheckInRowRight"><input type="radio" name="radioWeekly" value="PIF" (change)="checkWeeklyFee($event)" class="rdoCheckIn" /></div>
 
     </div>
     <div *ngIf="!isRegister && studentRoster.Prepaid" class="divCheckInRow">
@@ -29,15 +34,30 @@
       <div class="divCheckInRowLeft">${{parentHelperFee}} Parent Helper Fee</div>
       <div class="divCheckInRowRight"><input type="checkbox" checked disabled name="chkParentHelperFee" (change)="checkParentHelperFee($event)" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="absentWeekList[0]!==undefined && absentWeekList[0]!==''" class="divCheckInRow">
+
+
+    <div *ngIf="this.checkedIn && madeUpWeekList[0]!==undefined && madeUpWeekList[0]!==''" class="divCheckInRow divMadeUpRow">
+      <div class="divCheckInRowLeft"><i class="fa fa-check" aria-hidden="true"></i>Week {{madeUpWeekList[0]}} made-up </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkMadeUpFee1" [value]="madeUpWeekList[0]" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+    <div *ngIf="this.checkedIn && madeUpWeekList[1]!==undefined && madeUpWeekList[1]!==''" class="divCheckInRow divMadeUpRow">
+      <div class="divCheckInRowLeft"><i class="fa fa-check" aria-hidden="true"></i>Week {{madeUpWeekList[1]}} made-up </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkMadeUpFee1" [value]="madeUpWeekList[1]" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+    <div *ngIf="this.checkedIn && madeUpWeekList[2]!==undefined && madeUpWeekList[2]!==''" class="divCheckInRow divMadeUpRow">
+      <div class="divCheckInRowLeft"><i class="fa fa-check" aria-hidden="true"></i>Week {{madeUpWeekList[2]}} made-up </div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkMadeUpFee1" [value]="madeUpWeekList[2]" checked disabled class="chkCheckIn form-control form-control-sm" /></div>
+    </div>
+
+    <div *ngIf="absentWeekList[0]!==undefined && absentWeekList[0]!=='' && (this.madeUpWeekList == undefined || this.madeUpWeekList == '' || this.madeUpWeekList.length < 3)" class="divCheckInRow">
       <div class="divCheckInRowLeft"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[0]}} make-up </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkMakeUpFee1" (change)="checkMakeUpFee($event)" [value]="absentWeekList[0]" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="absentWeekList[1]!==undefined && absentWeekList[1]!==''" class="divCheckInRow">
+    <div *ngIf="absentWeekList[1]!==undefined && absentWeekList[1]!=='' && (this.madeUpWeekList == undefined || this.madeUpWeekList == '' || this.madeUpWeekList.length < 2)" class="divCheckInRow">
       <div class="divCheckInRowLeft"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[1]}} make-up </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkMakeUpFee2" (change)="checkMakeUpFee($event)" [value]="absentWeekList[1]" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="absentWeekList[2]!==undefined && absentWeekList[2]!==''" class="divCheckInRow">
+    <div *ngIf="absentWeekList[2]!==undefined && absentWeekList[2]!=='' && (this.madeUpWeekList == undefined || this.madeUpWeekList == '' || this.madeUpWeekList.length < 1)" class="divCheckInRow">
       <div class="divCheckInRowLeft"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Week {{absentWeekList[2]}} make-up </div>
       <div class="divCheckInRowRight"><input type="checkbox" name="chkMakeUpFee3" (change)="checkMakeUpFee($event)" [value]="absentWeekList[2]" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
@@ -79,19 +99,19 @@
 
     <div *ngIf="this.classService.SelectedClass.Specialty1Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee1}} {{this.classService.SelectedClass.Specialty1Desc}} </div>
-      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec1" (change)="checkSpec($event, 1)" [value]="this.classService.SelectedClass.Specialty1Fee" class="chkCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec1" (change)="checkSpec($event, 1)" [checked]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('1')" [disabled]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('1')" [value]="this.classService.SelectedClass.Specialty1Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="this.classService.SelectedClass.Specialty2Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee2}} {{this.classService.SelectedClass.Specialty2Desc}} </div>
-      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec2" (change)="checkSpec($event, 2)" [value]="this.classService.SelectedClass.Specialty2Fee" class="chkCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec2" (change)="checkSpec($event, 2)" [checked]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('2')" [disabled]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('2')" [value]="this.classService.SelectedClass.Specialty2Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
     <div *ngIf="this.classService.SelectedClass.Specialty3Fee>0" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{this.specFee3}} {{this.classService.SelectedClass.Specialty3Desc}} </div>
-      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec3" (change)="checkSpec($event, 3)" [value]="this.classService.SelectedClass.Specialty3Fee" class="chkCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkSpec3" (change)="checkSpec($event, 3)" [checked]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('3')" [disabled]="this.checkedIn && this.studentRoster.SpecialtyClasses.includes('3')" [value]="this.classService.SelectedClass.Specialty3Fee" class="chkCheckIn form-control form-control-sm" /></div>
     </div>
-    <div *ngIf="this.classService.SelectedClassWeek.IsTest" class="divCheckInRow">
+    <div *ngIf="!this.studentRoster.Testing" class="divCheckInRow">
       <div class="divCheckInRowLeft">${{testFee}} Test Fee</div>
-      <div class="divCheckInRowRight"><input type="checkbox" name="chkTestFee" (change)="checkTestFee($event)" class="chkTest form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight"><input type="checkbox" name="chkTestFee" (change)="checkTestFee($event)" [checked]="this.checkedIn && this.studentRoster.Testing" [disabled]="this.checkedIn && this.studentRoster.Testing" class="chkTest form-control form-control-sm" /></div>
     </div>
 
     <div style="font-weight: bold; margin-top: 15px;" class="divCheckInRowPayment">
@@ -100,22 +120,42 @@
     </div>
     <div class="divCheckInRowPaymentBreakDown">
       <div class="divCheckInRowLeft">---Cash: </div>
-      <div class="divCheckInRowRight">$<input type="text" [value]="cashFee" class="txtCheckIn form-control form-control-sm" disabled /></div>
+      <div class="divCheckInRowRight">
+        <a class="week-header-link" [attr.href]="'/roster'" (click)="fillAllFee(1)">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        $<input type="text" [value]="cashFee" class="txtCheckIn form-control form-control-sm" disabled />
+      </div>
     </div>
     <div class="divCheckInRowPaymentBreakDown">
       <div class="divCheckInRowLeft">---Credit: </div>
-      <div class="divCheckInRowRight">$<input type="text" [value]="creditFee" (change)="creditFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight">
+        <a class="week-header-link" [attr.href]="'/roster'" (click)="fillAllFee(2)">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        $<input type="text" [value]="creditFee" (change)="creditFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" />
+      </div>
     </div>
     <div class="divCheckInRowPaymentBreakDown">
       <div class="divCheckInRowLeft">---Check: </div>
-      <div class="divCheckInRowRight">$<input type="text" [value]="checkFee" (change)="checkFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight">
+        <a class="week-header-link" [attr.href]="'/roster'" (click)="fillAllFee(3)">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        $<input type="text" [value]="checkFee" (change)="checkFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" />
+      </div>
     </div>
     <div class="divCheckInRowPaymentBreakDown">
       <div class="divCheckInRowLeft">---Voucher:</div>
-      <div class="divCheckInRowRight">$<input type="text" [value]="voucherFee" (change)="voucherFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" /></div>
+      <div class="divCheckInRowRight">
+        <a class="week-header-link" [attr.href]="'/roster'" (click)="fillAllFee(4)">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        $<input type="text" [value]="voucherFee" (change)="voucherFeeUpdate($event)" class="txtCheckIn form-control form-control-sm" />
+      </div>
     </div>
     <div style="padding-top: 20px;">
-      <button type="button" dropdownToggle class="btn btn-success" style="width: 100%;" (click)="checkInClick()">Check In</button>
+      <button type="button" dropdownToggle class="btn btn-success" style="width: 100%;" (click)="checkInClick()">{{this.checkedIn ? 'Update' : 'Check In'}}</button>
     </div>
   </div>
 </div>

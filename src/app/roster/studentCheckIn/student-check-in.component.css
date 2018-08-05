@@ -52,3 +52,13 @@ input[type='checkbox'], input[type='radio'] {
   transform: scale(1.8);
   margin-top: 7px;
 }
+
+div.divMadeUpRow {
+  color: #23CD23;
+}
+
+div.divCheckedInPayType {
+  background: #5cb85c;
+  color: #ffffff;
+  border-radius: 5px;
+}

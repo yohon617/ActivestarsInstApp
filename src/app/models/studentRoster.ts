@@ -1,4 +1,4 @@
-﻿export class StudentRoster {
+export class StudentRoster {
     StudentID: number;
     FirstName: string;
     LastName: string;
@@ -15,6 +15,7 @@
     Prepaid: boolean;
     Scholarship: boolean;
     ParentHelper: boolean;
+    SpecialtyClasses: string;
 
     get StatusNote():string {
         switch (this.Status) {

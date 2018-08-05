@@ -20,6 +20,7 @@ export class StudentCheckInComponent implements OnInit {
     @Input() studentRoster: StudentRoster;
     @Input() isRegister: boolean;
     @Output() refreshRoster = new EventEmitter();
+    checkedIn: boolean;
     student: Student;
     classFee: number;
     scholarshipFee: number;
@@ -35,6 +36,7 @@ export class StudentCheckInComponent implements OnInit {
     checkFee: number = 0;
     voucherFee: number = 0;
     absentWeekList: string[];
+    madeUpWeekList: string[];
     timeToLoad: boolean = false;
     makeupWeeks: string = "";
     specialtyClasses: string = "";
@@ -54,6 +56,8 @@ export class StudentCheckInComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+
+      this.checkedIn = (this.studentRoster.PayType != "") && this.studentRoster.PayType != "n/a" && this.studentRoster.PayType != "AB" ;
       
       this.studentService.getStudentPIFWeeks(this.classService.SelectedClassWeek.ClassReportID, this.studentRoster.StudentID)
         .then(response => {
@@ -117,6 +121,17 @@ export class StudentCheckInComponent implements OnInit {
               this.cashFee = this.totalFee = this.checkInFee = this.regFee;
               this.payType = "REG";
           }
+          else if (this.checkedIn) {
+            this.cashFee = this.totalFee = this.checkInFee = 0;
+            if (this.studentRoster.Scholarship)
+              this.payType = "S";
+            else if (this.studentRoster.ParentHelper)
+              this.payType = "PH";
+            else if (this.studentRoster.Prepaid)
+              this.payType = this.studentRoster.PayType;
+            else
+              this.payType = "W";
+          }
           else {
             if (!this.studentRoster.Prepaid) {
                 this.cashFee = this.totalFee = this.checkInFee = this.classFee;
@@ -133,20 +148,31 @@ export class StudentCheckInComponent implements OnInit {
             else
               this.payType = "W";
           }
-        
           this.studentService.getStudentRosterABWeeks(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID)
               .then(response => {
-                  this.absentWeekList = response.split(",");
+                this.absentWeekList = response.split(",");
+                if (!this.checkedIn)
                   this.timeToLoad = true;
+                else {
+
+                  this.studentService.getStudentRosterMadeUpWeeks(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID)
+                    .then(response => {
+                      this.madeUpWeekList = response.split(",");
+                      this.timeToLoad = true;
+                      console.log(this.madeUpWeekList.length);
+                      console.log(this.madeUpWeekList);
+                    }
+                  );
+                }
               }
-              );
+          );
           //this.route.params
           //    .switchMap((params: Params) => this.studentService.getStudent(+params['id'], this.classService.SelectedClassWeek.ClassReportID))
           //    .subscribe(student => this.student = student);
 
             //        this.classService.SelectedClass.Specialty1Desc
-          }
-        );
+        }
+      );
     }
 
     checkRegFee(e) {
@@ -288,15 +314,52 @@ export class StudentCheckInComponent implements OnInit {
       }
     }
 
+  fillAllFee(type) {
+      switch (type) {
+        case 1: {
+          this.creditFee = this.checkFee = this.voucherFee = 0;
+          this.cashFee = this.totalFee;
+          break;
+        }
+        case 2: {
+          this.cashFee = this.checkFee = this.voucherFee = 0;
+          this.creditFee = this.totalFee;
+          break;
+        }
+        case 3: {
+          this.creditFee = this.cashFee = this.voucherFee = 0;
+          this.checkFee = this.totalFee;
+          break;
+        }
+        case 4: {
+          this.creditFee = this.checkFee = this.cashFee = 0;
+          this.voucherFee = this.totalFee;
+          break;
+        }
+      }
+      return false;
+    }
+
     checkInClick() {
       if (this.makeupWeeks.length > 0)
           this.makeupWeeks = this.makeupWeeks.substring(1);
       if (this.specialtyClasses.length > 0)
-          this.specialtyClasses = this.specialtyClasses.substring(1);
-      this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.checkFee, this.voucherFee, this.testChecked, this.prepaidFee, this.specialtyClasses)
+        this.specialtyClasses = this.specialtyClasses.substring(1);
+
+      if (!this.checkedIn) {
+        this.studentService.CheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.checkInFee + this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.checkFee, this.voucherFee, this.testChecked, this.prepaidFee, this.specialtyClasses)
           .then(() => {
             this.refreshRoster.emit();
             this.modalRef.hide();
           });
+      }
+      else {
+        this.studentService.UpdateCheckInStudent(this.studentRoster.StudentID, this.classService.SelectedClassWeek.ClassReportID, this.payType, this.specialFee, this.makeUpFee, this.makeupWeeks, this.cashFee, this.creditFee, this.checkFee, this.voucherFee, this.testChecked, this.specialtyClasses, this.madeUpWeekList)
+          .then(() => {
+            this.refreshRoster.emit();
+            this.modalRef.hide();
+          });
+
+      }
     }
 }
