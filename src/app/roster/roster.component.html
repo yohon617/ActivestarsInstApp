@@ -5,7 +5,7 @@
       <i class="fa fa-chevron-left class-number-left-arrow" aria-hidden="true"></i>
     </a>
     <div id="class-number-header-content">
-      Class {{selectedClassNumber}}
+      {{getClassTeamName()}}
     </div>
     <a class="class-header-link" [attr.href]="selectedClassNumber == studentListByClassNumber.length - 1 ? null : 'javascript: void(0);'"
        (click)="nextClass()" [class.class-header-link-disabled]="selectedClassNumber == studentListByClassNumber.length - 1">

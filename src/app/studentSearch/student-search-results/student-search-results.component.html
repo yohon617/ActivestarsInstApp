@@ -1,4 +1,4 @@
-﻿<div class="container">
+<div class="container">
     <div class="search-results-header">
         <h4 *ngIf="studentList.length > 0">Student<span *ngIf="studentList.length > 1">s</span> Found</h4>
         <h4 *ngIf="studentList.length === 0">No Students Found</h4>
@@ -28,7 +28,7 @@
                     <span>
                         <select class="form-control" [(ngModel)]="student.ClassNumber">
                             <option value="0">Please select...</option>
-                            <option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [ngValue]="x">{{ x }}</option>
+                            <option *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [ngValue]="x">{{ getClassTeamName(x) }}</option>
                         </select>
                     </span>
                 </div>
