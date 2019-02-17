@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap';
 
 import { ClassReportService } from './../services/classReport/classReport.service';
@@ -59,18 +59,36 @@ export class ReportComponent implements OnInit {
     updateRaffle(e) {
         e.target.textContent = "Updating..";
         e.target.disabled = true;
-        e.target.classList = "btn btn-default";
+        //e.target.classList = "btn btn-default";
 
         this.classReportService.updateClassReportRaffle(this.classService.SelectedClassWeek.ClassReportID, this.classReport.RafflePack, this.classReport.RaffleAmount)
             .then(() => {
                 this.getClassReport();
                 e.target.textContent = "Updated";
                 e.target.disabled = false;
-                e.target.classList = "btn btn-primary";
+                //e.target.classList = "btn btn-primary";
                 setTimeout(() => {    //<<<---    using ()=> syntax
                     e.target.textContent = "Update Raffle";
-                    e.target.classList = "btn btn-success";
+                    //e.target.classList = "btn btn-success";
                 }, 2000);
             });
+    }
+
+    submitClassReport(e) {
+          e.target.textContent = "Submitting...";
+          e.target.disabled = true;
+          //e.target.classList = "btn btn-default";
+
+          this.classReportService.submitClassReport(this.classService.SelectedClassWeek.ClassReportID)
+              .then(() => {
+                  this.getClassReport();
+                  e.target.textContent = "Submitted";
+                  e.target.disabled = false;
+                  //e.target.classList = "btn btn-primary";
+                  setTimeout(() => {    //<<<---    using ()=> syntax
+                      e.target.textContent = "Submit Class Report";
+                      //e.target.classList = "btn btn-success";
+                  }, 2000);
+              });
     }
 }

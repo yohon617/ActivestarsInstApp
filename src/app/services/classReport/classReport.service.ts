@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -29,5 +29,9 @@ export class ClassReportService {
 
     updateClassReportRaffle(classReportID: number, rafflePack: number, raffleAmount: number): Promise<any> {
         return this.classReportAPIService.updateClassReportRaffle(classReportID, rafflePack, raffleAmount);
+    }
+
+    submitClassReport(classReportID: number): Promise<any> {
+        return this.classReportAPIService.submitClassReport(classReportID);
     }
 }

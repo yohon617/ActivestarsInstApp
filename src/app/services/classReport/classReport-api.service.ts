@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { RequestOptions, Headers, Http } from '@angular/http';
 
 import { ConfigService } from './../../config/config.service';
@@ -43,6 +43,13 @@ export class ClassReportAPIService {
     updateClassReportRaffle(classReportID: number, rafflePack: number, raffleAmount: number): Promise<any> {
         return this.http.post(this.config.get("apiURL") + "/api/classreports.mvc/UpdateClassReportRaffle?classReportID=" + classReportID + "&rafflePack=" + rafflePack
             + "&raffleAmount=" + raffleAmount
+            , JSON.stringify(""), this.config.requestOptions)
+            .toPromise()
+            .then(response => response.json());
+    }
+
+    submitClassReport(classReportID: number): Promise<any> {
+        return this.http.post(this.config.get("apiURL") + "/api/classreports.mvc/UpdateClassReportInstSubmit?classReportID=" + classReportID
             , JSON.stringify(""), this.config.requestOptions)
             .toPromise()
             .then(response => response.json());
