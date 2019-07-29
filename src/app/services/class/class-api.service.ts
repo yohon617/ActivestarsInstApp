@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { RequestOptions, Headers, Http }       from '@angular/http';
 
 import { ConfigService } from './../../config/config.service';
@@ -51,5 +51,28 @@ export class ClassAPIService {
           error => console.log(error)
           )
       
+  }
+
+  sendClassEmail(classID: number, subject: string, body: string): Promise<boolean> {
+    let data = {
+      "ClassID": classID,
+      "Subject": subject,
+      "Body": body
+    };
+    let sendBody = JSON.stringify(data)
+
+    return this.http.post(this.config.get("apiURL") + "/api/classes.mvc/SendClassEmail", sendBody, this.config.requestOptions)
+      .toPromise()
+      .then(response => response.json() as boolean);
+
+    //return new Promise(resolve => resolve(false));
+    //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
+  }
+
+  getInstructorEmail(): Promise<string> {
+    return this.http.get(this.config.get("apiURL") + "/api/classes.mvc/GetInstructorEmail", this.config.requestOptions)
+      .toPromise()
+      .then(response => response.json() as string)
+    //.then(response => console.log("response: ", response.json()), error => console.log("error: ", error));
   }
 }

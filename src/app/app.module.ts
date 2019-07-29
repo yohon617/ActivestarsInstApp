@@ -1,4 +1,4 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -13,6 +13,7 @@ import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
 import { StudentCheckInComponent } from './roster/studentCheckIn/student-check-in.component';
+import { ClassEmailComponent } from './classEmail/class-email.component';
 import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent } from './studentSearch/student-search.component';
 import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component';
@@ -44,6 +45,7 @@ export declare var Session_UserID: any;
       ReportComponent,
       RosterComponent,
       StudentCheckInComponent,
+      ClassEmailComponent,
       StudentProfileComponent,
       StudentSearchComponent,
       StudentSearchHeaderComponent,

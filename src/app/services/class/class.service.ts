@@ -96,5 +96,12 @@ export class ClassService {
   get WeekChange(): Subject<string> {
       return this.weekChange;
   }
- 
+
+  sendClassEmail(classID: number, subject: string, body: string): Promise<boolean> {
+    return this.classAPIService.sendClassEmail(classID, subject, body);
+  }
+
+  getInstructorEmail(): Promise<string> {
+    return this.classAPIService.getInstructorEmail();
+  }
 }

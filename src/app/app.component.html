@@ -1,4 +1,4 @@
-﻿<div [hidden]="studentLookupActive">
+<div [hidden]="studentLookupActive">
   <div class="row class-dropdown-menu">
     <div class="btn-group" dropdown>
       <span dropdownToggle class="student-search-toggle pointer">
@@ -13,6 +13,9 @@
         </li>
         <li role="menuitem">
           <a class="dropdown-item" href="#" (click)="selectStudentSearch($event, 'transfer')">Add Transfer Student</a>
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" href="#" (click)="openClassEmail($event, modalClassEmail)">Class Email</a>
         </li>
         <li class="divider dropdown-divider"></li>
         <li role="menuitem">
@@ -37,6 +40,12 @@
     </div>
   </div>
   <class-week-header></class-week-header>
+
+  <ng-template #modalClassEmail>
+    <class-email [class]="selectedClass"
+                      [modalRef]="modalRef">
+    </class-email>
+  </ng-template>
 
 </div>
 

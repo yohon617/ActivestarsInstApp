@@ -1,4 +1,4 @@
-﻿import { NgModule }             from '@angular/core';
+import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ClassesComponent }   from './classes/classes.component';
@@ -6,6 +6,7 @@ import { OrderComponent }      from './order/order.component';
 import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
 import { StudentCheckInComponent } from './roster/studentCheckIn/student-check-in.component';
+import { ClassEmailComponent } from './classEmail/class-email.component';
 import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent }  from './studentSearch/student-search.component';
 
