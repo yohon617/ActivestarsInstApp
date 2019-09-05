@@ -1,1 +1,21 @@
-﻿
+/*body {
+  width: 80%;
+  margin: 10% auto;
+  background: #e6e6e6;
+}*/
+
+#visualization_wrap {
+  border: 1px solid gray;
+  position: relative;
+  padding-bottom: 400px;
+  height: 0;
+  overflow: hidden;
+}
+
+.barchart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+}

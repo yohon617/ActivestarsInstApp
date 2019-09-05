@@ -17,7 +17,7 @@
       <div class="roster-student-name">
         <div class="btn-group" dropdown>
           <span dropdownToggle class="student-search-toggle pointer">
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
           </span>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li role="menuitem" class="roster-student-sub">
@@ -36,7 +36,7 @@
               <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>
             </li>-->
             <li role="menuitem">
-              <a class="dropdown-item" href="#" (click)="emailStudent($event, 'transfer')">Email</a>
+              <a class="dropdown-item" href="#" (click)="openStudentEmail($event, modalStudentEmail, student)" [class.disabled]="student.PEmail===''">Email</a>
             </li>
           </ul>
         </div>
@@ -60,9 +60,9 @@
           </button>
           <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
             <!--<li role="menuitem"><a class="dropdown-item" href="#">Check-in</a></li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Drop Request</a>
-    </li>-->
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Drop Request</a>
+            </li>-->
             <li role="menuitem" *ngIf="(student.PayType != '' && student.PayType != 'n/a') || student.Prepaid">
               <a class="dropdown-item" href="#">
                 Order Merchandise
@@ -89,12 +89,18 @@
   </div>
 
   <ng-template #modalStudentCheckIn>
-    <student-check-in 
-      [isRegister]="false"
-      [studentRoster]="selectedStudentRoster"
-      [modalRef]="modalRef"
-      (refreshRoster)="refreshRoster($event)">
+    <student-check-in [isRegister]="false"
+                      [studentRoster]="selectedStudentRoster"
+                      [modalRef]="modalRef"
+                      (refreshRoster)="refreshRoster($event)">
     </student-check-in>
+  </ng-template>
+
+
+  <ng-template #modalStudentEmail>
+    <student-email [student]="selectedEmailStudent"
+                 [modalRef]="modalRef">
+    </student-email>
   </ng-template>
 
   <ng-template #modalDropRequest>
@@ -105,11 +111,11 @@
       </button>
     </div>
     <div class="modal-body" style="text-align: center;">
-      Reason: 
+      Reason:
       <input type="text" [(ngModel)]="txtDropReason" class="form-control form-control-sm" />
       <button type="button" class="btn btn-primary" (click)="requestDrop()">Request Drop</button>
     </div>
 
-</ng-template>
+  </ng-template>
 
 </div>

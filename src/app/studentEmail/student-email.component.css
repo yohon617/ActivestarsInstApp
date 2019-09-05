@@ -1,0 +1,17 @@
+label {
+  text-align: left;
+}
+
+textarea {
+  width: 100%;
+}
+
+.divSuccess {
+  color: green;
+}
+
+.divFail {
+  color: red;
+}
+
+a.disabled { cursor: not-allowed; color: gray; }

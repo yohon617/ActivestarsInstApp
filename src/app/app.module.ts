@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,6 +15,7 @@ import { ReportComponent }  from './report/report.component';
 import { RosterComponent } from './roster/roster.component';
 import { StudentCheckInComponent } from './roster/studentCheckIn/student-check-in.component';
 import { ClassEmailComponent } from './classEmail/class-email.component';
+import { StudentEmailComponent } from './studentEmail/student-email.component';
 import { StudentProfileComponent } from './studentProfile/student-profile.component';
 import { StudentSearchComponent } from './studentSearch/student-search.component';
 import { StudentSearchHeaderComponent } from './studentSearch/student-search-header/student-search-header.component';
@@ -33,6 +35,7 @@ import { ClassReportAPIService } from './services/classReport/classReport-api.se
 
 import { ConfigService } from './config/config.service'
 
+
 export declare var Session_UserID: any;
 
 @NgModule({
@@ -46,6 +49,7 @@ export declare var Session_UserID: any;
       RosterComponent,
       StudentCheckInComponent,
       ClassEmailComponent,
+      StudentEmailComponent,
       StudentProfileComponent,
       StudentSearchComponent,
       StudentSearchHeaderComponent,
@@ -55,6 +59,7 @@ export declare var Session_UserID: any;
       BrowserModule,
       FormsModule,
       HttpModule,
+      HttpClientModule,
       AppRoutingModule,
       BsDropdownModule.forRoot(),
       ModalModule.forRoot(),

@@ -31,6 +31,8 @@ export class RosterComponent implements OnInit, OnDestroy {
 
     dropRequestStudent: StudentRoster;
     txtDropReason: string;
+
+    selectedEmailStudent: StudentRoster;
     
     constructor(
         private studentService: StudentService,
@@ -170,6 +172,16 @@ export class RosterComponent implements OnInit, OnDestroy {
         return this.classService.SelectedClass.TeamName20 == "" ? "Class " + this.selectedClassNumber.toString() : this.classService.SelectedClass.TeamName20;
       default:
         return "Class " + this.selectedClassNumber.toString();
+    }
+  }
+
+
+  public openStudentEmail(e: any, template: TemplateRef<any>, selectedStudent: StudentRoster) {
+    e.preventDefault();
+    //console.log(selectedStudent);
+    if (selectedStudent.PEmail != '') {
+      this.selectedEmailStudent = selectedStudent;
+      this.modalRef = this.modalService.show(template);
     }
   }
 

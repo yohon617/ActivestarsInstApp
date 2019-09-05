@@ -16,6 +16,7 @@ export class StudentRoster {
     Scholarship: boolean;
     ParentHelper: boolean;
     SpecialtyClasses: string;
+    PEmail: string;
 
     get StatusNote():string {
         switch (this.Status) {
