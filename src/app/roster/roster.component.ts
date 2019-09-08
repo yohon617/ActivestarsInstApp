@@ -77,7 +77,8 @@ export class RosterComponent implements OnInit, OnDestroy {
         if (this.selectedClassNumber > 1) {
             this.selectedClassNumber--;
             this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
-        }
+      }
+      return false;
     }
 
     nextClass() {
@@ -85,7 +86,7 @@ export class RosterComponent implements OnInit, OnDestroy {
             this.selectedClassNumber++;
             this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
         }
-
+      return false;
     }
 
     public openCheckIn(template: TemplateRef<any>, studentRoster: StudentRoster) {

@@ -1,13 +1,13 @@
 <div>
   <div class="row" id="class-number-header">
-    <a class="class-header-link" [attr.href]="selectedClassNumber == 1 ? null : 'javascript: void(0);'"
+    <a class="class-header-link" [attr.href]="selectedClassNumber == 1 ? null : '/roster'"
        (click)="prevClass()" [class.class-header-link-disabled]="selectedClassNumber == 1">
       <i class="fa fa-chevron-left class-number-left-arrow" aria-hidden="true"></i>
     </a>
     <div id="class-number-header-content">
       {{getClassTeamName()}}
     </div>
-    <a class="class-header-link" [attr.href]="selectedClassNumber == studentListByClassNumber.length - 1 ? null : 'javascript: void(0);'"
+    <a class="class-header-link" [attr.href]="selectedClassNumber == studentListByClassNumber.length - 1 ? null : '/roster'"
        (click)="nextClass()" [class.class-header-link-disabled]="selectedClassNumber == studentListByClassNumber.length - 1">
       <i class="fa fa-chevron-right class-number-right-arrow" aria-hidden="true"></i>
     </a>
