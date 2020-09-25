@@ -23,15 +23,17 @@ export class ClassWeekHeaderComponent implements OnInit {
 
     prev() {
         console.log("prev");
-        if (this.classService.SelectedClassWeek.WeekNumber > 1)
-          this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber - 2];
+        //if (this.classService.SelectedClassWeek.WeekNumber > 1)
+      //  this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber - 2];
+      this.classService.movePrevWeek();
       return false;
     }
 
     next() {
-        console.log("next");
-        if (this.classService.SelectedClassWeek.WeekNumber < this.classService.SelectedClassWeeks.length)
-          this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber];
+      console.log("next");
+      //if (this.classService.SelectedClassWeek.WeekNumber < this.classService.SelectedClassWeeks.length)
+      //this.classService.SelectedClassWeek = this.classService.SelectedClassWeeks[this.classService.SelectedClassWeek.WeekNumber];
+      this.classService.moveNextWeek();
       return false;
         
     }

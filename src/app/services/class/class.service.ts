@@ -18,10 +18,12 @@ import { RPTClassSalesAndRetention } from './../../models/rptClassSalesAndRetent
 export class ClassService {
 
   private selectedClass: Class;
-  private selectedClassWeeks: ClassWeek[]
-  private selectedWeek: ClassWeek
-  private weekChange = new Subject<string>()
+  private selectedClassWeeks: ClassWeek[];
+  private selectedWeek: ClassWeek;
+  private weekChange = new Subject<string>();
   public weekChange$ = this.weekChange.asObservable();
+
+  private selectedWeekArrayNumber: number = 0;
 
   constructor(private http: HttpClient, private classAPIService: ClassAPIService) { }
 
@@ -43,6 +45,13 @@ export class ClassService {
     this.classAPIService.getClassWeeks(this.selectedClass.ID)
       .then(weeks => {
         this.selectedClassWeeks = weeks;
+
+        if (weeks.length > 0)
+          this.selectedWeekArrayNumber = weeks.length - 1;
+        else
+          this.selectedWeekArrayNumber = 0;
+
+        var tmpCount = 0;
         for (let week of this.selectedClassWeeks) {
           //console.log(week.WeekNumber);
           //console.log(new Date().getTime());
@@ -51,17 +60,23 @@ export class ClassService {
           //console.log(new Date(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000)));
           //console.log(new Date());
           //console.log(new Date(week.ClassDate));
-          if (week.WeekNumber == this.selectedClass.NumOfWeeks) {
-            this.selectedWeek = week;
-            this.weekChange.next();
-          }
-          else if (new Date().getTime() < new Date(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000)).getTime()) {
-            this.selectedWeek = week;
-            this.weekChange.next();
+
+          //if (week.WeekNumber == this.selectedClass.NumOfWeeks) {
+          //  this.selectedWeek = week;
+          //  this.weekChange.next();
+          //}
+          //else
+          if (new Date().getTime() < new Date(new Date(week.ClassDate).getTime() + (60 * 60 * 24 * 1000)).getTime()) {
+            //this.selectedWeek = week;
+            //this.weekChange.next();
+            this.selectedWeekArrayNumber = tmpCount;
             break;
           }
+          tmpCount++;
 
         }
+        this.selectedWeek = weeks[this.selectedWeekArrayNumber];
+        this.weekChange.next();
       });
   }
 
@@ -72,6 +87,30 @@ export class ClassService {
 
   uploadFile(files: File[]) {
     return this.classAPIService.uploadFile(files);
+  }
+
+  moveNextWeek() {
+    if (this.selectedWeekArrayNumber + 1 < this.selectedClassWeeks.length) {
+      this.selectedWeekArrayNumber++;
+      this.selectedWeek = this.selectedClassWeeks[this.selectedWeekArrayNumber];
+      this.weekChange.next();
+    }
+  }
+
+  movePrevWeek() {
+    if (this.selectedWeekArrayNumber > 0) {
+      this.selectedWeekArrayNumber--;
+      this.selectedWeek = this.selectedClassWeeks[this.selectedWeekArrayNumber];
+      this.weekChange.next();
+    }
+  }
+
+  get SelectedWeekArrayNumber(): number {
+    return this.selectedWeekArrayNumber;
+  }
+
+  set SelectedWeekArrayNumber(value: number) {
+    this.selectedWeekArrayNumber = value;
   }
 
   get SelectedClass(): Class {
