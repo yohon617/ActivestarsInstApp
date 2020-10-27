@@ -108,3 +108,20 @@ a.classReportFileLink {
   width: 45px;
   display: inline;
 }
+
+.resultBody {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.resultProcessing {
+  color: darkkhaki;
+}
+
+.resultSuccess {
+    color: green;
+}
+
+.resultFail {
+    color: red;
+}

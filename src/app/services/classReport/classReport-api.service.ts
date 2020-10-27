@@ -26,7 +26,7 @@ export class ClassReportAPIService {
         return this.http.post(this.config.get("apiURL") + "/api/classreports.mvc/UploadClassReportFile?classReportID=" + classReportID + "&fileType=" + type, formData, this.config.requestOptionsNonJSON)
             .toPromise()
             .then(response => response.json())
-            .catch(error => { console.log(error) });
+          .catch(error => Promise.reject(error));
 
     }
 

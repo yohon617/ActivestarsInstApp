@@ -51,7 +51,7 @@
           </div>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 5)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 5)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control signInSheet-file-control"></span>
             </label>
             <br />
@@ -66,7 +66,7 @@
           </div>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 1)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 1)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control parentHelper-file-control"></span>
             </label>
             <br />
@@ -79,7 +79,7 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 6)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 6)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control classReportSheet-file-control"></span>
             </label>
             <br />
@@ -92,7 +92,7 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 3)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 3)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control orderEnvelopes-file-control"></span>
             </label>
             <br />
@@ -105,7 +105,7 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 2)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 2)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control depositReceipt-file-control"></span>
             </label>
             <br />
@@ -118,7 +118,7 @@
           <i class="fa fa-file-image-o" aria-hidden="true"></i>
           <div class="divFileSelect">
             <label class="custom-file">
-              <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event, 4)" class="upload custom-file-input" accept="image/*;capture=camera" />
+              <input type="file" id="btnUpload" value="Upload" (change)="fileChange(modalFileUploadResult, $event, 4)" class="upload custom-file-input" accept="image/*;capture=camera" />
               <span class="custom-file-control others-file-control"></span>
             </label>
             <br />
@@ -136,3 +136,16 @@
     <button type="button" dropdownToggle class="btn btn-success" style="width: 100%;" (click)="submitClassReport($event)">Submit Class Report</button>
   </div>
 </div>
+
+<ng-template #modalFileUploadResult>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">File Upload</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body resultBody {{resultClass}}" style="text-align: center;">
+    {{result}}
+  </div>
+
+</ng-template>

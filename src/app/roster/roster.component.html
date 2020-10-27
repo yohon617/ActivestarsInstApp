@@ -33,14 +33,14 @@
               <a class="dropdown-item" href="#" [routerLink]="['/studentProfile', student.StudentID, 0]">View / Edit Student Info</a>
             </li>
             <!--<li role="menuitem">
-              <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>
-            </li>-->
+        <a class="dropdown-item" href="#" (click)="addToSpecialtyRoster($event, 'visiting')">Add to Specialty Roster</a>
+      </li>-->
             <li role="menuitem">
               <a class="dropdown-item" href="#" (click)="openStudentEmail($event, modalStudentEmail, student)" [class.disabled]="student.PEmail===''">Email</a>
             </li>
           </ul>
         </div>
-        <span class="spanStudStat">{{(student.Status == 5) ? "(E)" : ((student.Status == 2) ? "(A)" : "(R)")}}</span> {{student.LastName}}, {{student.FirstName}} {{(student.Scholarship) ? "(S)" : ((student.ParentHelper) ? "(PH)" : "")}}
+        <span class="spanStudStat">{{(student.Status == 5) ? "(E)" : ((student.Status == 2) ? "(A)" : "(R)")}}</span> {{student.LastName}}, {{student.FirstName}} {{(student.Scholarship) ? "(S)" : ((student.ParentHelper) ? "(PH)" : "")}} {{(student.TestingWeek === classService.SelectedClassWeek?.WeekNumber) ? "(T)" : ""}}
       </div>
       <div class="roster-student-button-div">
         <div class="btn-group roster-student-button" dropdown placement="bottom right">

@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 import { ClassReportService } from './../services/classReport/classReport.service';
 import { ClassReport } from './../models/classReport'
@@ -12,11 +14,15 @@ import { ClassService } from './../services/class/class.service';
 })
 export class ReportComponent implements OnInit {
 
+    public modalRef: BsModalRef;
     classReport: ClassReport;
     subscription: any;
+    result: string;
+    resultClass: string;
     
     constructor(private classReportService: ClassReportService,
-        private classService: ClassService)
+      private classService: ClassService,
+      private modalService: BsModalService)
     { }
 
     ngOnInit(): void {
@@ -36,11 +42,21 @@ export class ReportComponent implements OnInit {
             });
     }
 
-    fileChange(event, type) {
+  fileChange(template: TemplateRef<any>, event, type) {
+        this.resultClass = "resultProcessing";
+        this.result = "Uploading File...";
+        this.modalRef = this.modalService.show(template);
         this.classReportService.uploadClassReportFile(event.target.files, this.classService.SelectedClassWeek.ClassReportID, type)
-            .then(() => {
-                this.getClassReport();
-            });
+          .then(() => {
+            this.getClassReport();
+            this.resultClass = "resultSuccess";
+            this.result = "File Upload Successful.";
+          })
+          .catch((err) => {
+            console.log(err);
+            this.resultClass = "resultFail";
+            this.result = "File Upload Failed, please try again.";
+          });
     }
 
     getFileName(fullFilePath: string): string {
