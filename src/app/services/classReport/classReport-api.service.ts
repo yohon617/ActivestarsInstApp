@@ -19,10 +19,14 @@ export class ClassReportAPIService {
             .then(response => response.json() as ClassReport)
     }
 
-    uploadClassReportFile(files: File[], classReportID: number, type: number): Promise<any> {
+  uploadClassReportFile(files: File[], classReportID: number, type: number, base64File: string): Promise<any> {
         let formData: FormData = new FormData();
         console.log(files[0].name);
-        formData.append('uploadFile', files[0], files[0].name);
+    formData.append('uploadFile', files[0], files[0].name);
+    formData.append('uploadBase64File', base64File);
+
+      console.log(base64File);
+        
         return this.http.post(this.config.get("apiURL") + "/api/classreports.mvc/UploadClassReportFile?classReportID=" + classReportID + "&fileType=" + type, formData, this.config.requestOptionsNonJSON)
             .toPromise()
             .then(response => response.json())

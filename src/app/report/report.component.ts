@@ -43,20 +43,29 @@ export class ReportComponent implements OnInit {
     }
 
   fileChange(template: TemplateRef<any>, event, type) {
-        this.resultClass = "resultProcessing";
-        this.result = "Uploading File...";
-        this.modalRef = this.modalService.show(template);
-        this.classReportService.uploadClassReportFile(event.target.files, this.classService.SelectedClassWeek.ClassReportID, type)
-          .then(() => {
-            this.getClassReport();
-            this.resultClass = "resultSuccess";
-            this.result = "File Upload Successful.";
-          })
-          .catch((err) => {
-            console.log(err);
-            this.resultClass = "resultFail";
-            this.result = "File Upload Failed, please try again.";
-          });
+    this.resultClass = "resultProcessing";
+    this.result = "Uploading File...";
+    this.modalRef = this.modalService.show(template);
+
+
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      //console.log(reader.result);
+
+      this.classReportService.uploadClassReportFile(event.target.files, this.classService.SelectedClassWeek.ClassReportID, type, reader.result)
+        .then(() => {
+          this.getClassReport();
+          this.resultClass = "resultSuccess";
+          this.result = "File Upload Successful.";
+        })
+        .catch((err) => {
+          console.log(err);
+          this.resultClass = "resultFail";
+          this.result = "File Upload Failed, please try again.";
+        });
+    };
     }
 
     getFileName(fullFilePath: string): string {
