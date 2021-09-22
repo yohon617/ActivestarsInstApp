@@ -47,14 +47,11 @@ export class ReportComponent implements OnInit {
     this.result = "Uploading File...";
     this.modalRef = this.modalService.show(template);
 
+    console.log(event.target.files.length);
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
 
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      //console.log(reader.result);
-
-      this.classReportService.uploadClassReportFile(event.target.files, this.classService.SelectedClassWeek.ClassReportID, type, reader.result)
+      this.classReportService.uploadClassReportFile(event.target.files, this.classService.SelectedClassWeek.ClassReportID, type)
         .then(() => {
           this.getClassReport();
           this.resultClass = "resultSuccess";
@@ -63,10 +60,16 @@ export class ReportComponent implements OnInit {
         .catch((err) => {
           console.log(err);
           this.resultClass = "resultFail";
-          this.result = "File Upload Failed, please try again.";
+          if (err._body.indexOf('<enderror>') < 0)
+            this.result = file.name + " :: " + err._body;
+          else
+            this.result = err._body.substring(0, err._body.indexOf('<enderror>'));
         });
-    };
+    } else {
+      this.resultClass = "resultFail";
+      this.result = "No photo was selected";
     }
+  }
 
     getFileName(fullFilePath: string): string {
         let fileNames: string[];

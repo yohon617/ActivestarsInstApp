@@ -19,8 +19,8 @@ export class ClassReportService {
         return this.classReportAPIService.getClassReport(classReportID);
     }
 
-  uploadClassReportFile(files: File[], classReportID: number, type: number, base64File: string): Promise<any> {
-        return this.classReportAPIService.uploadClassReportFile(files, classReportID, type, base64File);
+  uploadClassReportFile(files: File[], classReportID: number, type: number): Promise<any> {
+        return this.classReportAPIService.uploadClassReportFile(files, classReportID, type);
     }
 
     deleteClassReportFile(classReportID: number, type: number, fileName: string): Promise<any> {
