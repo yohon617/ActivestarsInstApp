@@ -58,8 +58,8 @@ export class StudentService {
         return this.studentAPIService.AddNewStudentToClass(student, classReportID, section, payType, status, visiting, transfered);
     }
 
-    UpdateStudent(student: Student): Promise<any> {
-        return this.studentAPIService.UpdateStudent(student);
+    UpdateStudent(student: Student, classID: number): Promise<any> {
+        return this.studentAPIService.UpdateStudent(student, classID);
     }
 
     AddDropStudentRequest(studentID, classReportID, reason) {

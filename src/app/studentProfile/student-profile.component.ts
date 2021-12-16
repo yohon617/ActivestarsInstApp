@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -9,6 +9,7 @@ import { StudentService } from './../services/student/student.service';
 import { Student } from './../models/student';
 import { StudentRoster } from './../models/studentRoster';
 import { School } from './../models/school';
+import { ClassTeam } from './../models/classTeam';
 
 @Component({
     selector: 'app-root',
@@ -20,6 +21,7 @@ export class StudentProfileComponent implements OnInit {
     student: Student = new Student();
     type: number = 0;
     schools: School[];
+    classTeams: ClassTeam[];
 
     constructor(
         private location: Location,
@@ -48,7 +50,9 @@ export class StudentProfileComponent implements OnInit {
         this.type = +this.route.snapshot.paramMap.get('type');
 
         this.studentService.getSchools()
-            .then(schools => this.schools = schools);
+        .then(schools => this.schools = schools);
+
+      this.classTeams = this.classService.SelectedClass.ClassTeams;
 
         //this.studentService.getStudent(12, this.classService.SelectedClassWeek.ClassReportID)
         //    .then(response => this.student = response);
@@ -67,7 +71,7 @@ export class StudentProfileComponent implements OnInit {
                 });
         }
         else {
-            this.studentService.UpdateStudent(this.student)
+          this.studentService.UpdateStudent(this.student, this.classService.SelectedClass.ID)
                 .then(() => {
                     this.router.navigate(['/roster']);
                 });

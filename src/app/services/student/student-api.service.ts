@@ -90,8 +90,8 @@ export class StudentAPIService {
             .then(response => response.json() as StudentRoster);
     }
 
-    UpdateStudent(student: Student): Promise<any> {
-        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/UpdateStudent"
+    UpdateStudent(student: Student, classID: number): Promise<any> {
+        return this.http.post(this.config.get("apiURL") + "/api/students.mvc/UpdateStudent?classID=" + classID
             , JSON.stringify(student), this.config.requestOptions)
             .toPromise()
             .then(response => response.json() as StudentRoster);

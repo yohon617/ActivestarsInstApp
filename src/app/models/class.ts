@@ -1,3 +1,6 @@
+
+import { ClassTeam } from './../models/classTeam';
+
 export class Class {
     ID: number;
     Name: string;
@@ -41,4 +44,6 @@ export class Class {
   TeamName18: string;
   TeamName19: string;
   TeamName20: string;
+
+  ClassTeams: ClassTeam[];
 }

@@ -70,7 +70,7 @@ export class RosterComponent implements OnInit, OnDestroy {
                     this.studentListByClassNumber[student.ClassNumber].push(student);
                 }
                 this.selectedWeekStudentList = this.studentListByClassNumber[this.selectedClassNumber];
-            });
+          });
     }
 
     prevClass() {
