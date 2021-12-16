@@ -6,6 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { Class } from './models/class';
 import { ClassService } from './services/class/class.service';
+import { ConfigService } from './config/config.service';
 
 enableProdMode();
 
@@ -23,7 +24,7 @@ export class AppComponent {
 
     title = 'Activstars Instructor App';
 
-  constructor(private router: Router, private classService: ClassService, private modalService: BsModalService) {
+  constructor(private router: Router, private classService: ClassService, private modalService: BsModalService, private config: ConfigService) {
         this.router.events.filter(e => e instanceof NavigationStart)
             .subscribe((e: any) => {
                 this.studentLookupActive = e.url.indexOf('studentSearch') > -1 ? true : false;

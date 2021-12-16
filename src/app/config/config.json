@@ -2,5 +2,7 @@
   "environment": "dev",
   "region": "test",
   "securityToken": "555523EA-F654-4EC9-870E-B770E7BA23AB",
-  "apiURL": "https://apinew.activstars.net/"
+  "apiURL": "https://apinew.activstars.net/",
+  "payrollurl": "http://az.activstars.org/",
+  "accountingurl": "http://az.activstarsonline.com"
 }
